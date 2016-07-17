@@ -1,0 +1,351 @@
+\documentclass[23pt]{article}
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage[pdftex]{graphicx}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+\title{A comparative approach for running a Cocos2d-x C++ cross- platform application on web browsers.}
+\author{Amit Bose\\  Master of Science in Information Technology\\  Kiel University of Applied Sciences }
+
+\linespread{1.5}
+\setlength{\parskip}{1ex}%
+\setlength{\parindent}{0pt}%
+\usepackage[margin=1.3in]{geometry}
+
+\usepackage[nottoc]{tocbibind}
+ 
+
+\begin{document}
+
+\maketitle
+\pagenumbering{gobble}
+\newpage
+\pagenumbering{arabic}
+
+%content
+\tableofcontents
+\listoffigures
+
+\newpage
+
+\section{Dedication}
+
+\textit{ \newline \newline I would like to dedicated my dissertation to  my family for all the support. }
+
+\newpage
+
+\section{Acknowledgements}
+
+{\Large  I would like to thank Mario F\"{o}rster senior software developer of TrunCAD Gmbh for the  guidance, supervision and  advice for the completion of this thesis.\\  \\ I would also like to thank Prof. Robert Manzke for the review and his expert guidance \par}
+
+\newpage
+
+\section{ Abstract}
+
+{\Large  Cross platform development framework are extensively used in the organization for cost saving and easy maintenance. In this thesis we will compare the different approaches to transfer the app into web without recoding the whole app again or writing a native code for it. Here we will also discuss the different approaches for applying this with comparative analysis along with the reason for using the particular framework and even developing a transpiler to convert the cocos2d-x c++ code to cocos2d-js using algorithm to make the translation more accurate and in less time, defining every step involved in implementing this prototype. 
+\par}
+
+\newpage
+\section{ Introduction }
+
+{\Large  For a product to really become popular it must be reachable to lot of people, this can only be done with the help of web. Most of the game and app needs to be downloaded then run on PC, whereas when these apps are converted into web application then it can be easily access by client online even it gives the multiuser capability. As most of the Apps are already developed in desktop or mobile version using languages like C++ ,flash(action script) it needed to convert them to web application without recoding and finding ways to port the application into web using web browser friendly language like JavaScript. Fear of downloading corrupt and virus affected Apps are also mitigated when customer use it online, as well they are well supported in all platform as well as responsive to the device. \\ \\
+In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web using different technologies like Emscription, native client and flash. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser. Even discussing the reasons for selecting a particular approach comparing its advantage and disadvantage over native code.
+ \par}
+
+\newpage
+
+\section{Application overview}
+
+{\Large This application is developed in TrunCAD gmbh a company found by frank rushmeier in 2004. It deals with planning,designing and pricing of the furniture.The product has drag and drop option with which one drop different furniture structure  on the canvas  and can change there size and stucture. one done then can send the prcing via email. It is a cross platform application and runs on ios , andriod and windows. This applicaion is made with cocos2d c++ using visual studio.   \par}
+
+\begin{figure}[h]
+\caption{cocos hierarcial evolution}
+\centering
+\includegraphics[scale=0.4]{app}
+\end{figure}
+
+\newpage
+
+\section{ Background and related work}
+{\Large There is already some compiler which converts c++ code to javascript. This thesis is followed by some of the summary and short discussion of these method complier. \\ }
+\subsection{Emscription}
+{\Large  A compiler which converts LLVM(low level virtual assembly) to JavaScript. Emscription itself is written in JavaScript and available under MIT license(a permissive open source license), it is reverse the norm as it goes from low level to high level language. Clang is issued to convert the c++ code to the intermediate code (LLVM) code and then this LLVM is converted into javascript using emscripten. Emscripten is written in javascrip the primary reason for that 1) the compiler can create javascript objects that represent constant structures from the original assembly code and convert them to a string using json.stringify in a trivial manner 2)  the compiler can simplify numerical operations by simply eval() in g the code. \\  \\
+Emscripten has three main phase for its compilation: \\ 
+ intertyper: which converts from LLVM assembly into emscripten internal represtation. \\ 
+ AnalyZer: which inspects the representation and then generate the final phase including type and variable information , stage analysis and optimized data. \\ 
+Jsifier: the data analysis and the final conversion to javascript is done here. \\ 
+The runtime environment:  Emscripten  partially implement c library mostly written from scratch in javascript .teh ways its implemented is below: \\
+1.Filessytem here are stored in memory.\\
+2.Using HEAP array which emulate malloc() in C to be compiled into javascript.\\
+Relopper algorithm is the heart of emscription , it explains how the LLVM is converted to emscription blocks, for simplicity  LLVM  blocks are called ‘labels’ and the emscription blocks as ‘blocks’. There are three type of blocks : \\
+Simple block: one  internal label and a next block  which the internal label branches to.\\
+Loop: it has two internal blocks one inner which represent the block inside the loop  and next block which resides outside the loop and gets executed when  it exits the loop. \\
+Multiple: this block is generally for if, else, switch etc.\\  
+Relooper algorithm follows this steps : \\
+It receives the set of labels and then does the calculation for each level whether it is reachable or not if it cannot return back then it simply creates a block else if it reaches all entry then it creates  a loop , if there are more than one entry then create a multi block. when the relooper process labels it replaces instruction accordingly for example when we create a  block  the instruction outside the loop are converted into break command and  above are converted  into continue statement  and then it follows the semantics of JavaScript to get us go where we want to go. After that emscripstion does a pass in addition to optimize the code for example removing the continue commands that occur at the beginning of each loop. This way it helps to generate a JavaScript code that runs on browser.
+
+
+\par}
+\subsection{ NACL}
+
+{\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way.Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsics and hand-coded assembler. We combine these properties in an open architecture that encourages community review and 3rd-party tools.When running NACL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NACL container, when this module runs their behaviour is taken care by the NACL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate nacl application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NACL whitelist can also be deployed even we can deploy whitelist if we determine that it is needed to secure the system. It also provides sysbrk and mmap system calls also supports malloc()/free() interface or other memory allocation and as well posix threads interface. \\  \\
+  \textbf{NACL SDK}  \\  Nacl software development kit(open source) includes a modified gcc toolchain that is capable of compiling c++ code to executable (pexe file) that can run in the web. It contains nacl sdk batch file by which we can download the version of pepper APi that best fit the current version of nacl. \\ \\  \textbf{ Portable native client} \\ The portability problem is solved by PNaCL by spitting the process of compilation, first compiling the code into bitcode executable called pexe and then translating the bitcode to executable according to browser.these pexe is portable and can be used with HTML, css, javascript  to run on user machine.\\  \\   \textbf{Pepper API} \\  It acts as bridge and allow nacl applucations to communicate and pass data to the javascript side of the system, the data is generally transferred in the form of serialzed text string format and then deserilized on the other end , pepper API also handles event from mouse , keyboard  and also create OpenGL context for hardware accelerated graphic. The data communication between web and the application is asynchronous which helps to give good user experience.
+  \par}
+
+
+\newpage
+
+\subsection{Cocos2d-JS }
+
+{\Large  Cocos2s-js is a a game engine which helps us to create APP whih can be run on web,ios,android, windows , it has high performanace ,supports multiplatform development and user friendly.It helps to make 2D application very easily. It includes  cocos2d-html and cocos2d-x javascript binding  in other it can be said as cocos2d-js verison of HTML5. With cocos2d-js we can code and run games in browsers that support HTML5.some of the feauteres which makes cocos2d-js standout from other others is robist js API , run anywhere donot require any plugin , easy to debug, high performance ,proven and with many new functionality  including sprites, particles ,animations,  timers ,transitions,action, , events (touch, mouse , accelerometer), persistence , file IO, , sound, skeletal animations.. In the meantime, Cocos2d-JS v3.0 is super powerful along with all these cool new features: Editors Support, Assets Manager, Object Pool, JS to Objective-C/JAVA reflection, etc. cross platform developers can also use cocos console for new project creation , boost their development using web version of engine and even deploy using the console , to get the hands on or  casual game development one can use the cocos js lite version.Cocos2d-js with little modification  can also run native application using cocos2d-x JSB , cocos2d-JS JSB is the wrapper code that bridge the native code and  JavaScript code, it also enables interaction between JavaScript and native code vice versa. \\
+ \par}
+
+\begin{figure}[h]
+\caption{cocos hierarcial evolution}
+\centering
+\includegraphics[scale=0.8]{cocosjs}
+\end{figure}
+
+
+
+\subsection{ FlasCC }
+{\Large  The Flash C++ Compiler (FlasCC) was designed to allow C/C++ developers to deliver existing C/C++ codebases via a web browser using the Flash Player. One common use case is to port an existing game written in C++ and OpenGL. The FlasCC engineering team has taken a popular C++/OpenGL game called Neverball and ported it to the web. This post demonstrates the game running in multiple web browsers and provides links to resources that will help you learn how to port your C++/OpenGL game to the web.   \par}
+
+\newpage
+
+\subsection{ Cocos2d-HTML5 }
+{\Large   Cocos2d-html5 is an open-source web 2D game framework, released under MIT License. It is a HTML5 version of Cocos2d-x project. Cocos2d-html5 development is around making Cocos2d cross platforms between browsers and native application. On top of the framework provided by Cocos2d-html5, games can be written in Javascript, using API that is COMPLETELY COMPATIBLE with that of Cocos2d-iPhone, Cocos2d-x javascript binding. Cocos2d-html5 project can be easily run on browsers which supports HTML5. Cocos2dhtml5 also supports running game code in "Cocos2d Javascript binding" without or with little modification.  \par}
+
+\subsection{ Cocos2d JavaScript binding }
+{\Large Cocos2d JS is available with the same api for cocos2d-x, cocos2d-iphone and cocos2d-html5. While cocos2d-html5 will run on mobile devices through the browser, JavaScript bindings have been created for cocos2d-iphone and cocos2d-x to drastically improve the performance. All graphics, rendering and physics code will run natively and only the game logic will run in JavaScript.
+Having your game code in a scripting language provides more advantages than just the cross-platform aspect. As the code is not compiled, it can be replaced in run-time which allows much faster testing cycles.  \par}
+
+\subsection{ Cocos Sharp }
+{\Large  CocosSharp is an easy to use library for 2D games using C Sharp and F sharp. It is a .NET port of the popular Cocos2D engine. The core of CocosSharp is provided by the MonoGame framework, which is itself a cross-platform, hardware accelerated API providing graphics, audio, game state management, input, and a content pipeline for importing assets. CocosSharp is an efficient abstraction layer well suited for 2D games. Furthermore, larger games can perform their own optimizations outside of their core libraries as games grows in complexity. In other words, CocosSharp provides a mix of ease of use and performance, enabling developers to get started quickly without limiting game size or complexity.  \par}
+
+\section{ implementation of different framework for porting cocos2d-x c++ to web and the challenges involved }
+
+\subsection{ implementation of Emscription and challenges }
+
+{\Large Following these step we can port cocos2d c++ to javacript first we have to clone the coco2d-x repositoryy and then update the sub module one thats done we have to go to the cocos2d-x tree and then run the make file called makefile emscription
+once we do that it starts to compile all the samples inside , Once it’s done, you will find .js, .data and .html files in the proj.emscripten/bin/release directory.  Briefly, .data files contain packed versions of all the assets needed for your game, .data.js contains an index for same. The TestCpp.js contains the compiled JavaScript output, and index.html is a simple page to just import all of the others. \\
+following are the code \\
+git clone https://github.com/cocos2d/cocos2d-x.git \\ 
+git submodule update —init —recursive \\ 
+make -f Makefile.emscripten -j 8 \\
+\$ ls -1 samples/Cpp/TestCpp/proj.emscripten/bin/release/ \\
+one thing to note that the new version does have the makefile.emscription file its available in the older version V2 , so we have to give the command in git as git checkout V2 to get the old version. \\ \\
+\textbf{challenges:} It gives the error cannot find the emcc in the bin folder of the cocos emscription folder and stop the compilation. \\
+ \par}
+
+\begin{figure}[h]
+\caption{emcc not found error during compilation}
+\centering
+\includegraphics[scale=0.2]{emschallenge}
+\end{figure}
+
+
+{\subsection{ Integrating Emscripten and Visual Studio }
+
+{\Large Emscripten is integrated into Visual Studio (2010) using the vs-tool plugin, which is automatically deployed by the Windows NSIS Installer Emscripten SDK if Visual Studio 2010 is present on your system at install time (it is also possible to manually integrate Emscripten into Visual Studio 2010).The vs-tool plugin adds an Emscripten configuration to the list of available Solution Configurations in Visual Studio. Activate this configuration for a solution/project to make Visual Studio run the project build through Emscripten, producing .html or .js output depending on the configured project properties.First select the Emscripten configuration from the Configuration Manager dropdown as the active configuration. Then choose Build Solution (F7).
+To launch a project directly to a web browser from Visual Studio: 1.Create a new environment variable EMCCWEBBROWSEREXE" and set it to point to an executable you want to use to browse web pages generated using Emscripten via Visual Studio. Any browser can be used.
+Right-click on the project to run, choose Set as Startup Project, and select Start without Debugging (Ctrl+F5).This should launch the generated .html file to the browser.the thing to note is that it only build on visual studio 2010 not 2012/13 as they donot have FASTCOMP.\\
+\textbf{challenges:} the build fails giving an error The "GCCCompile" task was not given a value for the required parameter "GCCToolPath".  \par}
+
+{\subsection{ Challenges Implementation NACLl and challenges   }
+
+{\Large To port cocos2dx to NaCl currently requires a Linux development environment. It also requires the very latest version of the NaCl SDK known as pepper-canary. we have install and update NaCl SDK.
+Next we need to set the NACL-SDK-ROOT to point to the pepper-canary folder and add the compiler binaries to your PATH.The build system for cocos2dx on NaCl is very similar to the build system for Linux. The best place to start is to run to ‘build-nacl.sh’ script from the top level cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm. \\
+\textbf{Challenges:} x86-64-nacl-gcc  not  found and stops the build. \\  \par}
+
+\begin{figure}[h]
+\caption{nacl gcc not found error during the build}
+\centering
+\includegraphics[scale=0.2]{naclchallenge}
+\end{figure}
+
+{\subsection{ Challenges  implementation of  cocosSharp  }
+ {\Large  cocosSharp can be implemented via visual studio or xamarin studio, the recent dversion of cocos sharp v1.7 helps to make androis,ios,windows  application but no web support.
+For installing cocos sharop first once need to go to Tools | Options and configure the page Environment > Extension Manager as follows, using the gallery url http://gallery.mobileessentials.org/feed.atom Once the Mobile Essential gallery is set up, you can go to Visual Studio’s Tools | Extensions and Updates... menu and a new Mobile Essentials node will appear under the Online category, where you can explore and install the tools, then click download and then install then the cocos template is installed after that we can open c sharp project of ios,android and windows but no web support. \\ \\  \textbf{Challenges:} after installation when to open a new project the error pop out may be a bug.
+ \par}
+
+\newpage
+
+{\subsection{challenges  implementation of  Javascript binding cocos   }
+ {\Large  The genral requirement to run this is to install python2.7,py-yaml,cheetah (for target language templates),libclang, from clang 3.3 or later after the installation we have to se the path for python root and ndk root then run the test batch file it will compile all the code written in tests folder to genertate three files .c++,.h,.js which binds them. \\ \\  \textbf{Challenges:} there is compilation error may be a bug unaddress. \par}
+
+\begin{figure}[h]
+\caption{error while build using binding generator}
+\centering
+\includegraphics[scale=0.8]{cocosbinding}
+\end{figure}
+
+\newpage
+
+{\subsection{ implementation of  cocos2d-JS( cocos2d-HTML5)   }
+ {\Large  cocos html 5 is subset of JS , after downloading the cocos2d-HTML5 by cloning git directory one can run the python -m SimpleHTTPServer ,
+ this open a browser and go to http://localhost:8000/myapp , then one change the js and then changes are reflected into the canvas when refreshed the page.
+  \\  \par}
+
+\begin{figure}[h]
+\caption{cocos2d-HTML5 running on web server}
+\centering
+\includegraphics[scale=0.8]{TrunWeb}
+\end{figure}
+
+
+\newpage
+
+
+\begin{figure}[h]
+\caption{Comparision of Approaches}
+\centering
+\includegraphics[scale=1]{Approaches}
+\end{figure}
+
+\section{Compiler}
+{\large A compiler is a program that converts one type of source code to other without changing the real meaning of the source code; the target code is generally binary but can also be object code or intermediate code.
+The steps involved in compilation of this pattern  \\
+1.	Lexical analyser. \\
+2.	Syntax analyser. \\
+3.	Semantic analyser. \\
+4.	Intermediate code generator. \\
+5.	Analysis and optimization. \\
+6.	Machine dependent code generation. \\
+
+\subsection{Lexical analysis}
+{\large  It takes the source code and transfer it into tokens, tokens are generally the set of similar type of object for example set of keywords , operators and separators. These are generally done with the help of regular expression  for example.
+Variable name:- [a-zA-Z-0-9] \\
+Integer:- [+-]?[0-9]+  \\
+When choosing the lexer for variable and keywords priority is given to longer matches. First the nondeterministic finite automaton (NFA) is use to determine the lexer using regular expression
+to determine , burt this gets narrowed further using some more rules and restrictions and are know
+as DFA . Every DFA is NFA but the vice versa is not true. The states in NFA are reduced using the rule to small number of states of DFA. Say n is the number of states for NFA then DFA = 2 pow n -1.
+Lexer generator and sometimes inline code for lexer  generation. Some popular lexer generators are Lex and Flex. \par}
+
+\subsection{Syntactic Analysis}
+{\large  It arranges all the tokens back not into text but into some structure, this typical data structure is called syntax tree. The node of these trees is the tokens found by the lexical analysis, if the leaves are read from left to right the sequence is same as the input text. Sometimes we need to arrange the format according to precedence at that point of time we need syntax tree as it forms the tree according to precedence. \\ Context free grammer \\
+
+It is defined by the several state of strings,  each et is denoted by a name which is called non-terminal , the tokens or alphanumeric  character set are called terminals .
+T=s|k , T  can be sm or K , these set of non-terminal helps to collection in a group under terminal.
+Epsilon is called the empty transaction from one state to other state. \\ symbol  table \\
+Symbol table is a table that binds names to information and for scope operations. The operations on the symbol table are accomplished by operation. \\
+1.we need an empty table in which no name is defined. \\
+2.Bind a name to the piece of the information , if any name already exist then the new one gets more precedence over the old one. \\
+3. the list is searched in the lookup table till the match. \\
+4. on entering the  scope the old list is remembered and a reform is made to it. \\
+5. on exit the old list is recalled. \\
+As new binding are added to the front of the list , the list is searched from the front to the last and the binding in the inner scope will take precedence over the outer scope.so the worst case time for the lookup is proportional to the size of the symbol table. This is mainly the problem with libraries, it is quite common for a program to use the libraries that defines literally hundreds of names, to solved the problem names are hashed as into integers which are used to index an array. Each array element is then linear list of the binding of the names that is in the hash code. Using hastable sometimes complicate entry and exit of scopes. \\ interpretation  \\
+Num = getvalue(num)  \\
+Id = lookup(vtable,getname(id)) \\
+Evaluation takes an expression and the symbol tables vtable and ftable and num and value which may either be an integer or Boolean. The above expression shows the action needed to evaluate the expression. The pattern are on the left it evaluate the result of the expression given as argument to end the expression.
+\par}
+
+\subsection{Semantic Analysis}
+{\Large It generally deals with semantics information from source code which include type checking. \\
+Type checking \\
+There are two type of types one is strongly type and the other is weakly type, Strongly type checking is whether the argument of type are same as defined in the program. Example not concatenation floats with string. Weakly type language the type checking is not done, archetypical weakly types are generally machine code, and registers may be divided into integer, floating point address. Weakly type languages are mainly used for system programming when you need to manipulate move, copy encrypt or compress data without the regard what the data represent. Some languages combine both strong , weak typing or both statistic and dynamic typing .some types are checked before execution some after execution and some are not checked at all. For example C is a statically type language where no checks are performed during the execution and not all the items are checked
+For example one can store an integer type in a union type variable and read it as pointer or floating point number. Another example is JavaScript if you try to multiply two strings it will check if the strings contain sequence of digit if so then read the string a integer and then multiply them.\\ par}
+
+\subsection{Intermediate code generation} 
+{\Large The final goal of a compiler is to run the high level code in compiler. Eventually the program will have to be expressed as machine code to run on the computer. From high level it is converted to 
+Intermediate code then to machine code. Conversion of high level code to intermediate code is called front end compiler. Back-end compiler converts this intermediate code to machine code.
+The disadvantage of interpreting the intermediate code is translation is bit slower than executing the translated code directly. Some speed penalty can be eliminated by translating the intermediate code immediately before or during the execution of the program. Conversion of intermediate  code is changing the expression into three or four address system which makes it easier for allocation in register , new variable are introduced using newvar and the translation of the variable and functions is done by vtable and ftable, that binds the variable and function names , transop translate name of an operation in the expression intermediate language .for some advance controls like goto , break/ext statement by setting a mark in the symbol table  entry where the next statement jumps to .For array we need a variable to hold the base address of each entry. The address is calculated when the array is allocated and then stored in the corresponding variable. Arrays are generally allocated on a stack and popped from the stack when procedure is called. \par}
+
+\subsection{Machine code generation}
+{\Large The intermediate code that was discussed above is quite low level and similar to machine code, but machine doesn’t have unlimited registers , therefore  for mapping a large number of variables to small number of register is handled by registers allocation the simplest way of conversion  of each intermediate  into one or more machine code instruction. Example of  jump condition ,how a two way branch to one way branch , IF c THEN lt ELSE lf can be translated to branch if c  lt jump lf.when an intermediate language uses a constant , the code generator checks whether it is equal to the machine code instruction , if it doesnot go in a single machine code instructions if yes then it generates the machine code else generae a sequence of that build the constant in the register.
+\par}
+
+\subsection{Analysis and optimize}
+{\Large An optimized generally is about recognizing instruction that form a specific pattern that can be replaced by a smaller faster pattern of new instructions. For example if there is a code \\.
+X = 5*a \\
+X = 7a \\
+Z = 5*a \\
+So, It can be optimized and reduced x = x because both assign 88a loop optimization is done by replacing the inside element like n*3 with pointer a. Memory prefetching is also done to make the things more faster and optimized as it puts everything in the cadre by declaring the amount of space in the pre-processing cadre. If (I and 3 == 0) prefetch a [i+32]. \par}
+
+\subsection{Memory management}
+{\Large Static allocation:- It means that all data is allocated at a place in memory , that has both the size and the address at compile time. Furthermore the allocated memory stays allocated throughout the execution of the program. So you can allocate space for say an array in the data space by placing a label at the current address pointer in the data space and then moving the current address  by the size of array. \\
+Stack allocation:- call stack can also be used to allocate arrays and other data structures. This is done by making room in the current frame on the call stack and moving the frame pointer or the stack pointer allocation. The size of the array need not be known at the compile time, the frame at runtime creation makes enough space to hold the array. An unbounded number of arrays can be allocated as it is taken care by recursive function for allocation. \\ 
+Heap allocation:- the limitation of the static allocation and stack allocation are often too restricting, sometimes you might  want arrays that can be resized or which the survive the function invocation .Data that is heap allocated stays allocated until the program execution ends, until the data is deallocated by the system or declared dead by memory management. \\
+Manual memory management:- Most operating system allow a program to allocate and free chunks of memory while the program runs. In language C there is malloc() which allocates a block of atleast n byte and return a pointer pointing to that block. If there is not enough space a NULL pointer is return. \\ 
+Reference counting \\
+Reference counting make it sure if no pointer is pointing to a present block in the memory then it cannot be accessed. When a block is allotted, its counter field is set to 1 (it represent the pointer that’s return by malloc(). When the pointer is remove or added it gets incremented or decremented accordingly when the counter becomes 0 then the block is freed by calling free(). It gets into some issues with doubly linked list , even if the last pointer of the doubly linked list disappears the element points to each other so the reference count will not become zero and the list is not freed. This is handled by not counting the back pointer which is sometimes referred as weak pointer it is not always easy for compiler to decide the weak pointers so reference counting is rarely used in languages with circular data structures.
+\\ Tracing garbage collector \\
+A tracing garbage collector which blocks are reachable from variable in the program and frees all the other blocks, reachability can handle cycles so tracking circular data structure is not a problem.It marks the blocks as white , grey and black.white is not reachable from the set , grey itself is reachable but its childrens are not reachable, black it means that both the root and its children is reachable, initially the root set is classified as grey and all heap-allocated blocks as white , when reacable analysis has been done all are declared as white or black. The white nodes are then freed.  \par}
+
+
+
+
+\section{ concept for the transpiler}
+{\large The syntax differences between Cocos2d-x (C++) and Cocos2d HTML5 (JavaScript) are surprisingly small. In fact we can do away with most of them by using Find and Replace: just look for the CC prefix and replace it with cc. (that is “cc” and a dot).we can also look for specific data types and replace them with var. But this would not work for function parameters, though these could be easily fixed. Next you could also Find the string :: and - and Replace with . (dot). \\
+Example \\ \\  \par}
+
+\begin{lstlisting}[label=some-code,caption= similarity between the sytax of cocos C++ and JS ]
+ _bgLight = CCSprite::create("bg_light.jpg"); 
+_bgLight->setPosition(ccp(_screenSize.width * 0.5f, _screenSize.height * 0.5f)); 
+ 
+//JS 
+
+this._bgLight = cc.Sprite.create(bgLight); 
+ this._bgLight.setPosition(cc.p(SCREEN_SIZE.width * 0.5, SCREEN_SIZE.height * 0.5)); 
+
+\end{lstlisting}
+
+
+{\Large so it can be easily translated using semantic and syntax tree and then the can easily be optimized. \\
+
+\par}
+
+\section{ Future work}
+{\large  to be written
+\par}
+
+
+\section{Conclusion}
+
+{\large  to be written. \par}
+
+\newpage
+
+section{Reference}
+
+\begin{thebibliography}{9}
+
+\bibitem{latexcompanion} 
+bennet yee david sehr gregory dardyk,j.bradley chen,robert muth,tavis ormandy,shiki okasaka,neha narula and nicolas fullagar ggogle INC
+\textit{" Native client A sandbox for portable,untrusted x86 native code"}. 
+ ,IEEE 2009 symposium on security and privacy
+ 
+\bibitem{einstein} 
+Tobias widlund
+\textit{"Application programming interface for native web applications "}. 
+, Lulea university of Technology
+ 
+\bibitem{knuthwebsite} 
+Alon Zakai 
+\textit{"Emscripten: An LLVM-to-Javascript compiler"}. 
+ ,Mozilla
+
+\bibitem{latexcompanionb} 
+\  https://github.com/cocos2d/cocos2d-js/
+
+\bibitem{latexcompanionb} 
+\ http://www.cocos2d-x.org/wiki/Cocos2d-JS
+
+\bibitem{latexcompanionb} 
+\  http://blogs.adobe.com/flascc/
+
+\bibitem{latexcompanionb} 
+\  http://www.cocos2d-x.org/wiki/
+
+\end{thebibliography}
+
+\end{document}
