@@ -95,7 +95,7 @@ It receives the set of labels and then does the calculation for each level wheth
 
 
 \par}
-\subsection{ NACL}
+\subsection{ Google native client}
 
 {\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way.Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsics and hand-coded assembler. We combine these properties in an open architecture that encourages community review and 3rd-party tools.When running NACL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NACL container, when this module runs their behaviour is taken care by the NACL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate nacl application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NACL whitelist can also be deployed even we can deploy whitelist if we determine that it is needed to secure the system. It also provides sysbrk and mmap system calls also supports malloc()/free() interface or other memory allocation and as well posix threads interface. \\  \\
   \textbf{NACL SDK}  \\  Nacl software development kit(open source) includes a modified gcc toolchain that is capable of compiling c++ code to executable (pexe file) that can run in the web. It contains nacl sdk batch file by which we can download the version of pepper APi that best fit the current version of nacl. \\ \\  \textbf{ Portable native client} \\ The portability problem is solved by PNaCL by spitting the process of compilation, first compiling the code into bitcode executable called pexe and then translating the bitcode to executable according to browser.these pexe is portable and can be used with HTML, css, javascript  to run on user machine.\\  \\   \textbf{Pepper API} \\  It acts as bridge and allow nacl applucations to communicate and pass data to the javascript side of the system, the data is generally transferred in the form of serialzed text string format and then deserilized on the other end , pepper API also handles event from mouse , keyboard  and also create OpenGL context for hardware accelerated graphic. The data communication between web and the application is asynchronous which helps to give good user experience.
@@ -104,10 +104,22 @@ It receives the set of labels and then does the calculation for each level wheth
 
 \newpage
 
-\subsection{Cocos2d-JS }
+\subsection{Cocos }
+
+{\Large  Cocos2d-x is an open source game engine under MIT license .It is used to build apps,games and other cross platform application. cocos2d-x has a lot of powerful featurs and it can be coded in languages like c++,Lua and javascript. It is also cross platform and can be de-ployed into ios,android and windows.It uses the toolchain for develop-ing multi-platform games with high performance. \par}
+
+\subsubsection{Cocos2d c++ }
+
+{\Large Cocos2d-x c++ used to build apps,games and other cross platform ap-plication. it sturcture mainly consist of sprite,nodes,scence and direc-tor.sprites are generally used to display an image on the screen.nodes alos known as containers also includes sprites inside them , it is im-portant as by changing the aspects of the conatiner its childrens as-pects also gets changed.Containers have CCSprite ,CCLayer , CC-Scene which are inhertited from the base class CCNode.CCScene con-tains one or more layers it , it helps to break the applications into multiple scene for example in a game one for start screen , one for set-ting scene etc.CCLayers mostly contains CCSprite , CCLayers helps in creating CCMenu and other colored background like CCLayer-Color.CCLayer is often thought as CCNode that listen to user input such as touch,accelorometer etc and bundle all the protocol needed for it. CCSprite is the most important class that is used in cocos as this is repeated several time in the application unlike CCLaeyrs and CCScene it mainly consist of image that is inserted into thee layers containers.CCDirector manages the scenes and knows all about the application.These what we discussed now is tip of the iceberg , other 90 percent of the framework mainly consist of structures, macros and helpers.  \\ \par}
+
+
+\subsubsection{Cocos2d-JS }
 
 {\Large  Cocos2s-js is a a game engine which helps us to create APP whih can be run on web,ios,android, windows , it has high performanace ,supports multiplatform development and user friendly.It helps to make 2D application very easily. It includes  cocos2d-html and cocos2d-x javascript binding  in other it can be said as cocos2d-js verison of HTML5. With cocos2d-js we can code and run games in browsers that support HTML5.some of the feauteres which makes cocos2d-js standout from other others is robist js API , run anywhere donot require any plugin , easy to debug, high performance ,proven and with many new functionality  including sprites, particles ,animations,  timers ,transitions,action, , events (touch, mouse , accelerometer), persistence , file IO, , sound, skeletal animations.. In the meantime, Cocos2d-JS v3.0 is super powerful along with all these cool new features: Editors Support, Assets Manager, Object Pool, JS to Objective-C/JAVA reflection, etc. cross platform developers can also use cocos console for new project creation , boost their development using web version of engine and even deploy using the console , to get the hands on or  casual game development one can use the cocos js lite version.Cocos2d-js with little modification  can also run native application using cocos2d-x JSB , cocos2d-JS JSB is the wrapper code that bridge the native code and  JavaScript code, it also enables interaction between JavaScript and native code vice versa. \\
  \par}
+
+\subsubsection{ Cocos2d-HTML5 }
+{\Large   Cocos2d-html5 is an open-source web 2D game framework, released under MIT License. It is a HTML5 version of Cocos2d-x project. Cocos2d-html5 development is around making Cocos2d cross platforms between browsers and native application. On top of the framework provided by Cocos2d-html5, games can be written in Javascript, using API that is COMPLETELY COMPATIBLE with that of Cocos2d-iPhone, Cocos2d-x javascript binding. Cocos2d-html5 project can be easily run on browsers which supports HTML5. Cocos2dhtml5 also supports running game code in "Cocos2d Javascript binding" without or with little modification.  \par}
 
 \begin{figure}[h]
 \caption{cocos hierarcial evolution}
@@ -115,104 +127,23 @@ It receives the set of labels and then does the calculation for each level wheth
 \includegraphics[scale=0.8]{cocosjs}
 \end{figure}
 
-
+\subsubsection{ Cocos2d JavaScript binding }
+{\Large Cocos2d JS is available with the same api for cocos2d-x, cocos2d-iphone and cocos2d-html5. While cocos2d-html5 will run on mobile devices through the browser, JavaScript bindings have been created for cocos2d-iphone and cocos2d-x to drastically improve the performance. All graphics, rendering and physics code will run natively and only the game logic will run in JavaScript.
+Having your game code in a scripting language provides more advantages than just the cross-platform aspect. As the code is not compiled, it can be replaced in run-time which allows much faster testing cycles.  \par}
 
 \subsection{ FlasCC }
 {\Large  The Flash C++ Compiler (FlasCC) was designed to allow C/C++ developers to deliver existing C/C++ codebases via a web browser using the Flash Player. One common use case is to port an existing game written in C++ and OpenGL. The FlasCC engineering team has taken a popular C++/OpenGL game called Neverball and ported it to the web. This post demonstrates the game running in multiple web browsers and provides links to resources that will help you learn how to port your C++/OpenGL game to the web.   \par}
 
 \newpage
 
-\subsection{ Cocos2d-HTML5 }
-{\Large   Cocos2d-html5 is an open-source web 2D game framework, released under MIT License. It is a HTML5 version of Cocos2d-x project. Cocos2d-html5 development is around making Cocos2d cross platforms between browsers and native application. On top of the framework provided by Cocos2d-html5, games can be written in Javascript, using API that is COMPLETELY COMPATIBLE with that of Cocos2d-iPhone, Cocos2d-x javascript binding. Cocos2d-html5 project can be easily run on browsers which supports HTML5. Cocos2dhtml5 also supports running game code in "Cocos2d Javascript binding" without or with little modification.  \par}
-
-\subsection{ Cocos2d JavaScript binding }
-{\Large Cocos2d JS is available with the same api for cocos2d-x, cocos2d-iphone and cocos2d-html5. While cocos2d-html5 will run on mobile devices through the browser, JavaScript bindings have been created for cocos2d-iphone and cocos2d-x to drastically improve the performance. All graphics, rendering and physics code will run natively and only the game logic will run in JavaScript.
-Having your game code in a scripting language provides more advantages than just the cross-platform aspect. As the code is not compiled, it can be replaced in run-time which allows much faster testing cycles.  \par}
-
 \subsection{ Cocos Sharp }
 {\Large  CocosSharp is an easy to use library for 2D games using C Sharp and F sharp. It is a .NET port of the popular Cocos2D engine. The core of CocosSharp is provided by the MonoGame framework, which is itself a cross-platform, hardware accelerated API providing graphics, audio, game state management, input, and a content pipeline for importing assets. CocosSharp is an efficient abstraction layer well suited for 2D games. Furthermore, larger games can perform their own optimizations outside of their core libraries as games grows in complexity. In other words, CocosSharp provides a mix of ease of use and performance, enabling developers to get started quickly without limiting game size or complexity.  \par}
 
-\section{ implementation of different framework for porting cocos2d-x c++ to web and the challenges involved }
+\subsection{Cheerp}
+{\Large  Cheerp is a c++ compiler for web platform, it helps to integrate C++ code into HTML5 apps.it uses the libraries of cheerp like cheerp/-clientlib.h to do that, there is also a little di erence from the normal c++ code for example the main () is replaced by webmain().Cheerp creates JavaScript objects which maps with the c++ object, which makes the program more exible and developer friendly. \par}
 
-\subsection{ implementation of Emscription and challenges }
+\subsection{Compiler and cross plaform compiler}
 
-{\Large Following these step we can port cocos2d c++ to javacript first we have to clone the coco2d-x repositoryy and then update the sub module one thats done we have to go to the cocos2d-x tree and then run the make file called makefile emscription
-once we do that it starts to compile all the samples inside , Once it’s done, you will find .js, .data and .html files in the proj.emscripten/bin/release directory.  Briefly, .data files contain packed versions of all the assets needed for your game, .data.js contains an index for same. The TestCpp.js contains the compiled JavaScript output, and index.html is a simple page to just import all of the others. \\
-following are the code \\
-git clone https://github.com/cocos2d/cocos2d-x.git \\ 
-git submodule update —init —recursive \\ 
-make -f Makefile.emscripten -j 8 \\
-\$ ls -1 samples/Cpp/TestCpp/proj.emscripten/bin/release/ \\
-one thing to note that the new version does have the makefile.emscription file its available in the older version V2 , so we have to give the command in git as git checkout V2 to get the old version. \\ \\
-\textbf{challenges:} It gives the error cannot find the emcc in the bin folder of the cocos emscription folder and stop the compilation. \\
- \par}
-
-\begin{figure}[h]
-\caption{emcc not found error during compilation}
-\centering
-\includegraphics[scale=0.2]{emschallenge}
-\end{figure}
-
-
-{\subsection{ Integrating Emscripten and Visual Studio }
-
-{\Large Emscripten is integrated into Visual Studio (2010) using the vs-tool plugin, which is automatically deployed by the Windows NSIS Installer Emscripten SDK if Visual Studio 2010 is present on your system at install time (it is also possible to manually integrate Emscripten into Visual Studio 2010).The vs-tool plugin adds an Emscripten configuration to the list of available Solution Configurations in Visual Studio. Activate this configuration for a solution/project to make Visual Studio run the project build through Emscripten, producing .html or .js output depending on the configured project properties.First select the Emscripten configuration from the Configuration Manager dropdown as the active configuration. Then choose Build Solution (F7).
-To launch a project directly to a web browser from Visual Studio: 1.Create a new environment variable EMCCWEBBROWSEREXE" and set it to point to an executable you want to use to browse web pages generated using Emscripten via Visual Studio. Any browser can be used.
-Right-click on the project to run, choose Set as Startup Project, and select Start without Debugging (Ctrl+F5).This should launch the generated .html file to the browser.the thing to note is that it only build on visual studio 2010 not 2012/13 as they donot have FASTCOMP.\\
-\textbf{challenges:} the build fails giving an error The "GCCCompile" task was not given a value for the required parameter "GCCToolPath".  \par}
-
-{\subsection{ Challenges Implementation NACLl and challenges   }
-
-{\Large To port cocos2dx to NaCl currently requires a Linux development environment. It also requires the very latest version of the NaCl SDK known as pepper-canary. we have install and update NaCl SDK.
-Next we need to set the NACL-SDK-ROOT to point to the pepper-canary folder and add the compiler binaries to your PATH.The build system for cocos2dx on NaCl is very similar to the build system for Linux. The best place to start is to run to ‘build-nacl.sh’ script from the top level cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm. \\
-\textbf{Challenges:} x86-64-nacl-gcc  not  found and stops the build. \\  \par}
-
-\begin{figure}[h]
-\caption{nacl gcc not found error during the build}
-\centering
-\includegraphics[scale=0.2]{naclchallenge}
-\end{figure}
-
-{\subsection{ Challenges  implementation of  cocosSharp  }
- {\Large  cocosSharp can be implemented via visual studio or xamarin studio, the recent dversion of cocos sharp v1.7 helps to make androis,ios,windows  application but no web support.
-For installing cocos sharop first once need to go to Tools | Options and configure the page Environment > Extension Manager as follows, using the gallery url http://gallery.mobileessentials.org/feed.atom Once the Mobile Essential gallery is set up, you can go to Visual Studio’s Tools | Extensions and Updates... menu and a new Mobile Essentials node will appear under the Online category, where you can explore and install the tools, then click download and then install then the cocos template is installed after that we can open c sharp project of ios,android and windows but no web support. \\ \\  \textbf{Challenges:} after installation when to open a new project the error pop out may be a bug.
- \par}
-
-\newpage
-
-{\subsection{challenges  implementation of  Javascript binding cocos   }
- {\Large  The genral requirement to run this is to install python2.7,py-yaml,cheetah (for target language templates),libclang, from clang 3.3 or later after the installation we have to se the path for python root and ndk root then run the test batch file it will compile all the code written in tests folder to genertate three files .c++,.h,.js which binds them. \\ \\  \textbf{Challenges:} there is compilation error may be a bug unaddress. \par}
-
-\begin{figure}[h]
-\caption{error while build using binding generator}
-\centering
-\includegraphics[scale=0.8]{cocosbinding}
-\end{figure}
-
-\newpage
-
-{\subsection{ implementation of  cocos2d-JS( cocos2d-HTML5)   }
- {\Large  cocos html 5 is subset of JS , after downloading the cocos2d-HTML5 by cloning git directory one can run the python -m SimpleHTTPServer ,
- this open a browser and go to http://localhost:8000/myapp , then one change the js and then changes are reflected into the canvas when refreshed the page.
-  \\  \par}
-
-\begin{figure}[h]
-\caption{cocos2d-HTML5 running on web server}
-\centering
-\includegraphics[scale=0.8]{TrunWeb}
-\end{figure}
-
-
-\newpage
-
-
-\begin{figure}[h]
-\caption{Comparision of Approaches}
-\centering
-\includegraphics[scale=1]{Approaches}
-\end{figure}
-
-\section{Compiler}
 {\large A compiler is a program that converts one type of source code to other without changing the real meaning of the source code; the target code is generally binary but can also be object code or intermediate code.
 The steps involved in compilation of this pattern  \\
 1.	Lexical analyser. \\
@@ -222,7 +153,7 @@ The steps involved in compilation of this pattern  \\
 5.	Analysis and optimization. \\
 6.	Machine dependent code generation. \\
 
-\subsection{Lexical analysis}
+\subsubsection{Lexical analysis}
 {\large  It takes the source code and transfer it into tokens, tokens are generally the set of similar type of object for example set of keywords , operators and separators. These are generally done with the help of regular expression  for example.
 Variable name:- [a-zA-Z-0-9] \\
 Integer:- [+-]?[0-9]+  \\
@@ -231,7 +162,7 @@ to determine , burt this gets narrowed further using some more rules and restric
 as DFA . Every DFA is NFA but the vice versa is not true. The states in NFA are reduced using the rule to small number of states of DFA. Say n is the number of states for NFA then DFA = 2 pow n -1.
 Lexer generator and sometimes inline code for lexer  generation. Some popular lexer generators are Lex and Flex. \par}
 
-\subsection{Syntactic Analysis}
+\subsubsection{Syntactic Analysis}
 {\large  It arranges all the tokens back not into text but into some structure, this typical data structure is called syntax tree. The node of these trees is the tokens found by the lexical analysis, if the leaves are read from left to right the sequence is same as the input text. Sometimes we need to arrange the format according to precedence at that point of time we need syntax tree as it forms the tree according to precedence. \\ Context free grammer \\
 
 It is defined by the several state of strings,  each et is denoted by a name which is called non-terminal , the tokens or alphanumeric  character set are called terminals .
@@ -249,29 +180,29 @@ Id = lookup(vtable,getname(id)) \\
 Evaluation takes an expression and the symbol tables vtable and ftable and num and value which may either be an integer or Boolean. The above expression shows the action needed to evaluate the expression. The pattern are on the left it evaluate the result of the expression given as argument to end the expression.
 \par}
 
-\subsection{Semantic Analysis}
+\subsubsection{Semantic Analysis}
 {\Large It generally deals with semantics information from source code which include type checking. \\
 Type checking \\
 There are two type of types one is strongly type and the other is weakly type, Strongly type checking is whether the argument of type are same as defined in the program. Example not concatenation floats with string. Weakly type language the type checking is not done, archetypical weakly types are generally machine code, and registers may be divided into integer, floating point address. Weakly type languages are mainly used for system programming when you need to manipulate move, copy encrypt or compress data without the regard what the data represent. Some languages combine both strong , weak typing or both statistic and dynamic typing .some types are checked before execution some after execution and some are not checked at all. For example C is a statically type language where no checks are performed during the execution and not all the items are checked
 For example one can store an integer type in a union type variable and read it as pointer or floating point number. Another example is JavaScript if you try to multiply two strings it will check if the strings contain sequence of digit if so then read the string a integer and then multiply them.\\ par}
 
-\subsection{Intermediate code generation} 
+\subsubsection{Intermediate code generation} 
 {\Large The final goal of a compiler is to run the high level code in compiler. Eventually the program will have to be expressed as machine code to run on the computer. From high level it is converted to 
 Intermediate code then to machine code. Conversion of high level code to intermediate code is called front end compiler. Back-end compiler converts this intermediate code to machine code.
 The disadvantage of interpreting the intermediate code is translation is bit slower than executing the translated code directly. Some speed penalty can be eliminated by translating the intermediate code immediately before or during the execution of the program. Conversion of intermediate  code is changing the expression into three or four address system which makes it easier for allocation in register , new variable are introduced using newvar and the translation of the variable and functions is done by vtable and ftable, that binds the variable and function names , transop translate name of an operation in the expression intermediate language .for some advance controls like goto , break/ext statement by setting a mark in the symbol table  entry where the next statement jumps to .For array we need a variable to hold the base address of each entry. The address is calculated when the array is allocated and then stored in the corresponding variable. Arrays are generally allocated on a stack and popped from the stack when procedure is called. \par}
 
-\subsection{Machine code generation}
+\subsubsection{Machine code generation}
 {\Large The intermediate code that was discussed above is quite low level and similar to machine code, but machine doesn’t have unlimited registers , therefore  for mapping a large number of variables to small number of register is handled by registers allocation the simplest way of conversion  of each intermediate  into one or more machine code instruction. Example of  jump condition ,how a two way branch to one way branch , IF c THEN lt ELSE lf can be translated to branch if c  lt jump lf.when an intermediate language uses a constant , the code generator checks whether it is equal to the machine code instruction , if it doesnot go in a single machine code instructions if yes then it generates the machine code else generae a sequence of that build the constant in the register.
 \par}
 
-\subsection{Analysis and optimize}
+\subsubsection{Analysis and optimize}
 {\Large An optimized generally is about recognizing instruction that form a specific pattern that can be replaced by a smaller faster pattern of new instructions. For example if there is a code \\.
 X = 5*a \\
 X = 7a \\
 Z = 5*a \\
 So, It can be optimized and reduced x = x because both assign 88a loop optimization is done by replacing the inside element like n*3 with pointer a. Memory prefetching is also done to make the things more faster and optimized as it puts everything in the cadre by declaring the amount of space in the pre-processing cadre. If (I and 3 == 0) prefetch a [i+32]. \par}
 
-\subsection{Memory management}
+\subsubsection{Memory management}
 {\Large Static allocation:- It means that all data is allocated at a place in memory , that has both the size and the address at compile time. Furthermore the allocated memory stays allocated throughout the execution of the program. So you can allocate space for say an array in the data space by placing a label at the current address pointer in the data space and then moving the current address  by the size of array. \\
 Stack allocation:- call stack can also be used to allocate arrays and other data structures. This is done by making room in the current frame on the call stack and moving the frame pointer or the stack pointer allocation. The size of the array need not be known at the compile time, the frame at runtime creation makes enough space to hold the array. An unbounded number of arrays can be allocated as it is taken care by recursive function for allocation. \\ 
 Heap allocation:- the limitation of the static allocation and stack allocation are often too restricting, sometimes you might  want arrays that can be resized or which the survive the function invocation .Data that is heap allocated stays allocated until the program execution ends, until the data is deallocated by the system or declared dead by memory management. \\
@@ -281,13 +212,155 @@ Reference counting make it sure if no pointer is pointing to a present block in 
 \\ Tracing garbage collector \\
 A tracing garbage collector which blocks are reachable from variable in the program and frees all the other blocks, reachability can handle cycles so tracking circular data structure is not a problem.It marks the blocks as white , grey and black.white is not reachable from the set , grey itself is reachable but its childrens are not reachable, black it means that both the root and its children is reachable, initially the root set is classified as grey and all heap-allocated blocks as white , when reacable analysis has been done all are declared as white or black. The white nodes are then freed.  \par}
 
-\section{ Evaluating feasibility of code for transpiling}
+\subsection{Basic difference between the structure of C++ and JavaScript code}
+
+{\Large JavaScript is a scripting language as by the name it looks its related to java but it di ers a lot as java is a programming language while JavaScript is interpreted scripting language.thogh javascript borrows many names and naming convetion from java but its semantics are di erence. It is a multi-paradigm language that supports object-oriented, imperative, and functional programming styles. JavaScript is generally used for client side interaction user , control on browser application but advent of new framework like node.js popularity of JavaScript for server side scripting is also increasing. The only simi-larity between c++ and JavaScript is the c look alike syntax. C++ is a statically typed, free-form, multi-paradigm and a compiled pro-gramming language. As compared to C, C++ incorporates object oriented features, such as classes, and other enhancements. C++ is now currently implemented on a wide variety of hardware and operat-ing system platforms. It is object oriented languages and can be used to implement classes, inheritance and overloading etc. it is free for use same as JavaScript. The di erence some di erence between javascrpt and c++ like JavaScript is a scripting language whereas c++ is a programming language , in c++ there is a code generation whereas in javascript there is none, in c++ safe casting,Value types creation and Value type variables passing as reference are possible where in javascript it is not possible.  \\  \par}
+
+\section{Evaluation of approcahes}
+
+\subsection{First Approach using Cocos sharp}
+
+\subsubsection{setup}
+
+{\Large cocosSharp can be implemented via visual studio or xamarin studio, the recent dversion of cocos sharp v1.7 helps to make androis,ios,windows application but no web support. For installing cocos sharop rst once need to go to Tools | Options and con gure the page Environment > Extension Manager as follows, using the gallery url http://gallery.mobileessentials.org Once the Mobile Essential gallery is set up, you can go to Visual Studios Tools | Extensions and Updates...	menu and a new Mobile Essentials node will appear under the Online category, where you can explore and install the tools, then click download and then install then the cocos template is installed after that we can open c sharp project of ios,android and windows but no web support.  \par}
+
+
+\subsubsection{Approach details}
+
+{\Large The reason for using cocos sharp intially was to nd a method by which we can convert the cocos2d-x c++ to cocos sharp using a wrapper and then can use it as c sharp web application which can be run on browser.but unfortunatly the cocosharp doesnot still have the web application building thier framework. \par}
+
+\subsubsection{Results}
+
+{\Large below is the image of the cocos sharp windows application project. \par}
+
+\subsubsection{challenges}
+
+{\Large didnot faced any issues while compiled project for cocos sharp it worked smoothely and without any problem it compiled it to an win-dows application. \par}
+ 
+\subsubsection{pros/cons}
+
+{\Large though there is a lot of similarity between c++ and C sharp code so the syntax of cocos2d c++ and cocos sharp were similar but as it only support windows ,ios, android not web so this cannot be used as potential solution for porting the application into web. \par}
+
+\subsection{Second Approach using Cheerp}
+
+\subsubsection{setup}
+
+{\Large Download the cheerp installer from the website and then run the wizard when run it will install cheerp in the the following path c://cheerp//bin//clang++  \par}
+
+\subsubsection{Approach details}
+
+{\Large Converting the c++ application using cheerp library to javascript cheerp/clientlib.h add client keyword in front of the c++ function for making it compatible with cheerp for runnig in web browser. so when writing the code we ned to do some changes in the code which makes it compatible for conversion by clang. rst trial was simple cheerp pro-gram which was successfully converted to web using clang then i tried with cocos libraries which then were included in the code but i gave error because of the error in the nding the header le because of the relative path.then i made a make le which include the source header le as the dependencies it still cannot detect the relative header le path, so i decided to use visual studio so that it can properly get all the toolchain header le in one go for that i used but it gave errors. for that i used cmake and tdownload the llvm code and then converted it into .sln	le using Cmake linking CMAKE INSTALL PREFIX to the cheerp folder then build the application and tried to run the programe by adding cocos in the additional libraries folder in project con guration properties in visual studio and then run the	le but it gave error while the building. the next trial was to make an empty c++ project and the add both cheerp and cocos libraries to it and compiler as clang++ but it again gave error like cannot	nd header	les. \par}
+
+
+\subsubsection{Results}
+
+{\Large for simple cocos program it work ne which follow the syntax of cheerp but when added with external libraries like cocos it gives bugs. \par}
+
+\subsubsection{challenges}
+
+{\Large the challeges involved is arranging the cocos library in toolchain which can be used by clang.}
+
+\subsubsection{pros/cons}
+
+{\Large even though if it would have succed for cocos then also it was of no use as it needed to be in the format of cheerp library function to port it into javascript.tried with one command of STL library but gave error as cout in c++ doesnot hold any meaning here one need to use client::writeline() for that so this hold for cocos also for each DOM element cheerp have di erent syntax which completely di ers from cocos syntax in other words it wil lead to recoding of the whole application. \par}
+
+\subsection{Third Approach using emscription}
+
+\subsubsection{setup}
+
+{\Large first we need to download the Emscription SDK web installer , web installer is better than portable sdk zip because here it autmatically installand con gure the whole Emscripten toolchain (Clang, Python, Node.js and Visual Studio integration) in a single easy-to-install pack-age.for installing in linux or mac platform we need to download the zip le from the emscription website and then unzip it run the linux com-mand to instal all the dependencies like python,node.js,git,cmake,jre and then downloading fastcom(LLVM+CLANG) via git and then con-guring the build using cmake once done then we have to run ./em-scription le to con gure the compiler setting. \par}
+
+
+\subsubsection{Approach details}
+
+{\Large Following these step we can port cocos2d c++ to javacript rst we have to clone the coco2d-x repositoryy and then update the sub mod-ule one thats done we have to go to the cocos2d-x tree and then run the make le called make le emscription once we do that it starts to compile all the samples inside , Once its done, you will nd .js, .data and .html les in the proj.emscripten/bin/release directory. Brie y,.data les contain packed versions of all the assets needed for your game, .data.js contains an index for same. The TestCpp.js contains the compiled JavaScript output, and index.html is a simple page to just import all of the others. rst we need to clone the cocos2d-x from github and then we have to update the submodule using git submod-ule update init recursive and then run the Make le.emscripten , one thing to note is that this le is only available in cocos2d git version 2 so one need to checkout v2 to get the older version. in windows i tried to run it direcly from the folder using emcc there was a rel-ative path error for header le which was included in cocos .cpp le which we were executing using emcc. rst it gave relative path error so after changing the relative path using parent path denotation ..///
+the path roor vanished but was replaced by a new error of with er-ror in macros as it ws something to do with compiler so it was not solveable, so i tried using visual studio approach, emscripten is in-tegrated into Visual Studio (2010) using the vs-tool plugin, which is automatically deployed by the Windows NSIS Installer Emscripten SDK if Visual Studio 2010 is present on your system at install time (it is also possible to manually integrate Emscripten into Visual Stu-dio 2010).The vs-tool plugin adds an Emscripten con guration to the list of available Solution Con gurations in Visual Studio. Activate this con guration for a solution/project to make Visual Studio run the project build through Emscripten, producing .html or .js output depending on the con gured project properties.First select the Em-scripten con guration from the Con guration Manager dropdown as the active con guration. Then choose Build Solution (F7). To launch a project directly to a web browser from Visual Studio: 1.Create a new environment variable EMCCWEBBROWSEREXE" and set it to point to an executable you want to use to browse web pages generated using Emscripten via Visual Studio. Any browser can be used. Right-click on the project to run, choose Set as Startup Project, and select Start without Debugging (Ctrl+F5).This should launch the generated .html le to the browser.the thing to note is that it only build on visual studio 2010 not 2012/13 as they donot have FASTCOMP. \par}
+
+\subsubsection{Results}
+
+{\Large when running emscription withc ocos as dependencies it gives error for both windows and linux. \par}
+
+
+\subsubsection{challenges}
+
+{\Large  when running emscription with cocos as dependencies it gives erro,r like for linux it gives error cannot nd the emcc in the bin folder of the cocos emscription folder and stop the compilation.for windows it gives macro error and for visual studio integration the build fails giving an error The "GCCCompile" task was not given a value for the required parameter "GCCToolPath". \par}
+
+\subsubsection{pros/cons}
+
+{\Large   \par}
+
+
+\subsection{Fourth approach  using Google native client}
+
+\subsubsection{setup}
+
+{\Large first we need to download the google native client SDK then unzip \detokenize{nacl_sdk.zip} then have to go inside nacl-sdk directory and run /naclsdk update  for windows and ./naclsdk update for linux , it will install the latest version 
+of nacl but if we want to install a specific version then we need to use the name of that particular version in command for update like ./naclsdk update \detokenize{pepper_(version)} , this will lead to install all nacl dependencies.\par}
+
+\subsubsection{Approach details}
+
+{\Large  first . we have install and update NaCl SDK.for running cocos for nacl we need to install \detokenize{ pepper_canary} or any higher version of pepper first
+Next we need to set the  \detokenize{ NACL_SDK_ROOT} to point to the \detokenize{ pepper_canary} folder and add the compiler binaries and libraries to the PATH.The build system for cocos2dx on NaCl is very similar to the build system for Linux. The best place to start is to run to ‘build-nacl.sh’ script from the top level cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm.   \par}
+
+\subsubsection{Results}
+
+{\Large when running nacl with cocos as dependencies first time it doesnot give any error for toolchain but some error inside the test code. \par}
+
+
+\subsubsection{challenges}
+
+{\Large  building was little bit time taking but everthing else was working fine. \par}
+
+\subsubsection{pros/cons}
+
+{\Large Even though it succeded with nacl but still we need to change the code using the libraries of pepper  to make it compatible to port it to javascript using nacl \par}
+
+\subsection{fifth approach using cocos2d-js }
+
+\subsubsection{setup}
+
+ {\Large  cocos html 5 is subset of JS , after downloading the cocos2d-HTML5 by cloning git directory one can run the python -m SimpleHTTPServer ,
+ this open a browser and go to http://localhost:8000/myapp , then one change the js and then changes are reflected into the canvas when refreshed the page.
+  \\  \par}
+
+\begin{figure}[h]
+\caption{cocos2d-HTML5 running on web server}
+\centering
+\includegraphics[scale=0.8]{TrunWeb}
+\end{figure}
+
+ \par}
+
+
+
+
+\section{Validation of the approaches}
+
+\subsection{Comparision of the approach }
+
+{\Large Automatic generation of code: - Of all the technologies mentioned above except emscription and the transpiler all other needs rewrite the code using the library of that particular technology.
+Example cheerp we have to include cherrps client.h and clientlib.h for making it compatible for  transpiler to change it into javascript code ,  client::console.log(“hii”) is used instead of console.writeline(“hi”),in cheerp the main is replaced by webmain() it creates the binding and helps to create the JavaScript object when the following cheerp command is run clang++ -target cheerp example.cpp -o example.js.Another example is native client 
+Where it’s necessary to have three components a factory function CreateModule, a module class pp::Module,an instance class pp::instance and also to use this functions we have to include ppapi library, then only we can form the .nmf file using make and pepper C Api.same thing also happens with flascc where one have to write binding code between c++ and actionscript to run it as plugin in the web browser for example we have to include  include <AS3.h> inline\_as3(the expression inside); and then execute it using gcc -emit-swf test.c -o test.swf to get the swf file to run on the browser.  Emscripten run directly the c++ code to JavaScript using LLVM+Clang these JavaScript code generated is in the form of asm.js which is bulky and store lots of thing in heap and consumes lot of memory which leads to crash. When compiling a openGL code which have graphics it takes a lot of time as it optimize the thing it also leads to lot of error while compiling , it creates code which are not so easy to understand as it creates the element into the heap(asm.js)  example  var utf32 = HEAP32[(((ptr)+(i*4))>>2)];  this also creates issues when something needs to be changed. Transpiler converts the cocos2d-x c++ code to the cocos2d-js these helps to form JavaScript objects ,so you can easily rewrite it when any small changes is made and its completely under the control of developer. As the transpiler just do the source to source conversion so the time taken is less. \\
+Web browser support:  NACL is supported only in Google chrome  it is sandboxing technology which helps to run the application on browser with near native code speed. But when run on other browser it doesn’t run anything. It faces a lot of critics it is not liked by Mozilla (Firefox) because of the interoperability issue so they don’t have any plan for implementing this. Opera also doesn’t support the idea because of the security issues and complexity.so making web application using NACL will have its browser limitation. Same with flascc before running it any browser the flash plugin needs to installed if it is not already there, then  only the flash run , there are also dew more disadvantage of using flash it is slower than the code run with JavaScript on html it also takes time to load in the browser . These are big turn off for client when it takes time to load the flash and they have to install a new application flash to run it on web. Whereas the web application made with cocos2d-js and emscripten runs on all browsers because of JavaScript  which doesn’t require any plugin. The code made with cocos2d-js run as native code speed of animation loading is fast and it also consumes less memory whereas the code generated by emscripten having JavaScript in asm.js pattern sometimes crash because of huge memory requirement(error: system out memory)  and error prone code.\\
+Portability: NACL and PNACL is portable as it is adjustable to the new hardware specially the processor and once .pexe file is produced it can be placed in html and can run easily on Google chrome in any operating system and any processor. Flash it is completely compatible with cross browser as well as hardware as it only needs the plugin to be installed and any browser, it starts running. Emscription creates portable code which can easily run on browser except few exceptions like code that have multi thread and uses shared state, it is all processor dependent the code which run onx86 might give run time exception in ARM because of address read and write instruction. Code which are specific to the certain architecture generally used inline the code like asm() for x86 need to be disable when running on other processor or can also be optimized to match a certain processor instruction set requirement. Where the code generated by transpiler cocos2d-js is form of JavaScript which have object so it easily runs on any operating system and any browser as it doesn’t have any inline code which is processor or operating system specific.\\ 
+Convenience:  It is very convenience to implement NACL as you need to only embedded the .pexe file in HTML and when implemented it is also very easy for client to use as did not need any plugin, but the pain of recoding it according to ppapi libraries still remains. It is also very convenient to implement flash as once the .swf file is created it can be easily embedded in html and can run on any browser which have flash installed, but writing code in actionscript libraries  is sometime cumbersome .regarding the code generated by cheerp the developer need to write the code according to library of cheerp which is little painful and time consuming  , but the JavaScript code is generated it can be easily run in the browser without any issues.The code generate by emscription is very easy to implement as one need to  run the emcc to convert the c++ code to javascript but it something gives a lot of error when converting and as well takes a lot of time to compile so it is time consuming if one have to rerun the code just for some small change. Where cocos2d-js which is tranpilied can run easily on browser and can also be updated easily , just some small correction needed to be done after the recoding if it doesn’t work as no transpiler can convert the code hundred per cent. \\
+Security: NACL is secure to use as it has limited accesed to the system because of sandboxing so it provide same level of security as any other web application on browser.Flash which highly depends on swf have some vulnerabilities like malicious data injection for example flashvar in url that point to another swf  the accaker can point to another malicious swf , swf is also vulnerable to spoofing attack.insufcient authorization in swf can lead to cross domain attack and data theft when it is hosted in a shared domain. Where in emscripten where c++ code is converted to subset of javascript(asm.js) are typed array format without any sandboxing to protect it from the outside threat . cocos2d-js faces the same threat as javascript faces like cross side scripting ,cross side request forgery . the way the javascript interacts with HTML DOM items really makes it more vulnerable , as it can be easily used to insert malicious script.there are two ways of making it more secure first by sandboxing which gives permission to access limited resources and the other making some policies which restrict the access to other domain.. These issues can also be solved by vulnerability checking in certain time interval by using security analysers.  \\
+ \par}
+
+\subsection{Evaluation of comparison result }
+
+{\Large As discussed in the above comparisons between the different approaches we see pro and cons of applying a particular technology, now we will analysis which technology to use to make the web application, as per the thesis the cocos2d-x c++ application needed to be transferred to the web browser without recoding so here all the technologies that we saw NACL, cheerp,flascc all are needed to be recode using their respective libraries and then can be compiled to the JavaScript code , where we have an existing application in our company called TrunApp which have already been done in cocos2d-x C++ so it would be cumbersome and time consuming to recode these using other third party library.o only emscripten and transpiler can come to rescue , emscripten is a good choice but have some really serious issues as discussed above like creation of asm.js format javascript code which is memory consuming and as well it doesnot compiled the cocos2d0x c++ code to javascript giving a lot of compile error which is hard to correct.so in that case the transpiler is the right choice as it help to compile the code to cocs2d-x js which has its own javascript object and can easily updated with small changes as well it would be in total control of the developer as coco2d-js is a proper user friendly,open source programming language with a good cocos community support.the transpiler that does this is made with c sharp and have the facilities like training the data for new command so it is also flexible to the version change in the language. \\ \par}
+
+
+\subsection{ Evaluating feasibility of code for transpiling}
 {\Large The syntax differences between Cocos2d-x (C++) and Cocos2d HTML5 (JavaScript) are surprisingly small. In fact we can do away with most of them by using Find and Replace: just look for the CC prefix and replace it with cc. (that is “cc” and a dot).we can also look for specific data types and replace them with var. But this would not work for function parameters, though these could be easily fixed. Next you could also Find the string :: and - and Replace with . (dot). \\
 Example \\ \\  \par}
 
 {\Large so it can be easily translated using semantic and syntax tree and then the can easily be optimized. \\ \par}
 
-\subsection{Transpiler concept }
+\section{Process of Prototyping}
+
+\subsection{Introduction of Transpiler}
 
 {\Large Also known as source to source compiler, it converts source code of one language to other  , the only difference between this and compiler is that transpiler converts the code of one language to other following the same level of abstraction while compiler converts it from high level language to lower level language(machine code).Transpiler has lot of similarity with the language translation like the language translation which divide the words into verb, noun , adjective tokens it also divide the code 
 Into keywords, type and operator. Collection of similar type of entities makes it easy for search.
@@ -309,23 +382,8 @@ Syntax tree in coffescript is form considering the grammar nodes.coffe contains 
 All the nodes are then converted to code fragment objects, it contains the details from where the code came these code fragment are then combined to form code snippets. Base is the abstract class for all nodes in syntax tree , the subclass of this base class implements code generation by executing CompileNode method. The scope class regulates lexical scoping within coffescript  when declare it form a tree of scope each scope knows the variable declared within and as well the reference to the parent scope, like this we understand with variable are new and which are needed to be declared using var. All these lexing, rewriting and  node formation is done using helper these classes contains the common utilities that are used by the by these classes for example counting characters ,sorting, merging ,trimming , count the no of occurrence of string etc. \\
 \par}
 
-\section{Comparision of the approach }
 
-{\Large Automatic generation of code: - Of all the technologies mentioned above except emscription and the transpiler all other needs rewrite the code using the library of that particular technology.
-Example cheerp we have to include cherrps client.h and clientlib.h for making it compatible for  transpiler to change it into javascript code ,  client::console.log(“hii”) is used instead of console.writeline(“hi”),in cheerp the main is replaced by webmain() it creates the binding and helps to create the JavaScript object when the following cheerp command is run clang++ -target cheerp example.cpp -o example.js.Another example is native client 
-Where it’s necessary to have three components a factory function CreateModule, a module class pp::Module,an instance class pp::instance and also to use this functions we have to include ppapi library, then only we can form the .nmf file using make and pepper C Api.same thing also happens with flascc where one have to write binding code between c++ and actionscript to run it as plugin in the web browser for example we have to include  include <AS3.h> inline\_as3(the expression inside); and then execute it using gcc -emit-swf test.c -o test.swf to get the swf file to run on the browser.  Emscripten run directly the c++ code to JavaScript using LLVM+Clang these JavaScript code generated is in the form of asm.js which is bulky and store lots of thing in heap and consumes lot of memory which leads to crash. When compiling a openGL code which have graphics it takes a lot of time as it optimize the thing it also leads to lot of error while compiling , it creates code which are not so easy to understand as it creates the element into the heap(asm.js)  example  var utf32 = HEAP32[(((ptr)+(i*4))>>2)];  this also creates issues when something needs to be changed. Transpiler converts the cocos2d-x c++ code to the cocos2d-js these helps to form JavaScript objects ,so you can easily rewrite it when any small changes is made and its completely under the control of developer. As the transpiler just do the source to source conversion so the time taken is less. \\
-Web browser support:  NACL is supported only in Google chrome  it is sandboxing technology which helps to run the application on browser with near native code speed. But when run on other browser it doesn’t run anything. It faces a lot of critics it is not liked by Mozilla (Firefox) because of the interoperability issue so they don’t have any plan for implementing this. Opera also doesn’t support the idea because of the security issues and complexity.so making web application using NACL will have its browser limitation. Same with flascc before running it any browser the flash plugin needs to installed if it is not already there, then  only the flash run , there are also dew more disadvantage of using flash it is slower than the code run with JavaScript on html it also takes time to load in the browser . These are big turn off for client when it takes time to load the flash and they have to install a new application flash to run it on web. Whereas the web application made with cocos2d-js and emscripten runs on all browsers because of JavaScript  which doesn’t require any plugin. The code made with cocos2d-js run as native code speed of animation loading is fast and it also consumes less memory whereas the code generated by emscripten having JavaScript in asm.js pattern sometimes crash because of huge memory requirement(error: system out memory)  and error prone code.\\
-Portability: NACL and PNACL is portable as it is adjustable to the new hardware specially the processor and once .pexe file is produced it can be placed in html and can run easily on Google chrome in any operating system and any processor. Flash it is completely compatible with cross browser as well as hardware as it only needs the plugin to be installed and any browser, it starts running. Emscription creates portable code which can easily run on browser except few exceptions like code that have multi thread and uses shared state, it is all processor dependent the code which run onx86 might give run time exception in ARM because of address read and write instruction. Code which are specific to the certain architecture generally used inline the code like asm() for x86 need to be disable when running on other processor or can also be optimized to match a certain processor instruction set requirement. Where the code generated by transpiler cocos2d-js is form of JavaScript which have object so it easily runs on any operating system and any browser as it doesn’t have any inline code which is processor or operating system specific.\\ 
-Convenience:  It is very convenience to implement NACL as you need to only embedded the .pexe file in HTML and when implemented it is also very easy for client to use as did not need any plugin, but the pain of recoding it according to ppapi libraries still remains. It is also very convenient to implement flash as once the .swf file is created it can be easily embedded in html and can run on any browser which have flash installed, but writing code in actionscript libraries  is sometime cumbersome .regarding the code generated by cheerp the developer need to write the code according to library of cheerp which is little painful and time consuming  , but the JavaScript code is generated it can be easily run in the browser without any issues.The code generate by emscription is very easy to implement as one need to  run the emcc to convert the c++ code to javascript but it something gives a lot of error when converting and as well takes a lot of time to compile so it is time consuming if one have to rerun the code just for some small change. Where cocos2d-js which is tranpilied can run easily on browser and can also be updated easily , just some small correction needed to be done after the recoding if it doesn’t work as no transpiler can convert the code hundred per cent. \\
-Security: NACL is secure to use as it has limited accesed to the system because of sandboxing so it provide same level of security as any other web application on browser.Flash which highly depends on swf have some vulnerabilities like malicious data injection for example flashvar in url that point to another swf  the accaker can point to another malicious swf , swf is also vulnerable to spoofing attack.insufcient authorization in swf can lead to cross domain attack and data theft when it is hosted in a shared domain. Where in emscripten where c++ code is converted to subset of javascript(asm.js) are typed array format without any sandboxing to protect it from the outside threat . cocos2d-js faces the same threat as javascript faces like cross side scripting ,cross side request forgery . the way the javascript interacts with HTML DOM items really makes it more vulnerable , as it can be easily used to insert malicious script.there are two ways of making it more secure first by sandboxing which gives permission to access limited resources and the other making some policies which restrict the access to other domain.. These issues can also be solved by vulnerability checking in certain time interval by using security analysers. \\
-Performance:  regarding the performance Native client runs as fast as the native code, PNACL boost the performance more, it is much faster than the previous version and also conserve the battery. Whereas flash really slow the browser performance as it chew up a huge amount of memory and CPU cycles. It is also not compatible with all browsers of iPhone, ipad and also creates issues for users who use older version of flash, but are advantages also like it has good 3D capabilities and give consistent appearance in all browser. Cocos2d-js runs really fine web and also provide fast debugging and it is aa user friendly language. Whereas the code conversion with emscripten to asm.js has some performance issues especially with huge intake of memory, its speed is near 60-70\% of the native code speed. \\
- \par}
-
-\subsection{Evaluation of comparison result }
-
-{\Large As discussed in the above comparisons between the different approaches we see pro and cons of applying a particular technology, now we will analysis which technology to use to make the web application, as per the thesis the cocos2d-x c++ application needed to be transferred to the web browser without recoding so here all the technologies that we saw NACL, cheerp,flascc all are needed to be recode using their respective libraries and then can be compiled to the JavaScript code , where we have an existing application in our company called TrunApp which have already been done in cocos2d-x C++ so it would be cumbersome and time consuming to recode these using other third party library.o only emscripten and transpiler can come to rescue , emscripten is a good choice but have some really serious issues as discussed above like creation of asm.js format javascript code which is memory consuming and as well it doesnot compiled the cocos2d0x c++ code to javascript giving a lot of compile error which is hard to correct.so in that case the transpiler is the right choice as it help to compile the code to cocs2d-x js which has its own javascript object and can easily updated with small changes as well it would be in total control of the developer as coco2d-js is a proper user friendly,open source programming language with a good cocos community support.the transpiler that does this is made with c sharp and have the facilities like training the data for new command so it is also flexible to the version change in the language. \\ \par}
-
-\section{Architecture of the transpiler }
+\subsection{Architecture of the transpiler }
 
 {\Large The transpiler that build by me is in language c sharp it follows the following steps for transfer of one source code cocos2d-x C++ to cocos2d-x JS source code, first it takes the lines from the source code and then convert it into tokens like keyword (the reserved word in a language), operators (=, +, - etc.), separators like {;,},{ etc.}, identifier (regular expression for alphanumeric). After separator of code in into tokens it becomes easy to search and translate a particular token as they are in form of collection. Parsing of a particular line is done where when the token is detected then that word is excluded and then the rest of the string is parse with the help to check for tokens like keyword, operator, separators and identifier. \\ \par}
 
@@ -364,7 +422,9 @@ Get the first word
 
 {\Large The code is parse from left to write and in these parsing it forms the tokens checks the grammar and translate the code, the code translation is generally done using one to one mapping of the tokens that are well trained by the training algorithm which we used here (hidden markov model) this algorithm check the probability of the of the particular word using the regular expression and pattern recognition to decide the confirmation of a particular word for that particular token. The target translation word comes from an xml which have token name, source word, target word and weightage. The weightage for a particular word decreases if a mismatch is found. These xml are given training by hidden markov model. \\  \par}
 
-\subsection{Hidden markov model}
+\subsection{ Method and algorithm used }
+
+\subsubsection{Hidden markov model}
 
 {\Large Hidden markov model use the previous data of observation from history and then using the probability calculate the next step data and these are sometimes derived by using matrix multiplication of some more related probability data. Below is the example to make it understand better. For example there are only two temperature in a year Hot and cold. \\ 
                        \thinspace  H     C \\
@@ -379,11 +439,11 @@ Above matrix denotes hot year after hot year is 0.7 and cold year after a hot is
 \\   \par}
 
 {\Large When the temperature is hot the probability of a tree with small tree size is 0.1.
-If the initial distribution is A = [0.6 0.4] , by multiplying these probability we can get a approximate idea of whether in coming next year.
-Here in my programme I have the following states first it is params , here there are two params one is kno means the number of character in a token and other is kreg which is closeness of a token to a particular pattern. Average of this probability helps to determine the word is a token of what type. Whereas the states here are in the form of matrix denoting the chances of the next token type according to the grammer. \\
-States[][] = { { 0, 0.5,0,1 }, { 0.7, 0.5,0.7,0.7 }, { 0, 0.7 ,0.5 ,0.7 }, {0,0.8,0,0.8} };\\
-States column and the rows are keyword, operators, identifier and separators, from the above matrix it means if the first token is keyword then the probability of the next token for being operator is 0.5 means 50 per cent. Initial value is feed of kno and kreg are determined from the word feed into the system. After observing the patterns of the tokens one can easily make a certain guess what taken type it represent like keyword are generally 4 letters , operators and separators are single letter and identifier more than 5 words. So to get the probability we divide the (number of letter token type/the word length) if sometimes the value becomes more than 1 which shouldn’t happen in probability we replace it with 0.1 making it as outlier. Then the word is again checked with regular expression for a particular tokens type to determine its proximity to that type and assign the probability value to it 1 if its matches perfectly else 0.the average of parameters help us to decide the type of variable.   \\ 
-Then the word is again checked with regular expression for a particular tokens type to determine its proximity to that type and assign the probability value to it 1 if its matches perfectly else 0.the average of parameters help us to decide the type of variable. These value are then feed into training xml file with attributes like
+If the initial distribution is A = [0.6 0.4] , by multiplying these probability we can get a approximate idea of whether in coming next year. \par}
+
+\subsection{Implementation of the transpiler}
+
+{\Large  Here in my programme I have the following states rst it is params , here there are two params one is kno means the number of character in a token and other is kreg which is closeness of a token to a partic-ular pattern. Average of this probability helps to determine the word is a token of what type. Whereas the states here are in the form of matrix denoting the chances of the next token type according to the grammer.States[][] = 0, 0.5,0,1 , 0.7, 0.5,0.7,0.7 , 0, 0.7 ,0.5 ,0.7 , 0,0.8,0,0.8 ; States column and the rows are keyword, operators, identi er and sep-arators, from the above matrix it means if the rst token is keyword then the probability of the next token for being operator is 0.5 means 50 per cent. Initial value is feed of kno and kreg are determined from the word feed into the system. After observing the patterns of the tokens one can easily make a certain guess what taken type it repre-sent like keyword are generally 4 letters , operators and separators are single letter and identi er more than 5 words. So to get the proba-bility we divide the (number of letter token type/the word length) if sometimes the value becomes more than 1 which shouldnt happen in probability we replace it with 0.1 making it as outlier. Then the word is again checked with regular expression for a particular tokens type to determine its proximity to that type and assign the probability value 48 to it 1 if its matches perfectly else 0.the average of parameters help us to decide the type of variable.Then the word is again checked with regular expression for a partic-ular tokens type to determine its proximity to that type and assign the probability value to it 1 if its matches perfectly else 0.the average of parameters help us to decide the type of variable. These value are then feed into training xml le with attributes like 
 \begin{lstlisting}[label=some-code,caption= xml structure for training]
  <Translation> 
     <type>keyword</type> 
@@ -416,12 +476,17 @@ Use to determine the outlier and get the perfect matching translation.  \\  \par
 
 \newpage
 
-\section{ Future work}
-{\large  to be written
-\par}
-
 
 \section{Conclusion}
+
+\subsection{Final result}
+{\Large yet to written \par}
+
+\subsection{Limitation and deviation from hypothesis}
+{\Large yet to written \par}
+
+\subsection{Future work}
+{\Large yet to written \par}
 
 {\large  to be written. \par}
 
