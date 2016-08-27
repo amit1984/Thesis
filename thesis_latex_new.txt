@@ -37,6 +37,8 @@
 
 \newpage
 
+\setcounter{secnumdepth}{0}
+
 \section{Dedication}
 
 \textit{ \newline \newline I would like to dedicated my dissertation to  my family for all the support. }
@@ -54,9 +56,13 @@
 {\Large Cross platform development framework are extensively used in the organization for cost saving and easy maintenance. In this thesis i will compare the different approaches to transfer the cross-platform cocos2d C++  application into web without recoding the whole application or writing a native code for it. Here i will also discuss the different approaches that i applied for achieving my goal along with the comparative analysis and the reason for using the particular framework.
 \par}
 
+\newpage
+
+
+\setcounter{secnumdepth}{2}
+
 \pagenumbering{arabic}
 
-\newpage
 \section{Introduction }
 
 {\Large For a product to really become popular it must be reachable to lot of people, this can only be done making it available to public both in the form of native app and web app. Both the form of app has its own pros and cons for example web app features like nothing to download and install make it easier for the people to it started right away removing downloading step in the process. Even company can be sure that all its clients are working on the same version in case of web app as updates are done in the server which are reflected in the browser, even from the point of business analytics also it good as it helps to give information of how user interact with the app.whereas if one is offline then native app really becomes handy. Truncad GmbH already have native app in form of TrunAPP so converting this to web app will make it reachable to more clients, using browser friendly language like javascript a web app can be developed which will have nice graphics, multiuser capability and  responsive with browsers used in any device. In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web  using different technologies like Emscription, Google Native Client and Flash etc. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser.
@@ -534,7 +540,7 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \includegraphics[scale=1.1]{cvsj}
 \end{figure}
 
-{\Large User have t select . \\ \\ \par}
+{\Large when the user select choice 1 then it takes the data from the externa trainingl file and then train the system via the training algorithm , when the user choose 2 the it it ask for the location of the file once the full path of the file is entered then it start the translation process and write the data in file the same location , by choice 3 it gets the data from the exisiting test file in the data folder and then translate it generally used for testing purpose. \\ \\ \par}
 
 \begin{figure}[h]
 \caption{screenshot of the menu driven transpiler console}
@@ -575,7 +581,7 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 
 \section{Appendix}
 
-\subsection{Training data}
+
 \begin{lstlisting}[label=some-code,caption= Code for training the system]
 class Training
 {
@@ -661,7 +667,7 @@ class Training
         }
 
 \end{lstlisting}
-\subsection{Reading the tokens}
+
 \begin{lstlisting}[label=some-code,caption= Reading the tokens from the file]
 
 while ((line = file.ReadLine()) != null)
