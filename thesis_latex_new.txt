@@ -72,7 +72,7 @@
 
 \section{Application overview}
 
-{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in planning,designing and pricing of the furniture using native application(desktop).Company have lot of products like 3Dgenerator, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++ , with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
+{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in planning,designing and pricing of the furniture using native application(desktop).Company have lot of products like 3Dgenerator, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++  with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
 
 \begin{figure}[h]
 \caption{TrunApp}
@@ -83,22 +83,22 @@
 \newpage
 
 \section{Background and related work}
-{\Large there are already some transpiler which converts C++ code to JavaScript. Below is the description of them.   \par }
+{\Large There are already some transpiler which converts C++ code to JavaScript. Below is the description of them.   \par }
 \subsection{Emscription}
 {\Large Emscription is a compiler which converts LLVM(low level virtual assembly) \footnote{LLVM=Low level virtual assembly} to JavaScript. Emscription itself is written in JavaScript and available under MIT license.Clang ( compiler front end ) \footnote{Clang = compiler front end} is used to convert the c++ code to the intermediate code (LLVM) code and then this LLVM is converted into javascript using emscripten. Emscripten is written in javascript the primary reason for that 1) the compiler can create javascript objects that represent constant structures from the original assembly code and convert them to a string using json.stringify in a trivial manner 2) the compiler can simplify numerical operations. \\ \\
 Emscripten has three main phases for its compilation: \\ 
-1)\textbf{intertyper}: convert LLVM assembly into emscripten internal representation. \\ 
+1)\textbf{Intertyper}: Convert LLVM assembly into emscripten internal representation. \\ 
 2)\textbf{Analyzer}: Inspects the representation and then generate the final phase including type and variable information, stage analysis and optimized data. \\ 
 3)\textbf{Jsifier}: The data analysis and the final conversion to JavaScript is done here. \\ 
 4))\textbf{ The runtime environment}: Some aspect of runtime environment of how it is implemented \\
  a) Files sytem here are stored in memory.\\
  b) Using HEAP array which emulate malloc() in C.\\
 Relopper algorithm is the heart of emscription , it explains how the LLVM is converted to emscription blocks, for simplicity LLVM blocks are called ‘labels’ and the emscription blocks as ‘blocks’. There are three type of blocks : \\
-1)\textbf{Simple block}: one internal label and a next block which the internal label branches to.\\
-2)\textbf{Loop}: it has two internal blocks one inner which represent the block inside the loop and next block which resides outside the loop and gets executed when it exits the loop. \\
-3)\textbf{Multiple}: this block is generally for if, else, switch etc.\\ 
+1)\textbf{Simple block}: One internal label and a next block which the internal label branches to.\\
+2)\textbf{Loop}: It has two internal blocks one inner which represent the block inside the loop and next block which resides outside the loop and gets executed when it exits the loop. \\
+3)\textbf{Multiple}: This block is generally for if, else, switch etc.\\ 
 4)\textbf{Relooper algorithm follows this steps} : \\
-It receives the set of labels and then does the evaluation of each level whether it is reachable or not if it cannot return back then it simply creates a block else if it reaches all entry then it creates a loop , if there are more than one entry then create a multi block. when the relooper process labels it replaces instruction accordingly for example when a block is created  the instruction outside the loop are converted into break command and above are converted into continue statement and then it follows the semantics of JavaScript to get it go where it want to go. After that emscripstion does a pass in addition to optimize the code for example removing the continue commands that occur at the beginning of each loop. This way it helps to generate a JavaScript code that runs on browser. \cite{emsback} \par}
+It receives the set of labels and then does the evaluation of each label whether it is reachable or not if it cannot return back then it simply creates a block else if it reaches all entry then it creates a loop , if there are more than one entry then create a multi block. when the relooper process labels it replaces instruction accordingly for example when a block is created  the instruction outside the loop are converted into break command and above are converted into continue statement and then it follows the semantics of JavaScript to get it go where it want to go. After that emscripstion does a pass in addition to optimize the code for example removing the continue commands that occur at the beginning of each loop. This way it helps to generate a JavaScript code that runs on browser. \cite{emsback} \par}
 \subsection{Google Native Client}
 
 {\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way. Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsic and hand-coded assembler. Combination of these properties in an open architecture encourages community review and integrating 3rd-party tools. When running NaCL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NACL container, when this module runs their behaviour is taken care by the NACL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and Netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate NaCL application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NaCL whitelist can also be deployed. The service runtime also provides set of system services commonly associated with application programming which have system calls for both allocation and freeing of  memory. \cite{naclback}  \\ \\
@@ -116,15 +116,15 @@ It receives the set of labels and then does the evaluation of each level whether
 
 {\Large  Cocos2d-x is an open source game engine under MIT license .It is used to build apps,games and other cross platform application. cocos2d-x has a lot of powerful featurs and it can be coded in languages like c++,Lua and javascript. It is also cross platform and can be de-ployed into ios,android and windows.It uses the toolchain for developing multi-platform games with high performance. \cite{cocosBack} \par}
 
-\subsubsection{Cocos2d c++ }
+\subsubsection{Cocos2d C++ }
 
-{\Large Cocos2d-x c++ is used to build apps,games and other cross platform application. It structure consist of sprite,nodes,scence,layer, director,actions etc.Sprites are generally used to display an image on the screen.Nodes also known as containers also includes sprites inside them , this makes it flexible as by changing the aspects of the container its children’s aspects also gets changed. Containers have CCSprite ,CCLayer , CCScene which are inherited from the base class CCNode.CCScene contains one or more layers , it helps to break the applications into multiple scene for example in a game one for start screen , one for setting scene etc. CCLayers helps in creating CCMenu and other colored background like CCLayer-Color.CCLayer is often thought as CCNode that listen to user input such as touch,accelorometer etc and bundle all the protocol needed for it. CCSprite is the most important class that is used in cocos as this is repeated several time in the application unlike CCLaeyrs and CCScene, it mainly consist of image that is inserted into the layers containers.CCDirector manages the scenes and knows all about the application. These what we discussed now is tip of the iceberg , other 90 percent of the framework mainly consist of structures, macros and helpers. \\ \par}
+{\Large Cocos2d-x C++ is used to build apps,games and other cross platform application.It structure consist of sprite,nodes,scence,layer, director,actions etc.Sprites are generally used to display an image on the screen.Nodes also known as containers also includes sprites inside them , this makes it flexible as by changing the aspects of the container its children’s aspects also gets changed.Containers have CCSprite ,CCLayer , CCScene which are inherited from the base class CCNode.CCScene contains one or more layers , it helps to break the applications into multiple scene for example in a game one for start screen , one for setting scene etc. CCLayers helps in creating CCMenu and other colored background like CCLayer-Color.CCLayer is often thought as CCNode that listen to user input such as touch,accelorometer etc and bundle all the protocol needed for it. CCSprite is the most important class that is used in cocos as this is repeated several time in the application unlike CCLaeyrs and CCScene, it mainly consist of image that is inserted into the layers containers.CCDirector manages the scenes and knows all about the application. These what we discussed now is tip of the iceberg , other 90 \% of the framework mainly consist of structures, macros and helpers. \\ \par}
 
 
 \subsubsection{Cocos2d-JS }
 
 {\Large Cocos2s-js is a game engine which helps us to create web application which Supported platforms include web, Android, iOS, Windows Phone 8, Mac, Windows, etc.
-It has high performance ,supports multiplatform development and user friendly. It helps to make 2D application very easily. It also includes  cocos2d-html and cocos2d-x javascript binding  in other word it can be said as cocos2d-js verison of HTML5. With cocos2d-js we can code and run games in browsers that support HTML5. Some of the features which makes cocos2d-js standout from other others is robust js API which runs anywhere don’t require any plugin , easy to debug, high performance ,proven and with many new functionality including sprites, particles ,animations, timers ,transitions, action, , events (touch, mouse , accelerometer), persistence , file IO, , sound, skeletal animations.. In the meantime, Cocos2d-JS v3.0 comes with lot of new features like Editors Support, Assets Manager, Object Pool, JS to Objective-C/JAVA reflection, etc. cross platform developers can also use cocos console for new project creation and can also boost their development using web version of engine and even deploy using the console , to get the hands on or casual game development one can use the cocos js lite version.Cocos2d-js with little modification can also run native application using cocos2d-x JSB , cocos2d-JS JSB is the wrapper code that bridges the native  and JavaScript code, it also enables interaction between JavaScript and native code vice versa. \cite{cocosjsback}\\
+It has high performance ,supports multiplatform development and user friendly. It helps to make 2D application very easily. It also includes  cocos2d-html and cocos2d-x javascript binding  in other word it can be said as cocos2d-js verison of HTML5. With cocos2d-js we can code and run games in browsers that support HTML5. Some of the features which makes cocos2d-js standout from other others is robust js API which runs anywhere don’t require any plugin , easy to debug, high performance ,proven and with many new functionality including sprites, particles ,animations, timers ,transitions, action, , events (touch, mouse , accelerometer), persistence , file IO, sound, skeletal animations. In the meantime, Cocos2d-JS v3.0 comes with lot of new features like Editors Support, Assets Manager, Object Pool, JS to Objective-C/JAVA reflection, etc. cross platform developers can also use cocos console for new project creation and can also boost their development using web version of engine and even deploy using the console , to get the hands on or casual game development one can use the cocos js lite version.Cocos2d-js with little modification can also run native application using cocos2d-x JSB , cocos2d-JS JSB is the wrapper code that bridges the native  and JavaScript code, it also enables interaction between JavaScript and native code vice versa. \cite{cocosjsback}\\
 \par}
 
 
@@ -133,7 +133,7 @@ It has high performance ,supports multiplatform development and user friendly. I
 {\Large Cocos2d- HTML5 is the HTML5 version of Cocos2d-x project. Like other Cocos2d branches this is also an open-source web 2D game framework, released under MIT License. Cocos2d-HTML5 runs on browser which have HTML5 making it versatile as it can run on any platform. The backend of cocos2d-HTML5 is JavaScript this also makes it browser friendly and using API it also becomes completely compatible with that of Cocos2d-iPhone, Cocos2d-x JavaScript binding. \cite{cocoshtml} \par}
 
 \begin{figure}[h]
-\caption{cocos hierarcial evolution for version 2}
+\caption{cocos hierarcial evolution for version 2 \cite{architecturejs}}
 \centering
 \includegraphics[scale=0.8]{cocosjs}
 \end{figure}
@@ -146,10 +146,10 @@ It has high performance ,supports multiplatform development and user friendly. I
 
 \subsubsection{Cocos2d JavaScript binding }
 {\Large Cocos2d JS is available with the same api for cocos2d-x, cocos2d-iphone and cocos2d-html5. While cocos2d-html5 will run on mobile devices through the browser, JavaScript bindings have been created for cocos2d-iphone and cocos2d-x to drastically improve the performance. All graphics, rendering and physics code will run natively and only the game logic will run in JavaScript.
-Having your game code in a scripting language provides more advantages than just the cross-platform aspect. As the code is not compiled, it can be replaced in run-time which allows much faster testing cycles.\cite{jsb}  \par}
+Having the game coded in a scripting language provides more advantages than just the cross-platform aspect. As the code is not compiled, it can be replaced in run-time which allows much faster testing cycles.\cite{jsb}  \par}
 
 \subsection{FlasCC }
-{\Large The FlasCC helps to convert C++ application to swf(small web format file) these swf files are then embedded into the HTML which helps in rendering them on web browser which already have flash player(browser plugin) installed. CrossBridge is the open source version of FlasCC , it helps to bring native C++ app to web. Some popular game like neverball written in C++/OpenGL has been converted to web using FlasCC. \cite{flascback} \par}
+{\Large The FlasCC helps to convert C++ application to swf(small web format file) these swf \footnote{swf = small web format file} files are then embedded into the HTML which helps in rendering them on web browser which already have flash player(browser plugin) installed. CrossBridge is the open source version of FlasCC , it helps to bring native C++ app to web. Some popular game like neverball written in C++/OpenGL has been converted to web using FlasCC. \cite{flascback} \par}
 
 \newpage
 
@@ -207,13 +207,13 @@ For example one can store an integer type in a union type variable and read it a
 \subsubsection{Intermediate code generation} 
 {\Large The final goal of a compiler is to run the high level code in compiler. Eventually the program will have to be expressed as machine code to run on the computer. From high level it is converted to 
 Intermediate code then to machine code. Conversion of high level code to intermediate code is called front end compiler. Back-end compiler converts this intermediate code to machine code.
-The disadvantage of interpreting the intermediate code it is bit slower than executing the translated code directly. Some speed penalty can be eliminated by translating the intermediate code immediately before or during the execution of the program. Conversion of intermediate  code is changing the expression into three or four address system which makes it easier for allocation in register , new variable are introduced using newvar and the translation of the variable and functions is done by vtable and ftable, that binds the variable and function names , transop translate name of an operation in the expression intermediate language .for some advance controls like goto , break/ext statement by setting a mark in the symbol table  entry where the next statement jumps to .For array we need a variable to hold the base address of each entry. The address is calculated when the array is allocated and then stored in the corresponding variable. Arrays are generally allocated on a stack and popped from the stack when procedure is called. \par}
+The disadvantage of interpreting the intermediate code it is bit slower than executing the translated code directly. Some speed penalty can be eliminated by translating the intermediate code immediately before or during the execution of the program. Conversion of intermediate  code is changing the expression into three or four address system which makes it easier for allocation in register , new variable are introduced using newvar and the translation of the variable and functions is done by vtable and ftable, that binds the variable and function names , transop translate name of an operation in the expression intermediate language .For some advance controls like goto , break/ext statement by setting a mark in the symbol table  entry where the next statement jumps to .For array we need a variable to hold the base address of each entry. The address is calculated when the array is allocated and then stored in the corresponding variable. Arrays are generally allocated on a stack and popped from the stack when procedure is called. \par}
 
 \subsubsection{Machine code generation}
 {\Large The intermediate code that was discussed above is quite low level and similar to machine code, but machine doesn’t have unlimited registers , therefore for mapping a large number of variables to small number of register is handled by registers allocation the simplest way of conversion of each intermediate into one or more machine code instruction. \par}
 
 \subsubsection{Analysis and optimize}
-{\Large An optimized generally is about recognizing instruction that form a specific pattern that can be replaced by a smaller faster pattern of new instructions. For example if there is a code \\.
+{\Large An optimization generally is about recognizing instruction that form a specific pattern that can be replaced by a smaller faster pattern of new instructions. For example if there is a code \\
 X = 5*a \\
 X = 7a \\
 Z = 5*a \\
@@ -222,7 +222,7 @@ So, It can be optimized and reduced z = x because both assign 5*a. Memory prefet
 \subsubsection{Memory management}
 {\Large \textbf{Static allocation}:- It means that all data is allocated at a place in memory , that has both the size and the address at compile time. Furthermore the allocated memory stays allocated throughout the execution of the program. So one can allocate space for say an array in the data space by placing a label at the current address pointer in the data space and then moving the current address by the size of array. \\
 \textbf{Stack allocation}:- Call stack can also be used to allocate arrays and other data structures. This is done by making room in the current frame on the call stack and moving the frame pointer or the stack pointer allocation. The size of the array need not be known at the compile time, the frame at runtime creation makes enough space to hold the array. An unbounded number of arrays can be allocated as it is taken care by recursive function for allocation. \\ 
-\textbf{Heap allocation}:- the limitation of the static allocation and stack allocation are often too restricting, sometimes one might want arrays that can be resized or which the survive the function invocation .Data that is heap allocated stays allocated until the program execution ends, until the data is deallocated by the system or declared dead by memory management. \\
+\textbf{Heap allocation}:- The limitation of the static allocation and stack allocation are often too restricting, sometimes one might want arrays that can be resized or which the survive the function invocation .Data that is heap allocated stays allocated until the program execution ends, until the data is deallocated by the system or declared dead by memory management. \\
 \textbf{Manual memory management}:- Most operating system allows a program to allocate and free chunks of memory while the program runs. In language C there is malloc() which allocates a block of atleast n byte and return a pointer pointing to that block. If there is not enough space a NULL pointer is return. \\ 
 \textbf{Reference counting} \\
 Reference counting make it sure if no pointer is pointing to a present block in the memory and it is not accesed by a program then it memory can be freed. When a block is allotted, its counter field is set to 1 (it represent the pointer that’s return by malloc()). When the pointer is added or removed it gets incremented or decremented accordingly when the counter becomes 0 then the block is freed by calling free(). It gets into some issues with doubly linked list, even if the last pointer of the doubly linked list disappears the element points to each other so the reference count will not become zero and the list is not freed. This is handled by not counting the back pointer which is sometimes referred as weak pointer it is not always easy for compiler to decide the weak pointers so reference counting is rarely used in languages with circular data structures.
@@ -569,7 +569,7 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 
 \subsection{Limitation and deviation from hypothesis}
 {\Large There was no deviation from the hypothesis it went according to what we planned.
-             There are some limitations because the two have some syntactical difference which was already discussed above in section “observation of code structure of cocos2d C++  and cocos2d JS” this exceptions sometimes effect the accuracy of translation, therefore  the accuracy of transpiling remains between 80-90% these code changes needed to be done by hand and then add it to the special cases xml , these  helps as when the code is compiled  again it gets the correct syntax from special cases xml and  gets compiled with 100% accuracy.
+             There are some limitations because the two have some syntactical difference which was already discussed above in section “observation of code structure of cocos2d C++  and cocos2d JS” this exceptions sometimes effect the accuracy of translation, therefore  the accuracy of transpiling remains between 80-90 \% these code changes needed to be done by hand and then add it to the special cases xml , these  helps as when the code is compiled  again it gets the correct syntax from special cases xml and  gets compiled with 100 \% accuracy.
 \\  \par}
 
 \subsection{Future work}
@@ -769,6 +769,8 @@ section{Reference}
 \bibitem{crossplatform} 
 {https://en.wikipedia.org/wiki/Cross-platform}
 
+\bibitem{architecturejs} 
+{http://www.cocos.com/doc/tutorial/show?id=2678}
 
 \bibitem{architecture1} 
 {https://raw.githubusercontent.com/cocos2d/cocos2d-x/v3/docs/framework\_architecture.jpg}
@@ -843,8 +845,8 @@ Alon Zakai
 \textit{Emscripten: An LLVM-to-Javascript compiler}. 
  ,Mozilla
 
-\bibitem{latexcompanionb} 
-\  https://github.com/cocos2d/cocos2d-js/
+\bibitem{pointer} 
+\  http://stackoverflow.com/questions/10231868/pointers-in-javascript
 
 \bibitem{latexcompanionb} 
 \ http://www.cocos2d-x.org/wiki/Cocos2d-JS
