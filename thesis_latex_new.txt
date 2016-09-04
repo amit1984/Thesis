@@ -244,12 +244,12 @@ A tracing garbage collector tracks which blocks are reachable from variable in t
 
 \subsubsection{setup}
 
-{\Large CocosSharp can be implemented via visual studio or xamarin studio, the recent version of CocosSharp v1.7 helps to make androis,ios,windows application but no web support. For installing CocosSharp first one need to go to Tools | Options and configure the page Environment $>$ Extension Manager and enter  url http://gallery.mobileessentials.org and save.Once the Mobile Essential gallery is set up, one can go to Visual Studios Tools | Extensions and Updates... menu and a new Mobile Essentials node will appear under the Online category, where one can explore and install the tools, then click download and then install. Once done then Cocos template is installed after that C \#  project of ios,android and windows can be opened.  \cite{cocossharp} \par}
+{\Large CocosSharp can be implemented via visual studio or xamarin studio, the recent version of CocosSharp v1.7 helps to make androis,ios,windows application but no web support. For installing CocosSharp first one need to go to Tools | Options and configure the page Environment \-$>$ Extension Manager and enter  url http://gallery.mobileessentials.org and save.Once the Mobile Essential gallery is set up, one can go to Visual Studios Tools | Extensions and Updates... menu and a new Mobile Essentials node will appear under the Online category, where one can explore and install the tools, then click download and then install. Once done then Cocos template is installed after that C \#  project of ios,android and windows can be opened.  \cite{cocossharp} \par}
 
 
 \subsubsection{Approach details}
 
-{\Large The reason for using CocosSharp initially was to find a method by which i can convert the cocos2d-x c++ to CocosSharp using a wrapper and then can use it as C \# web application which can be run on browser. But unfortunately the CocosSharp doesn’t still have the web application building project in their framework. \par}
+{\Large The reason for using CocosSharp initially was to find a method by which  cocos2d-x c++ can be converted to CocosSharp using a wrapper and then to make a C \# web application which can run on browser. But unfortunately the CocosSharp  doesn’t  have the web application building project in their framework. \par}
 
 \subsubsection{Results}
 
@@ -271,12 +271,12 @@ A tracing garbage collector tracks which blocks are reachable from variable in t
 
 \subsubsection{Approach details}
 
-{\Large For converting the C++ application using cheerp library to javascript one need to include cheerp/clientlib.h header add client keyword in front of the C++ function for making it compatible with cheerp for running in web browser. So when writing the code i need to do some changes in the code which makes it compatible for conversion by CLANG. First trial was simple cheerp program which was successfully converted to web using clang then i tried with cocos libraries which then were included in the code but it gave error because of the error in the including the header file because of the relative path. Then i made a makefile which include the source header file as the dependencies it still cannot detect the relative header file path. Another testing was done by building LLVM for that i used cmake and download the llvm code and then converted it into .sln file using CMake linking CMake INSTALL PREFIX to the cheerp folder then build the application and tried to run the programme by adding Cocos in the additional libraries folder in project configuration properties in visual studio and then run the file but it gave error while the building. The next trial was to make an empty C++ project and the add both cheerp and cocos libraries to it and compiler as clang++ but it again gave error like cannot find header files. \cite{cheerpsetup} \par}
+{\Large For converting the C++ application using cheerp library to javascript one need to include cheerp/clientlib.h header add client keyword in front of the C++ function for making it compatible with cheerp for running in web browser. So when writing the code it is needed to do some changes in the code which makes it compatible for conversion by CLANG \footnote{CLANG = a frontend compiler for C++}. First trial was simple cheerp program which was successfully converted to web using clang but when tried with cocos libraries which were included in the code  it gave error reason for the error is that it cannot including the header file because of the relative path. To solve the issue a makefile was made which include the source header file as the dependencies it still cannot detect the relative header file path. Another testing was done by building LLVM for that cmake was used,First llvm project code was downloaded  and then was converted into .sln file using CMake linking CMake INSTALL\textunderscore PREFIX macro to the cheerp folder and then tried to run the programme by adding Cocos in the additional libraries folder in project configuration properties in visual studio and then run the file but it gave error while the building. The next trial was to make an empty C++ project and the add both cheerp and cocos libraries to it and compiler as clang++ but it again gave error like cannot find header files. \cite{cheerpsetup} \par}
 
 
 \subsubsection{Results}
 
-{\Large For simple cocos program it work ne which follow the syntax of cheerp but when added with external libraries like cocos it gives bugs. \par}
+{\Large For simple cheerp program without any external libraries it worked fine but when added with external libraries like cocos it gives bugs. \par}
 
 \subsubsection{challenges}
 
@@ -290,16 +290,16 @@ A tracing garbage collector tracks which blocks are reachable from variable in t
 
 \subsubsection{setup}
 
-{\Large First one need to download the google native client SDK then unzip \detokenize{nacl_sdk.zip} then have to go inside nacl-sdk directory and run /naclsdk update for windows and ./naclsdk update for linux , it will install the latest version 
-of nacl but if you want to install a specific version then its needed to use the name of that particular version in command for update like ./naclsdk update \detokenize{pepper_(version)} , this will lead to install all NaCL dependencies.\par}
+{\Large First one need to download the google native client SDK then unzip nacl\textunderscore sdk.zip then have to go inside nacl\textunderscore sdk directory and run /naclsdk update for windows and ./naclsdk update for linux , it will install the latest version 
+of nacl but if one wants to install a specific version then its needed to use the name of that particular version in command for update like ./naclsdk update pepper\textunderscore (version), this will lead to installation of all NaCL dependencies.\par}
 
 \subsubsection{Approach details}
 
-{\Large when NaCl SDK is installed and updated and its \detokenize{ NACL_SDK_ROOT} path is configured .Then i executed ‘build-nacl.sh’ script from the top level of cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in \detokenize{ nacl/newlib_x86_64/ Release} folder, so it downloaded it from github but it still gave error cannot find ldension  and lchipmunk file in \detokenize{ x86_64- nacl/bin/ld} folder, tried to check it with \detokenize{pepper_canary} but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup}\par}
+{\Large When NaCl SDK is installed and updated and its NACL\textunderscore SDK\textunderscore ROOT path is configured .Then ‘build-nacl.sh’ script is executed from the top level of cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in nacl/newlib\textunderscore x86\textunderscore 64/ Release folder, after downloading it from  some sample project from github in the folder release  it  gave a new  error "cannot find ldension  and lchipmunk file in  x86\textunderscore 64- nacl/bin/ld folder", tried to check it with pepper\textunderscore canary but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup} \par}
 
 \subsubsection{Results}
 
-{\Large NaCL run fine for simple C++ STL library application but don’t work well with cocos as it is supported in the version 2 which is an older version of cocos and files are missing in it which it needed for build. \par}
+{\Large NaCL run fine for simple C++ STL library application but don’t work well with cocos as it is supported in the version 2.0 which is an older version of cocos(current version is 4.0) and files are missing in it which it needed for build. \par}
 
 
 \subsubsection{challenges}
@@ -308,7 +308,7 @@ of nacl but if you want to install a specific version then its needed to use the
 
 \subsubsection{pros/cons}
 
-{\Large First of all the build failed for the formation of .nexe file and even if it somehow would have succeeded then we have to face two major problem one .nexe file is only supported in Google chrome and the second it code needs to be changed according to pepper libraries for making it compatible for building of .nexe file.}
+{\Large First of all the build failed for the formation of .nexe file and even if it somehow would have succeeded then we have to face two major problem one .nexe file is only supported in Google chrome and the second is the code needs to be changed according to pepper libraries for making it compatible for building of .nexe file.}
 
 
 
@@ -316,13 +316,13 @@ of nacl but if you want to install a specific version then its needed to use the
 
 \subsubsection{setup}
 
-{\Large cocos html 5 is subset of JS , after downloading the cocos2d-HTML5 by cloning git directory one can run the python -m SimpleHTTPServer ,
-this open a browser and go to http://localhost:8000/myapp , then one change the js and then changes are reflected into the canvas when refreshed the page.
+{\Large Cocos html 5 is subset of JS , after downloading the cocos2d-HTML5 by cloning git directory one can run the python -m SimpleHTTPServer ,
+this open a browser and go to http://localhost:8000/projectname , then changes can be made in the js file which are reflected into the canvas when the page is refreshed.
 \\ \par}
 \subsubsection{Approach details}
 
-{\Large This approach form the base of my transpiler, the cocos2d-js version was build first to see if it can be ported to web or not. Using cocos2d-js a small replica prototype of TrunAPP was made. I also checked it with node.js, socket.io it was working fine transferring the coordinates to the server.  
-Cocos2d-js have some syntax similarity with cocos2d-c++ , which made me think of trans compiling the code. \cite{cocoshtmlsetup}  \par}
+{\Large This approach form the base of the transpiler(Cocos2d C++ to Cocos2d JS), the cocos2d-js version was build first to see if it can be ported to web or not. Using cocos2d-js a small replica prototype of TrunAPP was made. Its compatibility was also checked with node.js, socket.io it worked  fine transferring the coordinates to the server.  
+Cocos2d-js have some syntax similarity with cocos2d-C++ , which made me think of trans compiling the code. \cite{cocoshtmlsetup}  \par}
 
 \subsubsection{Results}
 
@@ -336,23 +336,23 @@ Cocos2d-js have some syntax similarity with cocos2d-c++ , which made me think of
 
 \subsubsection{challenges}
 
-{\Large There were challenges involved in recoding it with cocos2d-js \par}
+{\Large There were no challenges involved in recoding it with cocos2d-js \par}
 
 \subsubsection{pros/cons}
 
-{\Large cocos2d-js became the base of our transpiler research and a good option for porting the existing code into web.  \par}
+{\Large Cocos2d-js became the base of  transpiler research and a good option for porting the existing code into web.  \par}
 
 
 \subsection{Fifth Approach using emscription}
 
 \subsubsection{setup}
 
-{\Large First one need to download the Emscription SDK web installer , web installer is better than portable sdk zip because here it automatically installs and configure the whole Emscripten toolchain (Clang, Python, Node.js and Visual Studio integration) in a single easy-to-install package. For installing in Linux or mac platform we need to download the zip folder from the emscription website and then unzip it run the linux command to instal all the dependencies like python,node.js,git,cmake,jre and then downloading fastcom(LLVM+CLANG) via git and then configuring the build using make once done then we have to run ./emscription file to configure the compiler setting. \cite{emscriptionsetup1} \cite{emscriptionsetup2} \par}
+{\Large First one need to download the Emscription SDK web installer , web installer is better than portable sdk zip because here it automatically installs and configure the whole Emscripten toolchain (Clang, Python, Node.js and Visual Studio integration) in a single easy-to-install package. For installing in Linux or mac platform its needed to download the zip folder from the emscription website and then unzip it and run the linux command to install all the dependencies like python,node.js,git,cmake,jre and then downloading fastcom(LLVM and CLANG) via git and then configuring the build using Make, once this is done then ./emscription file has to be run to configure the compiler setting. \cite{emscriptionsetup1} \cite{emscriptionsetup2} \par}
 
 
 \subsubsection{Approach details}
 
-{\Large Following these step I followed to port cocos2d C++ to JavaScript first I cloned the coco2d-x repository and then update the sub module once that’s done I went  to the cocos2d-x tree and then run the makefi le called makefi le.emscription which leads to compilation of all the samples inside , Once this is  done, one will find .js, .data and .html files in the proj.emscripten/bin/release directory.Datafiles contain packed versions of all the assets needed for the game but I my case because of the missing file it did not compiled well. One thing to note is that this is only available in cocos2d git version 2 so one need to checkout v2 to get the older version. For windows one need to directly run it from command prompt with path of the file. For using it with visual studio, emscripten is integrated into Visual Studio (2010) using the vs-tool plugin, which is automatically deployed by the Windows NSIS Installer Emscripten SDK if Visual Studio 2010 is present on your system at install time (it is also possible to manually integrate Emscripten into Visual Studio 2010).The vs-tool plugin adds an Emscripten configuration to the list of available Solution Configurations in Visual Studio. Activate this configuration for a solution/project to make Visual Studio run the project build through Emscripten, producing .html or .js output depending on the configured project properties. First select the Emscripten configuration from the Configuration Manager dropdown as the active configuration. Then choose Build Solution (F7). To launch a project directly to a web browser from Visual Studio: 1.Create a new environment variable EMCCWEBBROWSEREXE" and set it to point to an executable you want to use to browse web pages generated using Emscripten via Visual Studio. Any browser can be used. Right-click on the project to run, choose set as startup project, and select Start without Debugging (Ctrl+F5).This should launch the generated .html le to the browser, but in my case it was giving error cannot find the gcc.The thing to note is that it only build on visual studio 2010 not 2012/13 as they don’t have FASTCOMP. \par}
+{\Large Following steps were followed to port cocos2d C++ to JavaScript first coco2d-x repository was cloned and then the sub module updated once that’s done its needed to enter inside the cocos2d-x tree and then run the makefile called makefile.emscription which leads to compilation of all the samples inside , Once this is  done, one will find .js, .data and .html files in the proj.emscripten/bin/release directory.Datafiles contain packed versions of all the assets needed for the game but in my case because of the missing file it did not compiled well. One thing to note is that this is only available in cocos2d git version 2 so one need to checkout v2 to get the older version. For windows it is needed to directly run it from command prompt with path of the makefile. For using it with visual studio, emscripten is integrated into Visual Studio (2010) using the vs-tool plugin, which is automatically deployed by the Windows NSIS Installer Emscripten SDK if Visual Studio 2010 is present on your system at install time (it is also possible to manually integrate Emscripten into Visual Studio 2010).The vs-tool plugin adds an emscripten configuration to the list of available Solution Configurations in Visual Studio. Activation of this configuration for a solution/project to make Visual Studio run the project build through Emscripten, producing .html or .js output depending on the configured project roperties. First selection of Emscripten configuration from the Configuration Manager dropdown as the active configuration. Then  building the Solution to launch the project directly to a web browser from Visual Studio by creating a new environment variable EMCCWEBBROWSEREXE" and setting it point to type of browser for opening web pages generated using Emscripten via Visual Studio for this one need to right-click on the project to run, choose set as startup project, and select Start without Debugging (Ctrl+F5).This should launch the generated .html file to the browser, but in my case it was giving error cannot find the gcc.The thing to note is that it only build on visual studio 2010 is possible not 2012/13 as they don’t have FASTCOMP. \par}
 
 \subsubsection{Results}
 
@@ -409,9 +409,8 @@ this._bgLight.setPosition(cc.p(SCREEN_SIZE.width * 0.5, SCREEN_SIZE.height * 0.5
 
 \subsection{Introduction of Transpiler}
 
-{\Large Also known as source to source compiler, it converts source code of one language to other  , the only difference between this and compiler is that transpiler converts the code of one language to other following the same level of abstraction while compiler converts it from high level language to lower level language(machine code).Transpiler has lot of similarity with the language translation like the language translation which divide the words into verb, noun , adjective tokens it also divide the code 
-Into keywords, type and operator. Collection of similar type of entities makes it easy for search.
-Transpiler like coffescript, pseudo uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the grammar, if its syntactical way correct then it is translated to other language using the lookup table. For language translation lot of algorithms are used  like hiero rule model where the next translation depends on the previous subset and the next subset , synchronous  CFG  also known as syntax directed transduction grammar , denoted by the rule    X-$>$ {gamma,alpha,infinity} like hindi to English translation X-$>$ {kyun,why}. Some transpiler like psedu which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules : \\ 1.	 Extract the relationship between first two languages input and output languages. \\
+{\Large Transpiler also known as source to source compiler, it converts source code of one language to other , the only difference between this and compiler is that transpiler converts the code of one language to other following the same level of abstraction while compiler converts it from high level language to lower level language(machine code).Transpiler has lot of similarity with the language translator which divide the words into verb, noun , adjective tokens it also divide the code into keywords, type and operator. Collection of similar type of entities makes it easy for search.
+Transpiler like coffescript transpiler, pseudo-master(A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator)  uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the particular language grammar, if its syntactical way correct then it is translated to other language using the lookup table \cite{pseudo} \cite{coffeescript}. For language translation lot of algorithms are used like Hierarchical phrase based model where the next translation depends on the previous subset and the next subset ,synchronous CFG also known as syntax directed transduction grammar , denoted by the rule X->{gamma,alpha,infinity} like hindi to English translation X->{kyun,why}\cite{phrase}. Some transpiler like pseudo-master \footnote{ pseudo-master = A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator } which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules: \\ 1.	 Extract the relationship between first two languages input and output languages. \\
 2. Using this relationship to synthesis new sentence using statistical method to decide which translation is the best. \\
 The foundation of SMT mainly consist of phrase based machine translation (PBMT) and tree to string machine translation (T2SMT). Phrase based translation generally uses phrase to phrase relationship between source and target language for system.out.println of java to console.writeline in c \#.
 For example p = [ if -> if , x -> x, %5 -> by 5 , == 0 -> is divisible]  is the phrase table which contains phase to phase relationship with probabilities then it phases from reordering phase before getting the final sentence like in the case alpha = [1,2,4,3]. Conditional probality is PBMT is usally estimated using the conditional probability p= pr(t/s) , t is the number of token of source and s is the number of token of target. As PBMT cannot take the hieracial order so T2SMT uses parse tree to avoid this problem. It takes the sentence and then breaks it into tokens these tokens are then parsed into tree format  , the parse tree is first formed according the root node and the precedence rule after the tree is formed its value s are replaced by target phrase wild cards.T2SMT doesn’t require reordering as ordering of the target wildcard already defines the target ordering. In SMT using statistical approach you just need to create pseudo code corresponding for the desired statement instead of creating rule for every new case. The AST tree goes through following surface modifications \\
@@ -756,13 +755,13 @@ section{Reference}
 {https://developer.xamarin.com/guides/cross-platform/game\_development/cocossharp/}
 
 
-\bibitem{l1} 
+\bibitem{l2} 
 {http://adobe-flash.github.io/crossbridge/}
 
 \bibitem{cheerpback}
 {http://leaningtech.com/cheerp/}
 
-\bibitem{l1} 
+\bibitem{l3} 
 {http://searchservervirtualization.techtarget.com/definition/platform}
 
 
@@ -823,7 +822,7 @@ Torben/Egidius Mogensen
 \bibitem{compareemsport}
 {https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.html}
 
-\bibitem{l1} 
+\bibitem{l4} 
 {https://hpyblg.wordpress.com/2010/05/30/simulating-pointers-in-javascript}
 
 \bibitem{compareflasc3}
@@ -848,6 +847,9 @@ Alon Zakai
 \bibitem{pointer} 
 \  http://stackoverflow.com/questions/10231868/pointers-in-javascript
 
+\bibitem{pseudo}
+{https://github.com/alehander42/pseudo-python}
+
 \bibitem{latexcompanionb} 
 \ http://www.cocos2d-x.org/wiki/Cocos2d-JS
 
@@ -855,9 +857,12 @@ Alon Zakai
 \  http://blogs.adobe.com/flascc/
 
 \bibitem{latexcompanionb} 
+{http://codereview.stackexchange.com/questions/113418/lexer-for-c-source-code}
+
+\bibitem{latexcompanionb} 
 \  http://www.cocos2d-x.org/wiki/
 
-\bibitem{l1} 
+\bibitem{l5} 
 \ https://www.draw.io/
 
 \bibitem{compareflascjs} 
@@ -887,22 +892,28 @@ Alon Zakai
 \bibitem{javascriptsecurity}
 {http://www.veracode.com/security/javascript-security}
 
-\bibitem{l1} 
+\bibitem{l6} 
 {https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.htm}
 
-\bibitem{l1} 
+\bibitem{l7} 
 {http://leaningtech.com/cheerp/blog/2015/06/17/Cheerp-1.1}
 
-\bibitem{l1} 
+\bibitem{l8} 
 {http://blog.commlabindia.com/elearning-development/flash-benefits-limitations}
 
-\bibitem{l1} 
+\bibitem{coffeescript} 
 {http://coffeescript.org}
 
-\bibitem{l1} 
+\bibitem{phrase}
+David chiang
+\textit{Hierarchical Phrase-Based Translation}
+Information Sciences Institute ,University of Southern California
+{http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201}
+
+\bibitem{l9} 
 {https://developer.chrome.com/native-client/faq}
 
-\bibitem{l1} 
+\bibitem{l10} 
 {https://kripken.github.io/mloc\_emscripten\_talk/cppcon.html/31}
 
 \end{thebibliography}
