@@ -47,7 +47,8 @@
 
 \section{Acknowledgements}
 
-{\Large  I would like to thank Mario F\"{o}rster senior software developer of TrunCAD GmbH for the  guidance, supervision and  advice for the completion of this thesis.\\  \\ I would also like to thank Prof. Robert Manzke for the review and his expert guidance \par}
+{\Large  I would like to thank Mario F\"{o}rster senior software developer of TrunCAD GmbH  for the  guidance, supervision and  advice for the completion of this thesis.\\  \\ I would  like to express my gratitude to  Prof.Dr. Robert Manzke for the review and his expert guidance 
+ \\ \\  I would also like to thank Prof.Dr. Jens L\"{u}ssem for the review and guidance. \par}
 
 \newpage
 
@@ -77,8 +78,25 @@
 \begin{figure}[h]
 \caption{TrunApp}
 \centering
-\includegraphics[scale=0.3]{app}
+\includegraphics[scale=0.5]{app}
 \end{figure}
+
+{\Large Description of the component of TrunAPP.
+Third: It mainly deals with encryption of data send.  \\  
+Platform: It contains the pre-processor definition for camera, background configuration etc.\\
+JSON: Contains files for  reading, writing and utilization of json files.\\
+App: It mainly contains the files like Appdelegate , firstLoadingScene  and  MainScene which form the base of the application.\\
+Common: It contains the files which mainly help in localization,utils,network, settings etc. \\
+Controls: It contains the reusable buttons patterns, dialog box, labels etc. \\
+Drawing: Contain files which deals with drawing parammeters like dimesion , field scaling , field pattern etc. \\
+Editor: Files which deals with the editor setting scale segment , eit mode etc. \\ \par}
+
+\begin{figure}[h]
+\caption{TrunApp}
+\centering
+\includegraphics[scale=0.8]{trunappComp}
+\end{figure}
+
 
 \newpage
 
@@ -385,6 +403,12 @@ Where it’s necessary to have three components a factory function CreateModule, a
 
 {\Large As discussed in the above comparisons between the different approaches we see pro and cons of applying a particular technology, now we will analysis which technology to use to make the web application, as per the thesis the cocos2d-x c++ application needed to be transferred to the web browser without recoding so here all the technologies that we saw NaCL, cheerp,FlasCC all are needed to be recoded using their respective libraries and then can be compiled to the JavaScript code , here we have an existing application in our company called TrunApp which have already been done in cocos2d-x C++ so it would be cumbersome and time consuming to recode these using other third party library.Only emscripten and transpiler can help in porting , emscripten is a good choice but have some really serious issues as discussed above like creation of asm.js a format javascript code which is memory consuming and as well it doesn’t compiled the cocos2d-x C++ code to JavaScript giving a lot of compile error which is hard to correct. So in that case the transpiler is the right choice as it help to compile the code to cocs2d-x js which has its own javascript object and can easily updated with small changes as well it would be in total control of the developer as coco2d-js is a proper user friendly, open source programming language with cocos community support. The transpiler that does this is made with C \# and have the facilities like training the data for new syntax so it is also flexible to the version change in the framework. \\ \par}
 
+\begin{figure}[h]
+\caption{Summary of comparison of approaches}
+\centering
+\includegraphics[scale=0.6]{approaches}
+\end{figure}
+
 
 \subsection{Evaluating feasibility of code for transpiling}
 
@@ -430,7 +454,7 @@ All the nodes are then converted to code fragment objects, it contains the detai
 
 \subsection{Observation of the code structure of cocos2d C++ and cocos2d JS}
 
-{\Large There are lot of similarity as well differences between the two languages. To name a few JavaScript generally use var for the variable of any data type which have some resemblances with auto which also can fit with any data type, in cocos2d C++ there is \# include for the header files but here incocos2d js the files are generally loaded in cocos2d.js using loadjs(filename.js) function. In cocos2d C++ MenuImageItem position should be set, but in cocos2d js that is not required it takes the position of the menu.. As C++ is language which get compiled whereas JavaScript is interpreted, so it doesn’t  follow the same follow when getting build as function which defined below the function call in C++ get recognized whereas in case of JavaScript it gives error that function is unknown as it is interpreted.  \\ \par}
+{\Large There are lot of similarity as well differences between the two languages. To name a few JavaScript generally use var for the variable of any data type which have some resemblances with auto which also can fit with any data type, in cocos2d C++ there is \# include for the header files but here in cocos2d js the files are generally loaded in cocos2d.js using loadjs(filename.js) function. In cocos2d C++ MenuImageItem position should be set, but in cocos2d js that is not required it takes the position of the menu. As C++ is language which get compiled whereas JavaScript is interpreted, so it doesn’t  follow the same structure when getting build as function which defined below the function call in C++ get recognized whereas in case of JavaScript it gives error that function is unknown as it is interpreted.  \\ \par}
 
 \subsection{Architecture of the transpiler }
 
@@ -524,12 +548,26 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 
 \newpage
 
-{\Large the order of flow is first the system is trained then the ode is brokens into tokens and the grammer is checked and then it is translated, below is the sequence diagram which shows in details. \par}
+{\Large the order of flow is first the system is trained then the code is brokens into tokens and the grammer is checked and then it is translated, below is the sequence diagram which shows in details. \par}
 
 \begin{figure}[h]
 \caption{Sequence diagram for transpiler}
 \centering
 \includegraphics[scale=0.6]{seqMain}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h]
+\caption{Decomposed sequence diagram for transpiler for lexical}
+\centering
+\includegraphics[scale=0.6]{decompose3}
+\end{figure}
+
+\begin{figure}[h]
+\caption{Decomposed sequence diagram for transpiler for grammar}
+\centering
+\includegraphics[scale=0.6]{decompose4}
 \end{figure}
 
 {\Large after the transpiling done the cocos2d-x C++ code is converted to cocos2d-JS , below is the screenshot of the code conversion. \par}
@@ -572,7 +610,7 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \\  \par}
 
 \subsection{Future work}
-{\Large Future work would be making train the system with new data when a new version of the framework. \\  \par}
+{\Large Future work would be training the system with new data when a new version of the framework is released.Then transpiling the class of TrunAPP ,extending the grammar.   \\  \par}
 
 \newpage
 
@@ -909,6 +947,14 @@ David chiang
 \textit{Hierarchical Phrase-Based Translation}
 Information Sciences Institute ,University of Southern California
 {http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201}
+
+\bibitem{pbmt}
+Yusuke Oda, Hiroyuki Fudaba, Graham Neubig, Hideaki Hata,
+Sakriani Sakti, Tomoki Toda, and Satoshi Nakamura
+\textit{Learning to Generate Pseudo-code from Source
+Code using Statistical Machine Translation}
+Nara Institute of Science and Technology , japan,  pp. 2-3
+{http://www.phontron.com/paper/oda15ase.pdf}
 
 \bibitem{l9} 
 {https://developer.chrome.com/native-client/faq}
