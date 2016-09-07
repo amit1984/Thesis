@@ -33,7 +33,7 @@
 
 %content
 \tableofcontents
-\listoffigures
+
 
 \newpage
 
@@ -66,14 +66,14 @@
 
 \section{Introduction }
 
-{\Large For a product to really become popular it must be reachable to lot of people, this can only be done making it available to public both in the form of native app and web app. Both the form of app has its own pros and cons for example web app features like nothing to download and install make it easier for the people to it started right away removing downloading step in the process. Even company can be sure that all its clients are working on the same version in case of web app as updates are done in the server which are reflected in the browser, even from the point of business analytics also it good as it helps to give information of how user interact with the app.whereas if one is offline then native app really becomes handy. Truncad GmbH already have native app in form of TrunAPP so converting this to web app will make it reachable to more clients, using browser friendly language like javascript a web app can be developed which will have nice graphics, multiuser capability and  responsive with browsers used in any device. In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web  using different technologies like Emscription, Google Native Client and Flash etc. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser.
+{\Large For a product to really become popular it must be reachable to lot of people, this can only be done making it available to public both in the form of native app and web app. Both the form of app has its own pros and cons for example web app features like nothing to download and install make it easier for the people to it started right away removing downloading step in the process. Even company can be sure that all its clients are working on the same version in case of web app as updates are done in the server which are reflected in the browser, even from the point of business analytics also it good as it helps to give information of how user interact with the app.whereas if one is offline then native app really becomes handy. TrunCAD GmbH already have native app in form of TrunAPP so converting this to web app will make it reachable to more clients, using browser friendly language like javascript a web app can be developed which will have nice graphics, multiuser capability and  responsive with browsers used in any device. In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web  using different technologies like Emscription, Google Native Client and Flash etc. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser.
  \par}
 
 \newpage
 
 \section{Application overview}
 
-{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in planning,designing and pricing of the furniture using native application(desktop).Company have lot of products like 3Dgenerator, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++  with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
+{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in making software for clients who use it for planning,designing and pricing of the furniture using the application(desktop).Company have lot of products like 3DGENERATOR, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++  with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
 
 \begin{figure}[h]
 \caption{TrunApp}
@@ -119,7 +119,7 @@ Relopper algorithm is the heart of emscription , it explains how the LLVM is con
 It receives the set of labels and then does the evaluation of each label whether it is reachable or not if it cannot return back then it simply creates a block else if it reaches all entry then it creates a loop , if there are more than one entry then create a multi block. when the relooper process labels it replaces instruction accordingly for example when a block is created  the instruction outside the loop are converted into break command and above are converted into continue statement and then it follows the semantics of JavaScript to get it go where it want to go. After that emscripstion does a pass in addition to optimize the code for example removing the continue commands that occur at the beginning of each loop. This way it helps to generate a JavaScript code that runs on browser. \cite{emsback} \par}
 \subsection{Google Native Client}
 
-{\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way. Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsic and hand-coded assembler. Combination of these properties in an open architecture encourages community review and integrating 3rd-party tools. When running NaCL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NACL container, when this module runs their behaviour is taken care by the NACL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and Netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate NaCL application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NaCL whitelist can also be deployed. The service runtime also provides set of system services commonly associated with application programming which have system calls for both allocation and freeing of  memory. \cite{naclback}  \\ \\
+{\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way. Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsic and hand-coded assembler. Combination of these properties in an open architecture encourages community review and integrating 3rd-party tools. When running NaCL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NaCL container, when this module runs their behaviour is taken care by the NaCL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and Netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate NaCL application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NaCL whitelist can also be deployed. The service runtime also provides set of system services commonly associated with application programming which have system calls for both allocation and freeing of  memory. \cite{naclback}  \\ \\
   \textbf{NACL SDK}  \\ Nacl software development kit includes a modified gcc toolchain that is capable of compiling c++ code to executable (pexe file) that can run in the web. The NaCL executable(naclsdk.exe) inside the kit helps to download the current or specified version Pepper API. \\ \\  \textbf{ Portable native client} \\ The portability problem is solved by PNaCL by splitting the process of compilation, first compiling the code into bitcode executable called pexe and then translating the bitcode to executable according to browser.These pexe is portable and can be used with HTML, CSS, JavaScript to run on user machine.\\  \\   \textbf{Pepper API} \\ It acts as bridge and allow NaCL applications to communicate and pass data to the JavaScript side of the system, the data is generally transferred in the form of serialized text string format and then deserialized on the other end , Pepper API also handles event from mouse , keyboard and also create OpenGL context for hardware accelerated graphic. The data communication between web and the application is asynchronous which also helps to give good user experience.\\    \par}
 
 \begin{figure}[h]
@@ -308,12 +308,12 @@ A tracing garbage collector tracks which blocks are reachable from variable in t
 
 \subsubsection{setup}
 
-{\Large First one need to download the google native client SDK then unzip nacl\textunderscore sdk.zip then have to go inside nacl\textunderscore sdk directory and run /naclsdk update for windows and ./naclsdk update for linux , it will install the latest version 
+{\Large First one need to download the google native client SDK then unzip nacl\textunderscore sdk.zip then have to go inside nacl\textunderscore sdk directory and run /naclsdk update for windows operating system and ./naclsdk update for linux operating system , it will install the latest version 
 of nacl but if one wants to install a specific version then its needed to use the name of that particular version in command for update like ./naclsdk update pepper\textunderscore (version), this will lead to installation of all NaCL dependencies.\par}
 
 \subsubsection{Approach details}
 
-{\Large When NaCl SDK is installed and updated and its NACL\textunderscore SDK\textunderscore ROOT path is configured .Then ‘build-nacl.sh’ script is executed from the top level of cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in nacl/newlib\textunderscore x86\textunderscore 64/ Release folder, after downloading it from  some sample project from github in the folder release  it  gave a new  error "cannot find ldension  and lchipmunk file in  x86\textunderscore 64- nacl/bin/ld folder", tried to check it with pepper\textunderscore canary but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup} \par}
+{\Large When NaCl SDK is installed and updated and its NACL\textunderscore SDK\textunderscore ROOT path is configured .Then ‘build-nacl.sh’ script is executed from the top level of cocos2d-x directory. This will build all the cocos2d-x components and examples for all three NaCL architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in nacl/newlib\textunderscore x86\textunderscore 64/ Release folder, after downloading it from  some sample project from github in the folder release  it  gave a new  error "cannot find ldension  and lchipmunk file in  x86\textunderscore 64- nacl/bin/ld folder", tried to check it with pepper\textunderscore canary but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup} \par}
 
 \subsubsection{Results}
 
@@ -406,7 +406,7 @@ Where it’s necessary to have three components a factory function CreateModule, a
 \begin{figure}[h]
 \caption{Summary of comparison of approaches}
 \centering
-\includegraphics[scale=0.6]{approaches}
+\includegraphics[scale=1]{approaches}
 \end{figure}
 
 
@@ -434,19 +434,19 @@ this._bgLight.setPosition(cc.p(SCREEN_SIZE.width * 0.5, SCREEN_SIZE.height * 0.5
 \subsection{Introduction of Transpiler}
 
 {\Large Transpiler also known as source to source compiler, it converts source code of one language to other , the only difference between this and compiler is that transpiler converts the code of one language to other following the same level of abstraction while compiler converts it from high level language to lower level language(machine code).Transpiler has lot of similarity with the language translator which divide the words into verb, noun , adjective tokens it also divide the code into keywords, type and operator. Collection of similar type of entities makes it easy for search.
-Transpiler like coffescript transpiler, pseudo-master(A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator)  uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the particular language grammar, if its syntactical way correct then it is translated to other language using the lookup table \cite{pseudo} \cite{coffeescript}. For language translation lot of algorithms are used like Hierarchical phrase based model where the next translation depends on the previous subset and the next subset ,synchronous CFG also known as syntax directed transduction grammar , denoted by the rule X->{gamma,alpha,infinity} like hindi to English translation X->{kyun,why}\cite{phrase}. Some transpiler like pseudo-master \footnote{ pseudo-master = A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator } which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules: \\ 1.	 Extract the relationship between first two languages input and output languages. \\
+Transpiler like coffescript transpiler, pseudo-master(A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator)  uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the particular language grammar, if its syntactical way correct then it is translated to other language using the lookup table \cite{pseudo} \cite{coffeescript}. For language translation lot of algorithms are used like Hierarchical phrase based model where the next translation depends on the previous subset and the next subset ,synchronous CFG also known as syntax directed transduction grammar , denoted by the rule X- $>${gamma,alpha,infinity} like hindi to English translation X- $>$ \{kyun,why\}\cite{phrase}. Some transpiler like pseudo-master \footnote{ pseudo-master = A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator } which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules: \\ 1.	 Extract the relationship between first two languages input and output languages. \\
 2. Using this relationship to synthesis new sentence using statistical method to decide which translation is the best. \\
 The foundation of SMT mainly consist of phrase based machine translation (PBMT) and tree to string machine translation (T2SMT). Phrase based translation generally uses phrase to phrase relationship between source and target language for system.out.println of java to console.writeline in c \#.
-For example p = [ if -> if , x -> x, %5 -> by 5 , == 0 -> is divisible]  is the phrase table which contains phase to phase relationship with probabilities then it phases from reordering phase before getting the final sentence like in the case alpha = [1,2,4,3]. Conditional probality is PBMT is usally estimated using the conditional probability p= pr(t/s) , t is the number of token of source and s is the number of token of target. As PBMT cannot take the hieracial order so T2SMT uses parse tree to avoid this problem. It takes the sentence and then breaks it into tokens these tokens are then parsed into tree format  , the parse tree is first formed according the root node and the precedence rule after the tree is formed its value s are replaced by target phrase wild cards.T2SMT doesn’t require reordering as ordering of the target wildcard already defines the target ordering. In SMT using statistical approach you just need to create pseudo code corresponding for the desired statement instead of creating rule for every new case. The AST tree goes through following surface modifications \\
+For example p = [ if - $>$ if , x - $>$ x, \%5 - $>$ by 5 , == 0 -$>$ is divisible]  is the phrase table which contains phase to phase relationship with probabilities then it phases from reordering phase before getting the final sentence like in the case alpha = [1,2,4,3]. Conditional probality is PBMT is usally estimated using the conditional probability p= pr(t/s) , t is the number of token of source and s is the number of token of target. As PBMT cannot take the hieracial order so T2SMT uses parse tree to avoid this problem. It takes the sentence and then breaks it into tokens these tokens are then parsed into tree format  , the parse tree is first formed according the root node and the precedence rule after the tree is formed its value s are replaced by target phrase wild cards.T2SMT doesn’t require reordering as ordering of the target wildcard already defines the target ordering. In SMT using statistical approach you just need to create pseudo code corresponding for the desired statement instead of creating rule for every new case. The AST tree goes through following surface modifications \\
 1. Head insertion also known as the root node followed by the leave node heads become the path way for easier translation as all the head of the source code are kept on the left and all the head node of the target languages are kept on the right. \\
  2. Pruning and simplification: in this the stage pruning of the tree is done with some handwritten rules by removing nodes that doesn’t seam related to the surface of the language. Then training of data take place where the parallel corpus is made where corpus contains pairs of the source statement and there corresponding target code. For automatic evaluation of one use BLEU(bilingual Evaluation under study) it uses the length n word generated by machine and then one feed by the user , this is known as n-gram precision , BLEU value ranges between [0,1]  if the translated result is equal to the references then the score is 1. \\
 Other source to source compiler cetus, it is a source to source restructuring compiler infrastructure for C and followed on project to polaris translator.cetus follow class heieracial structure  1. Symbol table: cetus table provides the information about the data types and identifier. All the cetus  IR classes are derived from traversable it traverse the list of object in generic way. Annotation:  pragmas, comments, directives of the IR objects are stored in annotation objects.
 Cetus follow symbolic manipulation by simplifying and normalizing the expressions like 
-1+3*4 -5 + a = 8+a  this is known as folding.cetus array section mainly consist of use/def pattern, before the array analysis applied the arrays are simplified. Ex. pragma cetus use (A[0:100]) def(B[1:99]).it also uses data dependency framework to push values into the variable for example for loop : for(i=lb; i< ub; i++) where the value of lb and ub are given by analysing the data structure of the code. The transformation phase consists of privatization, reduction variable recognition and induction of variable substitute. In privatisation algorithm traverse the loop from inner to the outermost loop to decide the private variables. Reduction variable recognition is done by criteria to define what type of variable it is. Some of the features like automatic translation and compiler driven optimizations makes it widely applicable to source level optimization, adaptive runtime tuning and transformation of both multicore and large scale parallel program.
+1+3*4 -5 + a = 8+a  this is known as folding.cetus array section mainly consist of use/def pattern, before the array analysis applied the arrays are simplified. Ex. pragma cetus use (A[0:100]) def(B[1:99]).it also uses data dependency framework to push values into the variable for example for loop : for(i=lb; i$<$ ub; i++) where the value of lb and ub are given by analysing the data structure of the code. The transformation phase consists of privatization, reduction variable recognition and induction of variable substitute. In privatisation algorithm traverse the loop from inner to the outermost loop to decide the private variables. Reduction variable recognition is done by criteria to define what type of variable it is. Some of the features like automatic translation and compiler driven optimizations makes it widely applicable to source level optimization, adaptive runtime tuning and transformation of both multicore and large scale parallel program.
 Transpiler like coffescript  which transcompiles to javascript most of things in coffescript are in the form of expression which returns a value. Few  basics which makes coffescript  coffescript syntax much easier than JavaScript are no need of semicolon, instead of curly braces indentation are used 
 , whitespaces are used to delimit the codes and parenthesis are not used for passing the arguments.
 The coffescript parser is generated by jison  parser,  jison sytle is similar to Bison and its is a bottom-up parser used for implementation of javascript.To create the jison parser we list to match the pattern on the left side and steps needed to create the syntax tree nodes on the right side. As the parser runs it shifts tokens from token stream from left to right to get the non-terminal nodes.
-The grammer of coffescript is generally defined by the name of noon0terminal as key to the list of patterns with each match action dollar sign are provided as its value.grammer for precedence goes according to the BODMAS rule. Tokens are generated using regex from the source code, after the match found tokens are stored and then the parser move ahead to find another token. Tokenizing also follow some rules of grammar and also checks to ensure that keywords are not used as identifier.tokens that are used in coffescript ae keywords,identifier,number whitespace ,comment,multident,string,compare , math , conditional , relational,bool etc.
+The grammer of coffescript is generally defined by the name of non-terminal as key to the list of patterns with each match action dollar sign are provided as its value.grammer for precedence goes according to the BODMAS \footnote{BODMAS=Brackets Order Division Multiplication Addition Subtraction} rule. Tokens are generated using regex from the source code, after the match found tokens are stored and then the parser move ahead to find another token. Tokenizing also follow some rules of grammar and also checks to ensure that keywords are not used as identifier.tokens that are used in coffescript ae keywords,identifier,number whitespace ,comment,multident,string,compare , math , conditional , relational,bool etc.
 Rewriter also can  be called as look ahead and look behind algorithm , it rewrite the tokens by looking one token ahead and one token behind giving the idea how many tokens to move forward or backward in the  stream these helps the parser to not miss any tokens .rewrite helps to make the clean the things up which are result of complicate grammar and bloated parsing table .
 Syntax tree in coffescript is form considering the grammar nodes.coffe contains all the classes for the formation of nodes, then compile command is fired to convert the tree into JavaScript string.
 All the nodes are then converted to code fragment objects, it contains the details from where the code came these code fragment are then combined to form code snippets. Base is the abstract class for all nodes in syntax tree , the subclass of this base class implements code generation by executing CompileNode method. The scope class regulates lexical scoping within coffescript  when declare it form a tree of scope each scope knows the variable declared within and as well the reference to the parent scope, like this we understand with variable are new and which are needed to be declared using var. All these lexing, rewriting and  node formation is done using helper these classes contains the common utilities that are used by the by these classes for example counting characters ,sorting, merging ,trimming , count the no of occurrence of string etc. \\
@@ -499,13 +499,13 @@ Get the first word
 \subsubsection{Hidden markov model}
 
 {\Large Hidden markov model use the previous data of observation from history and then using the probability calculate the next step data and these are sometimes derived by using matrix multiplication of some more related probability data. Below is the example to make it understand better. For example there are only two temperature in a year Hot and cold. \\ 
-                       \thinspace  H     C \\
+                      \hspace*{0.1in}  H   \hspace*{0.1in}   C \\
                               H   0.7  0.3 \\
                               C  0.4 0.6   \\
 
 Above matrix denotes hot year after hot year is 0.7 and cold year after a hot is 0.3.suppose current research show a correlation between the size of tree growth ring and tempreture.where S , M , L denotes small, medium and Large respectively. \\
 
-                            \thinspace          S     M    L \\
+                           \hspace*{0.1in}   S  \hspace*{0.1in}    M  \hspace*{0.1in}   L \\
                                H  0.1  0.4  0.5 \\
                                C  0.7  0.2  0.1 
 \\   \par}
@@ -544,6 +544,11 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \end{lstlisting}
 {\Large     \par}
 
+\begin{figure}[h]
+\caption{Component diagram for transpiler}
+\centering
+\includegraphics[scale=0.7]{componentDia}
+\end{figure}
 
 
 \newpage
@@ -585,8 +590,6 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \includegraphics[scale=1.1]{UI}
 \end{figure}
 
-{\Large User have t select . \\ \\ \par}
-
 \newpage
 
 \section{Conclusion}
@@ -605,156 +608,17 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \newpage
 
 \subsection{Limitation and deviation from hypothesis}
-{\Large There was no deviation from the hypothesis it went according to what we planned.
+{\Large There was no deviation from the hypothesis it went according to what was planned.
              There are some limitations because the two have some syntactical difference which was already discussed above in section “observation of code structure of cocos2d C++  and cocos2d JS” this exceptions sometimes effect the accuracy of translation, therefore  the accuracy of transpiling remains between 80-90 \% these code changes needed to be done by hand and then add it to the special cases xml , these  helps as when the code is compiled  again it gets the correct syntax from special cases xml and  gets compiled with 100 \% accuracy.
 \\  \par}
 
 \subsection{Future work}
-{\Large Future work would be training the system with new data when a new version of the framework is released.Then transpiling the class of TrunAPP ,extending the grammar.   \\  \par}
+{\Large While working on this thesis some new ideas and approaches for development were seen, short term goal is to extend the prototype to transpile the existing to transpile TrunAPP application to TrunWEB.Long term goal is to train the system with new data when a new version of the framework is released.Now it covers most of the grammar need for transpiling but this grammar needs to be extended to increase its accuracy.Both cocos2d C++ and JS have there own files for grammar take for example the file which deals with menu both in C++ and JS have have menu create command using the string similarity alogirthm finding these particular strings from both the file and then using the the training algorithm pattern matching extracting the the tokens and feeding them into the xml file these will help in lessening the human intervention and effort as it is only needed to feed the folder it will automatically find the files and the matching string inside it and write the tokens to the xml , this will also help if a new version of framework arrives as now it can do everthing on its own just need to feed the grammar folder of both the languages to the system.  \\  \par}
 
 \newpage
 
-\newpage
+\setcounter{secnumdepth}{0}
 
-\section{Appendix}
-
-
-\begin{lstlisting}[label=some-code,caption= Code for training the system]
-class Training
-{
-  double[,] states = new double[4, 4] { { 0, 0.5,0,1 }, { 0.7, 0.5,0.7,0.7 },
-  { 0, 0.7 ,0.5 ,0.7 }, {0,0.8,0,0.8} };
-   double[,] param = new double[4, 2];
-
-   string[] separator = { ";", "{", "}", "\r", "\n", "\r\n" };
-
-   string[] operators = { " ","+", "-", "*", "/", "%", "&","(",")","[","]",
-     "|", "^", "!", "~", "&&", "||",",",
-     "++", "--", "<<", ">>", "==", "!=", "<", ">", "<=",
-     ">=", "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=",
-     "^=", "<<=", ">>=", ".", "[]", "()", "?:", "=>", "??" ,"::"};
-
-    public string[] calculateParam(string name)
-    {
-      double Kno = (4 / name.Length) > 1 ? 0.1 : (4 / name.Length);
-      double ono = (1 / name.Length) > 1 ? 0.1 : (1 / name.Length);
-      double sno = (1 / name.Length) > 1 ? 0.1 : (1 / name.Length);
-      double ino = (5 / name.Length) > 1 ? 0.1 : (5 / name.Length);
-
-       bool oregB,sregB;
-
-        if (Array.IndexOf(operators, name) > -1) 
-       {
-          oregB = true; 
-        }else
-       {
-          oregB = false;
-        }
-
-        if (Array.IndexOf(separator, name) > -1) 
-        {
-           sregB = true; 
-         }else
-        {
-            sregB = false;
-         }
-
-
-        double kreg = Regex.Match(name, @"^[a-zA-Z]+$").Success ? 1 : 0;
-        double oreg = oregB? 1 : 0;
-        double sreg = sregB? 1 : 0; 
-        double ireg = Regex.Match(name, @"^[a-zA-Z0-9::]+$").Success ? 1 : 0;
-
-        param[0,0]=Kno; param[0,1]=kreg; param[1,0] = ono; param[1,1] = oreg;  
-        param[2,0] = sno; param[2,1] = sreg; param[3,0] = ino;
-        param[3,1] = ireg;
-        string[] ret = new string[4];
-        if ((Kno > 0.5) && (kreg > 0.5))
-        {
-           ret[0] = "keyword";
-           ret[1] = name;
-           ret[2] =Convert.ToString((Kno + kreg) / 2);
-
-           return ret;
-                
-         }
-         else if ((ono > 0.5) && (oreg > 0.5))
-         {
-                ret[0] = "operator";
-                ret[1] = name;
-                ret[2] = Convert.ToString((ono + oreg) / 2);
-
-                return ret;
-
-            }
-            else if ((sno > 0.5) && (sreg > 0.5))
-            {
-                ret[0] = "seperator";
-                ret[1] = name;
-                ret[2] = Convert.ToString((sno + sreg) / 2);
-
-                return ret;
-
-            }
-
-            else
-            {
-                return ret;
-            }
-        }
-
-\end{lstlisting}
-
-\begin{lstlisting}[label=some-code,caption= Reading the tokens from the file]
-
-while ((line = file.ReadLine()) != null)
- {
- DataTable symbolTable = new DataTable();
- symbolTable.Columns.Add("type", typeof(string));
- symbolTable.Columns.Add("name", typeof(string));
- TranspilerConsole.utility.Translation tr = new 
-                          TranspilerConsole.utility.Translation();
- string str = "";
- string st = peg.pegGrammarstr(line);
- if (string.Compare(st, "") != 0)
-   {
-        str = st;
-    }
- else
-   {
-    try {
-      while (line != "")
-      {
-
-        line = line.Trim(' ', '\t');
-        string token = analyzer.GetNextLexicalAtom(ref line);
-        if (token != null)
-        {
-           string[] tok = splitLineString(token);             
-           symbolTable.Rows.Add(tok[0].Trim(), tok[1].Trim());
-           string c = tok[1].Substring(tok[1].Length - 1);      
-           if (string.IsNullOrWhiteSpace(c))
-           {
-              str = str + tran.getTranslatedData(tok[0].Trim(),
-                        tok[1].Trim()) + " ";
-
-            }
-           else
-           {
-             str = str + tran.getTranslatedData(tok[0].Trim()
-                       , tok[1].Trim());
-            }
-
-         }
-
-    }                  
-
-\end{lstlisting}
-
-
-
-
-\newpage
 section{Reference}
 
 \begin{thebibliography}{9}
@@ -963,5 +827,145 @@ Nara Institute of Science and Technology , japan,  pp. 2-3
 {https://kripken.github.io/mloc\_emscripten\_talk/cppcon.html/31}
 
 \end{thebibliography}
+
+\newpage
+
+\listoffigures
+
+\section{Appendix}
+
+\begin{lstlisting}[label=some-code,caption= Code for training the system]
+class Training
+{
+  double[,] states = new double[4, 4] { { 0, 0.5,0,1 }, { 0.7, 0.5,0.7,0.7 },
+  { 0, 0.7 ,0.5 ,0.7 }, {0,0.8,0,0.8} };
+   double[,] param = new double[4, 2];
+
+   string[] separator = { ";", "{", "}", "\r", "\n", "\r\n" };
+
+   string[] operators = { " ","+", "-", "*", "/", "%", "&","(",")","[","]",
+     "|", "^", "!", "~", "&&", "||",",",
+     "++", "--", "<<", ">>", "==", "!=", "<", ">", "<=",
+     ">=", "=", "+=", "-=", "*=", "/=", "%=", "&=", "|=",
+     "^=", "<<=", ">>=", ".", "[]", "()", "?:", "=>", "??" ,"::"};
+
+    public string[] calculateParam(string name)
+    {
+      double Kno = (4 / name.Length) > 1 ? 0.1 : (4 / name.Length);
+      double ono = (1 / name.Length) > 1 ? 0.1 : (1 / name.Length);
+      double sno = (1 / name.Length) > 1 ? 0.1 : (1 / name.Length);
+      double ino = (5 / name.Length) > 1 ? 0.1 : (5 / name.Length);
+
+       bool oregB,sregB;
+
+        if (Array.IndexOf(operators, name) > -1) 
+       {
+          oregB = true; 
+        }else
+       {
+          oregB = false;
+        }
+
+        if (Array.IndexOf(separator, name) > -1) 
+        {
+           sregB = true; 
+         }else
+        {
+            sregB = false;
+         }
+
+
+        double kreg = Regex.Match(name, @"^[a-zA-Z]+$").Success ? 1 : 0;
+        double oreg = oregB? 1 : 0;
+        double sreg = sregB? 1 : 0; 
+        double ireg = Regex.Match(name, @"^[a-zA-Z0-9::]+$").Success ? 1 : 0;
+
+        param[0,0]=Kno; param[0,1]=kreg; param[1,0] = ono; param[1,1] = oreg;  
+        param[2,0] = sno; param[2,1] = sreg; param[3,0] = ino;
+        param[3,1] = ireg;
+        string[] ret = new string[4];
+        if ((Kno > 0.5) && (kreg > 0.5))
+        {
+           ret[0] = "keyword";
+           ret[1] = name;
+           ret[2] =Convert.ToString((Kno + kreg) / 2);
+
+           return ret;
+                
+         }
+         else if ((ono > 0.5) && (oreg > 0.5))
+         {
+                ret[0] = "operator";
+                ret[1] = name;
+                ret[2] = Convert.ToString((ono + oreg) / 2);
+
+                return ret;
+
+            }
+            else if ((sno > 0.5) && (sreg > 0.5))
+            {
+                ret[0] = "seperator";
+                ret[1] = name;
+                ret[2] = Convert.ToString((sno + sreg) / 2);
+
+                return ret;
+
+            }
+
+            else
+            {
+                return ret;
+            }
+        }
+
+\end{lstlisting}
+
+\begin{lstlisting}[label=some-code,caption= Reading the tokens from the file]
+
+while ((line = file.ReadLine()) != null)
+ {
+ DataTable symbolTable = new DataTable();
+ symbolTable.Columns.Add("type", typeof(string));
+ symbolTable.Columns.Add("name", typeof(string));
+ TranspilerConsole.utility.Translation tr = new 
+                          TranspilerConsole.utility.Translation();
+ string str = "";
+ string st = peg.pegGrammarstr(line);
+ if (string.Compare(st, "") != 0)
+   {
+        str = st;
+    }
+ else
+   {
+    try {
+      while (line != "")
+      {
+
+        line = line.Trim(' ', '\t');
+        string token = analyzer.GetNextLexicalAtom(ref line);
+        if (token != null)
+        {
+           string[] tok = splitLineString(token);             
+           symbolTable.Rows.Add(tok[0].Trim(), tok[1].Trim());
+           string c = tok[1].Substring(tok[1].Length - 1);      
+           if (string.IsNullOrWhiteSpace(c))
+           {
+              str = str + tran.getTranslatedData(tok[0].Trim(),
+                        tok[1].Trim()) + " ";
+
+            }
+           else
+           {
+             str = str + tran.getTranslatedData(tok[0].Trim()
+                       , tok[1].Trim());
+            }
+
+         }
+
+    }                  
+
+\end{lstlisting}
+
+\newpage
 
 \end{document}
