@@ -14,7 +14,7 @@
 \captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
 \title{A comparative approach for running a Cocos2d-x C++ cross- platform application on web browsers}
-\author{Amit Bose\\  Master of Science in Information Technology\\  Kiel University of Applied Sciences }
+\author{ \textbf{Master Thesis } \\\\  Master of Science \\ in  \\ Information Technology\\  Kiel University of Applied Sciences  \\   \textbf{ Amit Bose }\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\  Dissertation Coordinator \\ Prof.Dr. Robert Manzke, Kiel University of Applied Sciences \\ Prof.Dr. Jens L\"{u}ssem, Kiel University of Applied Sciences }
 
 \linespread{1.5}
 \setlength{\parskip}{1ex}%
@@ -33,7 +33,7 @@
 
 %content
 \tableofcontents
-\listoffigures
+
 
 \newpage
 
@@ -66,14 +66,14 @@
 
 \section{Introduction }
 
-{\Large For a product to really become popular it must be reachable to lot of people, this can only be done making it available to public both in the form of native app and web app. Both the form of app has its own pros and cons for example web app features like nothing to download and install make it easier for the people to it started right away removing downloading step in the process. Even company can be sure that all its clients are working on the same version in case of web app as updates are done in the server which are reflected in the browser, even from the point of business analytics also it good as it helps to give information of how user interact with the app.whereas if one is offline then native app really becomes handy. Truncad GmbH already have native app in form of TrunAPP so converting this to web app will make it reachable to more clients, using browser friendly language like javascript a web app can be developed which will have nice graphics, multiuser capability and  responsive with browsers used in any device. In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web  using different technologies like Emscription, Google Native Client and Flash etc. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser.
+{\Large For a product to really become popular it must be reachable to lot of people, this can only be done making it available to public both in the form of native app and web app. Both the form of app has its own pros and cons for example web app features like nothing to download and install make it easier for the people to it started right away removing downloading step in the process. Even company can be sure that all its clients are working on the same version in case of web app as updates are done in the server which are reflected in the browser, even from the point of business analytics also it good as it helps to give information of how user interact with the app.whereas if one is offline then native app really becomes handy. TrunCAD GmbH already have native app in form of TrunAPP so converting this to web app will make it reachable to more clients, using browser friendly language like javascript a web app can be developed which will have nice graphics, multiuser capability and  responsive with browsers used in any device. In this thesis I am going to do a comparative study of different approaches for porting a cross platform cocos2d C++ application into the web  using different technologies like Emscription, Google Native Client and Flash etc. The purpose of this evaluation is to find a holistic approach in order to find the best solution for porting this application to the browser.
  \par}
 
 \newpage
 
 \section{Application overview}
 
-{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in planning,designing and pricing of the furniture using native application(desktop).Company have lot of products like 3Dgenerator, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++  with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
+{\Large TrunCAD GmbH was founded by Frank Rushmeier in 2004 specialized in making software for clients who use it for planning,designing and pricing of the furniture using the application(desktop).Company have lot of products like 3DGENERATOR, Truncad CNC, TrunAPP etc. I  am working on prototype to check the feasibility of porting TrunAPP to web browser, currently it is only available in in ios,anroid and windows platform, it is a cross platform application developed using cocos2d C++  with TrunApp one can enter dimensions and choose material for construction of the furniture. The App  has drag and drop option with which one can drop different furniture structure on the canvas and can change their size,structure and material used. Once done then can send all the dimension, material details with the pricing via email.These dimension are latter on used by the clients for making the material cutting for the furniture and speed up the production process.\cite{truncad} \par}
 
 \begin{figure}[h]
 \caption{TrunApp}
@@ -119,7 +119,7 @@ Relopper algorithm is the heart of emscription , it explains how the LLVM is con
 It receives the set of labels and then does the evaluation of each label whether it is reachable or not if it cannot return back then it simply creates a block else if it reaches all entry then it creates a loop , if there are more than one entry then create a multi block. when the relooper process labels it replaces instruction accordingly for example when a block is created  the instruction outside the loop are converted into break command and above are converted into continue statement and then it follows the semantics of JavaScript to get it go where it want to go. After that emscripstion does a pass in addition to optimize the code for example removing the continue commands that occur at the beginning of each loop. This way it helps to generate a JavaScript code that runs on browser. \cite{emsback} \par}
 \subsection{Google Native Client}
 
-{\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way. Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsic and hand-coded assembler. Combination of these properties in an open architecture encourages community review and integrating 3rd-party tools. When running NaCL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NACL container, when this module runs their behaviour is taken care by the NACL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and Netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate NaCL application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NaCL whitelist can also be deployed. The service runtime also provides set of system services commonly associated with application programming which have system calls for both allocation and freeing of  memory. \cite{naclback}  \\ \\
+{\Large Native clients help to provide computational performance of an application in web browser in a secure and safe way. Native Client uses software fault isolation and a secure runtime to direct system interaction and side effects through interfaces managed by Native Client. Native Client provides operating system portability for binary code while supporting performance-oriented features generally absent from web application programming environments, such as thread support, instruction set extensions such as SSE, and use of compiler intrinsic and hand-coded assembler. Combination of these properties in an open architecture encourages community review and integrating 3rd-party tools. When running NaCL application JavaScript components are first loaded these then helps to invoke NACL browser plugin to load the particular library into NaCL container, when this module runs their behaviour is taken care by the NaCL module for security purpose. For inter module communication native client use two option simple RPC facility(SRPC) and Netscape plugin application programming interface(NPAPI) , inter module communication also provide shared memory to avoid messaging overhead for high volume and high frequency communication. Native client use sandbox to detect the security flaws in untrusted x86 code such as self-modifying code and overlapping instructions this is generally achieve by practice of using aligned and structured rules and insures that native code module can be disassembled safely.NPAPI plugin also have support for interaction between service runtime and browsers, the service runtime maintains integrity of the sandbox and provides resource abstraction to isolate NaCL application from host resources and operating system interface, it also prevent untrusted code from inappropriate data access , sometimes additional measures like CPU blacklisting and NaCL whitelist can also be deployed. The service runtime also provides set of system services commonly associated with application programming which have system calls for both allocation and freeing of  memory. \cite{naclback}  \\ \\
   \textbf{NACL SDK}  \\ Nacl software development kit includes a modified gcc toolchain that is capable of compiling c++ code to executable (pexe file) that can run in the web. The NaCL executable(naclsdk.exe) inside the kit helps to download the current or specified version Pepper API. \\ \\  \textbf{ Portable native client} \\ The portability problem is solved by PNaCL by splitting the process of compilation, first compiling the code into bitcode executable called pexe and then translating the bitcode to executable according to browser.These pexe is portable and can be used with HTML, CSS, JavaScript to run on user machine.\\  \\   \textbf{Pepper API} \\ It acts as bridge and allow NaCL applications to communicate and pass data to the JavaScript side of the system, the data is generally transferred in the form of serialized text string format and then deserialized on the other end , Pepper API also handles event from mouse , keyboard and also create OpenGL context for hardware accelerated graphic. The data communication between web and the application is asynchronous which also helps to give good user experience.\\    \par}
 
 \begin{figure}[h]
@@ -308,12 +308,12 @@ A tracing garbage collector tracks which blocks are reachable from variable in t
 
 \subsubsection{setup}
 
-{\Large First one need to download the google native client SDK then unzip nacl\textunderscore sdk.zip then have to go inside nacl\textunderscore sdk directory and run /naclsdk update for windows and ./naclsdk update for linux , it will install the latest version 
+{\Large First one need to download the google native client SDK then unzip nacl\textunderscore sdk.zip then have to go inside nacl\textunderscore sdk directory and run /naclsdk update for windows operating system and ./naclsdk update for linux operating system , it will install the latest version 
 of nacl but if one wants to install a specific version then its needed to use the name of that particular version in command for update like ./naclsdk update pepper\textunderscore (version), this will lead to installation of all NaCL dependencies.\par}
 
 \subsubsection{Approach details}
 
-{\Large When NaCl SDK is installed and updated and its NACL\textunderscore SDK\textunderscore ROOT path is configured .Then ‘build-nacl.sh’ script is executed from the top level of cocos2dx directory. This will build all the cocos2dx components and examples for all three NaCl architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in nacl/newlib\textunderscore x86\textunderscore 64/ Release folder, after downloading it from  some sample project from github in the folder release  it  gave a new  error "cannot find ldension  and lchipmunk file in  x86\textunderscore 64- nacl/bin/ld folder", tried to check it with pepper\textunderscore canary but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup} \par}
+{\Large When NaCl SDK is installed and updated and its NACL\textunderscore SDK\textunderscore ROOT path is configured .Then ‘build-nacl.sh’ script is executed from the top level of cocos2d-x directory. This will build all the cocos2d-x components and examples for all three NaCL architectures: x86-64, i686, and arm.But when the make file is run for samples it gives error as it cannot find the libcocos2d.a in nacl/newlib\textunderscore x86\textunderscore 64/ Release folder, after downloading it from  some sample project from github in the folder release  it  gave a new  error "cannot find ldension  and lchipmunk file in  x86\textunderscore 64- nacl/bin/ld folder", tried to check it with pepper\textunderscore canary but it gives build fails as it cannot find the files to build and then tried with removing the dependenices on libcocos2d.a it compile well also made the bin folder for .nexe file of nacl which is inserted into html file for rendering but as it build depends on libcocos2d.a and the makefile root cannot find it so these .nexe file is not formed inside the bin folder. \cite{naclsetup} \par}
 
 \subsubsection{Results}
 
@@ -406,7 +406,7 @@ Where it’s necessary to have three components a factory function CreateModule,
 \begin{figure}[h]
 \caption{Summary of comparison of approaches}
 \centering
-\includegraphics[scale=0.6]{approaches}
+\includegraphics[scale=1]{approaches}
 \end{figure}
 
 
@@ -434,22 +434,21 @@ this._bgLight.setPosition(cc.p(SCREEN_SIZE.width * 0.5, SCREEN_SIZE.height * 0.5
 \subsection{Introduction of Transpiler}
 
 {\Large Transpiler also known as source to source compiler, it converts source code of one language to other , the only difference between this and compiler is that transpiler converts the code of one language to other following the same level of abstraction while compiler converts it from high level language to lower level language(machine code).Transpiler has lot of similarity with the language translator which divide the words into verb, noun , adjective tokens it also divide the code into keywords, type and operator. Collection of similar type of entities makes it easy for search.
-Transpiler like coffescript transpiler, pseudo-master(A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator)  uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the particular language grammar, if its syntactical way correct then it is translated to other language using the lookup table \cite{pseudo} \cite{coffeescript}. For language translation lot of algorithms are used like Hierarchical phrase based model where the next translation depends on the previous subset and the next subset ,synchronous CFG also known as syntax directed transduction grammar , denoted by the rule X->{gamma,alpha,infinity} like hindi to English translation X->{kyun,why}\cite{phrase}. Some transpiler like pseudo-master \footnote{ pseudo-master = A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator } which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules: \\ 1.	 Extract the relationship between first two languages input and output languages. \\
+Transpiler like coffescript transpiler, pseudo-master(A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator)  uses the same first few step of compiler for transpiling. It takes the source code and then using lexical analyser divide it into tokens these tokens are then converted into a syntax tree and the tree grammar is then checked with the particular language grammar, if its syntactical way correct then it is translated to other language using the lookup table \cite{pseudo} \cite{coffeescript}. For language translation lot of algorithms are used like Hierarchical phrase based model where the next translation depends on the previous subset and the next subset ,synchronous CFG also known as syntax directed transduction grammar where elementarty structure are denoted by pairs , denoted by the rule X- $>${gamma,alpha,infinity} like hindi to English translation X- $>$ \{kyun,why\}\cite{ph1}. Some transpiler like pseudo-master \footnote{ pseudo-master = A restricted Python to idiomatic JavaScript / Ruby / Go / C \# translator } which translate the code into simple English use rule base approach which uses detailed information closely related to the structure of the source code and are able to generate code when their rules matches the given data. In data based approach the text of the code is retrieve from the training data. Here the accuracy can be increased by training the data more or expert advice on the data. Statistical machine translation it is based on both rules: \\ 1.	 Extract the relationship between first two languages input and output languages. \\
 2. Using this relationship to synthesis new sentence using statistical method to decide which translation is the best. \\
-The foundation of SMT mainly consist of phrase based machine translation (PBMT) and tree to string machine translation (T2SMT). Phrase based translation generally uses phrase to phrase relationship between source and target language for system.out.println of java to console.writeline in c \#.
-For example p = [ if -> if , x -> x, %5 -> by 5 , == 0 -> is divisible]  is the phrase table which contains phase to phase relationship with probabilities then it phases from reordering phase before getting the final sentence like in the case alpha = [1,2,4,3]. Conditional probality is PBMT is usally estimated using the conditional probability p= pr(t/s) , t is the number of token of source and s is the number of token of target. As PBMT cannot take the hieracial order so T2SMT uses parse tree to avoid this problem. It takes the sentence and then breaks it into tokens these tokens are then parsed into tree format  , the parse tree is first formed according the root node and the precedence rule after the tree is formed its value s are replaced by target phrase wild cards.T2SMT doesn’t require reordering as ordering of the target wildcard already defines the target ordering. In SMT using statistical approach you just need to create pseudo code corresponding for the desired statement instead of creating rule for every new case. The AST tree goes through following surface modifications \\
+The foundation of SMT mainly consist of phrase based machine translation (PBMT) and tree to string machine translation (T2SMT) \cite{pbmt}. Phrase based translation generally uses phrase to phrase relationship between source and target language for system.out.println of java to console.writeline in c \#.
+For example p = [ if - $>$ if , x - $>$ x, \%5 - $>$ by 5 , == 0 -$>$ is divisible], where p is generated using the phrase table which contains phrase to phrase relationship with probabilities, then it passes through reordering phase for to get the proper order of phrase before getting the final sentence. Conditional probality is PBMT is usally estimated using the conditional probability p= pr(t/s) , t is the number of token of source and s is the number of token of target. As PBMT cannot take the hieracial order so T2SMT uses parse tree to avoid this problem. It takes the sentence and then breaks it into tokens these tokens are then parsed into tree format  , the parse tree is first formed according the root node and the precedence rule after the tree is formed its values are replaced by target phrase wild cards.T2SMT doesn’t require reordering as ordering of the target wildcard already defines the target ordering. The AST tree goes through following surface modifications for translation:\\
 1. Head insertion also known as the root node followed by the leave node heads become the path way for easier translation as all the head of the source code are kept on the left and all the head node of the target languages are kept on the right. \\
- 2. Pruning and simplification: in this the stage pruning of the tree is done with some handwritten rules by removing nodes that doesn’t seam related to the surface of the language. Then training of data take place where the parallel corpus is made where corpus contains pairs of the source statement and there corresponding target code. For automatic evaluation of one use BLEU(bilingual Evaluation under study) it uses the length n word generated by machine and then one feed by the user , this is known as n-gram precision , BLEU value ranges between [0,1]  if the translated result is equal to the references then the score is 1. \\
-Other source to source compiler cetus, it is a source to source restructuring compiler infrastructure for C and followed on project to polaris translator.cetus follow class heieracial structure  1. Symbol table: cetus table provides the information about the data types and identifier. All the cetus  IR classes are derived from traversable it traverse the list of object in generic way. Annotation:  pragmas, comments, directives of the IR objects are stored in annotation objects.
-Cetus follow symbolic manipulation by simplifying and normalizing the expressions like 
-1+3*4 -5 + a = 8+a  this is known as folding.cetus array section mainly consist of use/def pattern, before the array analysis applied the arrays are simplified. Ex. pragma cetus use (A[0:100]) def(B[1:99]).it also uses data dependency framework to push values into the variable for example for loop : for(i=lb; i< ub; i++) where the value of lb and ub are given by analysing the data structure of the code. The transformation phase consists of privatization, reduction variable recognition and induction of variable substitute. In privatisation algorithm traverse the loop from inner to the outermost loop to decide the private variables. Reduction variable recognition is done by criteria to define what type of variable it is. Some of the features like automatic translation and compiler driven optimizations makes it widely applicable to source level optimization, adaptive runtime tuning and transformation of both multicore and large scale parallel program.
-Transpiler like coffescript  which transcompiles to javascript most of things in coffescript are in the form of expression which returns a value. Few  basics which makes coffescript  coffescript syntax much easier than JavaScript are no need of semicolon, instead of curly braces indentation are used 
+ 2. Pruning and simplification: In this the stage pruning of the tree is done with some handwritten rules by removing nodes that doesn’t seem related to the surface of the language. Then training of data take place where the parallel corpus is made where corpus contains pairs of the source statement and there corresponding target code. For automatic evaluation one use BLEU(bilingual Evaluation under study) it uses the length n word generated by machine and then one feed by the user , this is known as n-gram precision , BLEU value ranges between [0,1]  if the translated result is equal to the references then the score is 1. \\
+Other source to source compiler cetus, it is a source to source restructuring compiler infrastructure for C and followed on project to polaris translator \cite{cetus}.cetus follow class heieracial structure  1. Symbol table: cetus table provides the information about the data types and identifier. Traversable objects: All the cetus  IR(internal programe represenation) classes are derived from base class "traversable" it traverse the list of object in generic way. 3.Annotation:  pragmas, comments, directives of the IR objects are stored in annotation objects.Printing: The printing functions have been extended to allow for flexible rendering of the IR \footnote{IR = internal programe represenation} classes.Cetus follow symbolic manipulation by simplifying and normalizing the expressions like 
+1+3*4 -5 + a -$>$ 8+a ( folding) (a*2)/(8*c) -$>$ a/(4*c) (division). The transformation phase consists of privatization, reduction variable recognition and induction of variable substitute. In privatisation algorithm traverse the loop from inner to the outermost loop to decide the private variables. Reduction variable recognition is done by criteria to define what type of variable it is. Some of the features like automatic translation and compiler driven optimizations makes it widely applicable to source level optimization, adaptive runtime tuning and transformation of both multicore and large scale parallel program.
+Transpiler like coffeescript transpiler  which transcompiles to javascript most of things in coffescript are in the form of expression which returns a value. Few  basics which makes  coffeescript syntax much easier than JavaScript are no need of semicolon, instead of curly braces indentation are used 
 , whitespaces are used to delimit the codes and parenthesis are not used for passing the arguments.
-The coffescript parser is generated by jison  parser,  jison sytle is similar to Bison and its is a bottom-up parser used for implementation of javascript.To create the jison parser we list to match the pattern on the left side and steps needed to create the syntax tree nodes on the right side. As the parser runs it shifts tokens from token stream from left to right to get the non-terminal nodes.
-The grammer of coffescript is generally defined by the name of noon0terminal as key to the list of patterns with each match action dollar sign are provided as its value.grammer for precedence goes according to the BODMAS rule. Tokens are generated using regex from the source code, after the match found tokens are stored and then the parser move ahead to find another token. Tokenizing also follow some rules of grammar and also checks to ensure that keywords are not used as identifier.tokens that are used in coffescript ae keywords,identifier,number whitespace ,comment,multident,string,compare , math , conditional , relational,bool etc.
-Rewriter also can  be called as look ahead and look behind algorithm , it rewrite the tokens by looking one token ahead and one token behind giving the idea how many tokens to move forward or backward in the  stream these helps the parser to not miss any tokens .rewrite helps to make the clean the things up which are result of complicate grammar and bloated parsing table .
-Syntax tree in coffescript is form considering the grammar nodes.coffe contains all the classes for the formation of nodes, then compile command is fired to convert the tree into JavaScript string.
-All the nodes are then converted to code fragment objects, it contains the details from where the code came these code fragment are then combined to form code snippets. Base is the abstract class for all nodes in syntax tree , the subclass of this base class implements code generation by executing CompileNode method. The scope class regulates lexical scoping within coffescript  when declare it form a tree of scope each scope knows the variable declared within and as well the reference to the parent scope, like this we understand with variable are new and which are needed to be declared using var. All these lexing, rewriting and  node formation is done using helper these classes contains the common utilities that are used by the by these classes for example counting characters ,sorting, merging ,trimming , count the no of occurrence of string etc. \\
+The coffeescript parser is generated by jison  parser,  jison style is similar to Bison and its is a bottom-up parser used for implementation of javascript.To create the jison parser we list to match the pattern on the left side and steps needed to create the syntax tree nodes on the right side. As the parser runs it shifts tokens from token stream from left to right to get the non-terminal nodes.
+The grammer of coffescript is generally defined by the name of non-terminal as key to the list of patterns with each match action dollar sign are provided as its value.grammer for precedence goes according to the BODMAS \footnote{BODMAS=Brackets Order Division Multiplication Addition Subtraction} rule. Tokens are generated using regex from the source code, after the match found tokens are stored and then the parser move ahead to find another token. Tokenizing also follow some rules of grammar and also checks to ensure that keywords are not used as identifier.Tokens that are used in coffescript as keywords,identifier,number whitespace ,comment,multident,string,compare , math , conditional , relational,bool etc.
+The CoffeeScript language has a good deal of optional syntax, implicit syntax, and shorthand syntax. This can greatly complicate a grammar and bloat the resulting parse table. Instead of making the parser handle it all, It can take a series of passes over the token stream, using this Rewriter to convert shorthand into the unambiguous long form, add implicit indentation and parentheses, and generally clean things up.
+Syntax tree in coffescript is formed considering the grammar nodes.coffe contains all the classes for the formation of nodes, then compile command is fired to convert the tree into JavaScript string.
+All the nodes are then converted to code fragment objects, it contains the details from where the code came these code fragment are then combined to form code snippets. Base is the abstract class for all nodes in syntax tree , the subclass of this base class implements code generation by executing CompileNode method. The scope class regulates lexical scoping within coffescript  when declare it form a tree of scope each scope knows the variable declared within and as well the reference to the parent scope, like this it understand which variable are new and which are needed to be declared using var. All these lexing, rewriting and  node formation is done using helper these classes contains the common utilities  for example counting characters ,sorting, merging ,trimming , count the no of occurrence of string etc. \cite{coffeescript} \\
 \par}
 
 \subsection{Observation of the code structure of cocos2d C++ and cocos2d JS}
@@ -499,13 +498,13 @@ Get the first word
 \subsubsection{Hidden markov model}
 
 {\Large Hidden markov model use the previous data of observation from history and then using the probability calculate the next step data and these are sometimes derived by using matrix multiplication of some more related probability data. Below is the example to make it understand better. For example there are only two temperature in a year Hot and cold. \\ 
-                       \thinspace  H     C \\
+                      \hspace*{0.1in}  H   \hspace*{0.1in}   C \\
                               H   0.7  0.3 \\
                               C  0.4 0.6   \\
 
 Above matrix denotes hot year after hot year is 0.7 and cold year after a hot is 0.3.suppose current research show a correlation between the size of tree growth ring and tempreture.where S , M , L denotes small, medium and Large respectively. \\
 
-                            \thinspace          S     M    L \\
+                           \hspace*{0.1in}   S  \hspace*{0.1in}    M  \hspace*{0.1in}   L \\
                                H  0.1  0.4  0.5 \\
                                C  0.7  0.2  0.1 
 \\   \par}
@@ -542,13 +541,27 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
                return st2;
            }
 \end{lstlisting}
-{\Large     \par}
 
+{\Large Details of the component of the transpiler  \\
+  Lexical analysis: It helps in dividing the code into tokens. \\
+  Syntactical analysis: It helps in checking the grammar of the code. \\
+  Translator: It helps in replacing the cocos2d C++ code with the cocos2d JS code. \\
+  System training: It helps in extracting the tokens from the files using the pattern matching alogorithm. \\
+  External Files: It maily contains the cocos2d C++ code and cocos2d JS file for tranning the system with the algorithm. \\
+    \par}
+
+\newpage
+
+\begin{figure}[h]
+\caption{Component diagram for transpiler}
+\centering
+\includegraphics[scale=0.7]{componentDia}
+\end{figure}
 
 
 \newpage
 
-{\Large the order of flow is first the system is trained then the code is brokens into tokens and the grammer is checked and then it is translated, below is the sequence diagram which shows in details. \par}
+{\Large The order of flow is that first the system is trained then the code is broken into tokens and the grammer is checked and then it is translated, below is the sequence diagram which shows in details of the flow. \par}
 
 \begin{figure}[h]
 \caption{Sequence diagram for transpiler}
@@ -585,8 +598,6 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \includegraphics[scale=1.1]{UI}
 \end{figure}
 
-{\Large User have t select . \\ \\ \par}
-
 \newpage
 
 \section{Conclusion}
@@ -605,20 +616,275 @@ Regex regex5 = new Regex("auto (.*) (=) (.*)::create();");
 \newpage
 
 \subsection{Limitation and deviation from hypothesis}
-{\Large There was no deviation from the hypothesis it went according to what we planned.
+{\Large There was no deviation from the hypothesis it went according to what was planned.
              There are some limitations because the two have some syntactical difference which was already discussed above in section “observation of code structure of cocos2d C++  and cocos2d JS” this exceptions sometimes effect the accuracy of translation, therefore  the accuracy of transpiling remains between 80-90 \% these code changes needed to be done by hand and then add it to the special cases xml , these  helps as when the code is compiled  again it gets the correct syntax from special cases xml and  gets compiled with 100 \% accuracy.
 \\  \par}
 
 \subsection{Future work}
-{\Large Future work would be training the system with new data when a new version of the framework is released.Then transpiling the class of TrunAPP ,extending the grammar.   \\  \par}
+{\Large While working on this thesis some new ideas and approaches for development were seen, short term goal is to extend the prototype to transpile the existing to transpile TrunAPP application to TrunWEB.Long term goal is to train the system with new data when a new version of the framework is released.Now it covers most of the grammar need for transpiling but this grammar needs to be extended to increase its accuracy.Both cocos2d C++ and JS have there own files for grammar take for example the file which deals with menu both in C++ and JS have have menu create command using the string similarity alogirthm finding these particular strings from both the file and then using the the training algorithm pattern matching extracting the the tokens and feeding them into the xml file these will help in lessening the human intervention and effort as it is only needed to feed the folder it will automatically find the files and the matching string inside it and write the tokens to the xml , this will also help if a new version of framework arrives as now it can do everthing on its own just need to feed the grammar folder of both the languages to the system.  \\  \par}
 
 \newpage
 
+\setcounter{secnumdepth}{0}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{cocosBack} 
+ Roger Engelbert
+\textit{"Cocos2d-x by examples beginner’s guide"}
+ Packt Publishing Ltd, April 2013.
+{[online].Available at:http://ftp.factor.lg.ua/books/Cocos2d-X\_by\_Example\_Beginner\_s\_Guide.pdf}
+
+\bibitem{cocosjsback}
+{http://www.cocos2d-x.org/wiki/Cocos2d-JS} [Accessed 25 Jun, 2016]
+
+
+\bibitem{cocoshtml} 
+Cocos2d-html5,2013,agmcleod[online] Available at:
+{http://stackoverflow.com/tags/cocos2d-html5/info} [Accessed 12 July, 2016]
+
+
+\bibitem{jsb} 
+cocos2d-x.org,HOW TO BIND C++ TO JAVASCRIPT , [online] Available at:
+{http://www.cocos2d-x.org/wiki/How\_to\_bind\_C++\_to\_Javascript}  [Accessed 22 July, 2016]
+
+\bibitem{flascback} 
+FlasCC,jan 2013 ,Porting a C++/OpenGL game to run in the browser [online] Available at:
+{http://blogs.adobe.com/flascc/2013/01/18/porting-a-c-opengl-game-to-run-in-the-browser} [Accessed 20 Aug, 2016]
+
+\bibitem{truncad}
+TrunCAD GmbH , Home , [online] Available at:
+{http://www.truncad.de/ (Accessed 25 Mar, 2016) }
+
+\bibitem{cocossharpback} 
+developer.xamarin.com , Introduction to CocosSharp [online] Available at:
+{https://developer.xamarin.com/guides/cross-platform/game\_development/cocossharp/} [Accessed 19 Aug, 2016]
+
+
+\bibitem{l2} 
+adobe-flash,CrossBridge[online] Available at:
+{http://adobe-flash.github.io/crossbridge/}  [Accessed 14 Aug, 2016]
+
+
+\bibitem{cheerpback}
+leaningtech.com, Why cheerp [online] Available at:
+{http://leaningtech.com/cheerp/}   [Accessed 20 Aug, 2016]
+
+\bibitem{l3} 
+TechTarget, Stephen J. Bigelow and Margaret Rouse ,Platform [online] Available at:
+{http://searchservervirtualization.techtarget.com/definition/platform}  [Accessed 28 Aug, 2016]
+
+
+\bibitem{crossplatform} 
+wikipedia.org,Cross-platform [online] Available at:
+{https://en.wikipedia.org/wiki/Cross-platform}   [Accessed 31 july, 2016]
+
+\bibitem{architecturejs} 
+qiumengchen12, 2015-04-08 ,How to quickly build Cocos2d-JS game development environment [online] Available at:
+{http://www.cocos.com/doc/tutorial/show?id=2678}    [Accessed 2 sept, 2016]
+
+\bibitem{architecture1} 
+{https://raw.githubusercontent.com/cocos2d/cocos2d-x/v3/docs/framework\_architecture.jpg} [online]  [Accessed 28 sept, 2016]
+
+\bibitem{compilerback} 
+Torben/Egidius Mogensen
+\textit{"Basic of compiler design"}
+ lulu.com, August 2010.
+{[online].Available at:http://www.diku.dk/~torbenm/Basics/basics\_lulu2.pdf}
+
+\bibitem{cvsjs1} 
+vschart.com , C++ vs JavaScript [online] Available at:
+{http://vschart.com/compare/c-plus-plus/vs/javascript}   [Accessed 1 Aug, 2016]
+
+
+\bibitem{cvsjs2} 
+differencebetween.info,Difference between JavaScript and C++ [online] Available at:
+{http://www.differencebetween.info/difference-between-javascript-and-cplusplus}     [Accessed 1 Aug, 2016]
+
+
+\bibitem{cocossharp} 
+forums.xamarin.com , CocosSharp project templates for Visual Studio [online] Available at:
+{https://forums.xamarin.com/discussion/30701/cocossharp-project-templates-for-visual-studio}   [Accessed 7 Aug, 2016]
+
+\bibitem{cheerpsetup} 
+Alessandro Pignotti,1 Oct 2014 ,Cheerp Tutorial [online] ,Available at:
+{https://github.com/leaningtech/cheerp-meta/wiki/Cheerp-Tutorial}   [Accessed 8 Aug, 2016]
+
+\bibitem{naclsetup}
+cocos2d-x.org, NATIVE CLIENT ENVIRONMENT SETUP  [online] Available at:
+{http://www.cocos2d-x.org/wiki/Native\_Client\_Environment\_Setup} [Accessed 28 Aug, 2016]
+
+
+\bibitem{nacldiagram}
+{https://developer.chrome.com/native-client/images/nacl-pnacl-component-diagram.png}  [Accessed 28 Aug, 2016]
+
+\bibitem{cocoshtmlsetup}
+gamefromscratch.com,2012-06-04,Cocos2D HTML5 tutorial 1 Getting set up and running  [online] Available at:
+{http://www.gamefromscratch.com/post/2012/06/04/Cocos2D-HTML5-tutorial-1-Getting-set-up-and-running.aspx}  [Accessed 28 Aug, 2016]
+
+\bibitem{emscriptionsetup} 
+emscription, Download and install  [online] Available at:
+{https://kripken.github.io/emscripten-site/docs/getting\_started/downloads.html}
+
+\bibitem{emscriptionsetup1} 
+ kripken.github.io ,Emscripten Tutorial [online] Available at:
+{https://kripken.github.io/emscripten-site/docs/getting\_started\_with\_emscripten\_and\_vs2010.html} [Accessed 17 july, 2016]
+
+\bibitem{emscriptionsetup2} 
+ cocos2d-x.org, Emscripten usage [online] Available at:
+{http://www.cocos2d-x.org/wiki/Emscripten\_usage} [Accessed 20 Aug, 2016]
+
+\bibitem{cocoshtml1} 
+rengelbert.com, Cocos2d HTML5: The Syntax  [online] Available at:
+{http://rengelbert.com/blog/cocos2d-html5-the-syntax/} [Accessed 28 Aug, 2016]
+
+\bibitem{comparison} 
+  developer.chrome.com, Frequently Asked Questions [online] Available at:
+{https://developer.chrome.com/native-client/faq} [Accessed 28 Aug, 2016]
+
+\bibitem{compareemsport}
+  kripken.github.io ,Portability Guidelines [online] Available at:
+{https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.html} [Accessed 27 Aug, 2016]
+
+\bibitem{l4} 
+hpyblg.wordpress.com, Simulating pointers in JavaScript [online] Available at:
+{https://hpyblg.wordpress.com/2010/05/30/simulating-pointers-in-javascript} [Accessed 22 Aug, 2016]
+
+\bibitem{compareflasc3}
+adobe.com,  Adobe Flash C++ Compiler (FlasCC) [online] Available at:
+{http://www.adobe.com/devnet-docs/flascc/docs/Reference.html} [Accessed 21 july, 2016]
+
+
+\bibitem{flascsecurity}
+ Peleus Uhley,Creating more secure SWF web applications  [online] Available at:
+{http://www.adobe.com/devnet/flashplayer/articles/secure\_swf\_apps.html} [Accessed 22 july, 2016]
+
+\bibitem{einstein} 
+Tobias widlund
+\textit{"Application programming interface for native web applications" }
+, Lulea university of Technology
+{[online].Available:http://docplayer.net/9097711-Bachelor-thesis-application-programming-interface-for-native-web-applications-tobias-widlund.html}
+ 
+\bibitem{knuthwebsite} 
+Alon Zakai 
+\textit{Emscripten: An LLVM-to-Javascript compiler} 
+ ,Mozilla
+{[online].Available:http://dl.acm.org/citation.cfm?id=2048224}
+
+\bibitem{pointer} 
+Mike Christensen, 19 April 2012 , stackoverflow.com  [online] Available at:
+{ http://stackoverflow.com/questions/10231868/pointers-in-javascript} [Accessed 28 Aug, 2016]
+
+\bibitem{pseudo}
+alehander42, pseudo-python  [online] Available at:
+{https://github.com/alehander42/pseudo-python} [Accessed 28 Aug, 2016]
+
+\bibitem{latexcompanionb} 
+blogs.adobe.com,Using Adobe Flash C++ Compiler  [online] Available at:
+{http://blogs.adobe.com/flascc/ } [Accessed 20 Aug, 2016]
+
+\bibitem{latexcompanionb} 
+Mat's Mug, 10 Dec 2015,Lexer for C \# source code  [online] Available at:
+{http://codereview.stackexchange.com/questions/113418/lexer-for-c-source-code} [Accessed 27 Jun, 2016]
+
+\bibitem{latexcompanionb} 
+cocos2d-x.org, COCOS2D-X  [online] Available at:
+{http://www.cocos2d-x.org/wiki/  } [Accessed 28 Aug, 2016]
+
+\bibitem{l5} 
+  [online] Available at:
+{ https://www.draw.io/ } [Accessed 22 Aug, 2016]
+
+\bibitem{compareflascjs}
+logicpool.com, 30 Mar 2009,  Flash vs Javascript (jQuery) Pros and Cons [online] Available at: 
+{http://logicpool.com/archives/30} [Accessed 28 Aug, 2016]
+
+\bibitem{comparejs} 
+sortris, 2 Aug 2014, Performance tests and comparison of cocos2d-x-3.2 and cocos2d-js-3.0 [online] Available at:
+{http://discuss.cocos2d-x.org/t/performance-tests-and-comparison-of-cocos2d-x-3-2-and-cocos2d-js-3-0/16087} [Accessed 22 July, 2016]
+
+\bibitem{compareasm} 
+asmjs.org,asm.js - frequently asked questions  [online] Available at:
+{http://asmjs.org/faq.html} [Accessed 26 July, 2016]
+
+\bibitem{comparenacl1}
+ Wikepedia,Google Native Client [online] Available at:
+{https://en.wikipedia.org/wiki/Google\_Native\_Client} [Accessed 21 July, 2016]
+
+\bibitem{compareflasc1} 
+  Boutros AbiChedid, 16 April 2011,flash website advantages and disadvantages [online] Available at:
+{http://bacsoftwareconsulting.com/blog/index.php/web-development/flash-website-advantages-and-disadvantages} [Accessed 21 July, 2016]
+
+\bibitem{compareflasc2}
+ Vyacheslav Egorov,28 mar 2013 ,Why asm.js bothers me  [online] Available at:
+{http://mrale.ph/blog/2013/03/28/why-asmjs-bothers-me.html} [Accessed 28 Aug, 2016]
+
+\bibitem{compareems2}
+evanw, 2013, makefile [online] Available at:
+{https://gist.github.com/evanw/8258541} [Accessed 21 July, 2016]
+
+\bibitem{javascriptsecurity}
+veracode.com, JavaScript Security  [online] Available at:
+{http://www.veracode.com/security/javascript-security} [Accessed 22 July, 2016]
+
+\bibitem{l6} 
+kripken.github.io, Portability Guidelines  [online] Available at:
+{https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.html} [Accessed 09 July, 2016]
+
+\bibitem{l7} 
+ leaningtech.com , Cheerp 1.1 - C++ for the Web with fast startup times, dynamic memory and now, more speed! [online] Available at:
+{http://leaningtech.com/cheerp/blog/2015/06/17/Cheerp-1.1} [Accessed 28 Aug, 2016]
+
+\bibitem{cetus}
+Hansang Bae, Leonardo Bachega, Chirag Dave, Sang-Ik Lee, Seyong Lee,
+Seung-Jai Min, Rudolf Eigenmann and Samuel Midkif
+\textit{"Cetus: A Source-to-Source Compiler
+Infrastructure for Multicores"}
+Purdue University, 
+{[online].Available:https://engineering.purdue.edu/paramnt/publications/CPC09.pdf}
+
+\bibitem{l8} 
+Abdul,26 july 2011,The Unique Benefits and Limitations of Flash  [online] Available at:
+{http://blog.commlabindia.com/elearning-development/flash-benefits-limitations} [Accessed 28 Aug, 2016]
+
+\bibitem{coffeescript} 
+coffeescript.org,Coffeescript [online] Available at:
+{http://coffeescript.org} [Accessed 22 Aug, 2016]
+
+\bibitem{ph1}
+David chiang,
+\textit{"Hierarchical Phrase-Based Translation"}
+,Information Sciences Institute ,University of Southern California
+{[online].Available:http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201}
+
+\bibitem{pbmt}
+Yusuke Oda, Hiroyuki Fudaba, Graham Neubig, Hideaki Hata,
+Sakriani Sakti, Tomoki Toda, and Satoshi Nakamura
+\textit{"Learning to Generate Pseudo-code from Source
+Code using Statistical Machine Translation"}
+Nara Institute of Science and Technology , japan,  pp. 2-3
+{[online].Available:http://www.phontron.com/paper/oda15ase.pdf}
+
+\bibitem{l9} 
+developer.chrome.com, Frequently Asked Questions  [online] Available at:
+{https://developer.chrome.com/native-client/faq} [Accessed 21 july, 2016]
+
+\bibitem{l10} 
+  Alon zakai,EMSCRIPTEN AND ASM.JS [online] Available at:
+{https://kripken.github.io/mloc\_emscripten\_talk/cppcon.html/31} [Accessed 22 july, 2016]
+
+\end{thebibliography}
+
 \newpage
+
+\listoffigures
 
 \section{Appendix}
 
 
+
+\subsection{ Appendix-1: Code for training the system}
 \begin{lstlisting}[label=some-code,caption= Code for training the system]
 class Training
 {
@@ -705,6 +971,8 @@ class Training
 
 \end{lstlisting}
 
+\subsection{ Appendix-2: Reading the tokens from the file}
+
 \begin{lstlisting}[label=some-code,caption= Reading the tokens from the file]
 
 while ((line = file.ReadLine()) != null)
@@ -749,219 +1017,39 @@ while ((line = file.ReadLine()) != null)
 
     }                  
 
+
+
 \end{lstlisting}
 
+{\Large  \textbf{\\ \\ CD content} \par}
 
+\begin{center}
+ \begin{tabular}{||c c||} 
+ \hline
+ Directory & Description\\ [0.5ex] 
+ \hline\hline
+ Approaches& contains the details of all the approaches (NaCL,CocosSharp,Cheerp,Cocos2d-JS) \\ 
+ \hline
+ Transpiler & Contains the source code of transpiler (Cocos2d C++ to Cocos2d JS)  \\
+ \hline
+ Documents & Thesis as PDF Document \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
 
 
 \newpage
-section{Reference}
 
-\begin{thebibliography}{9}
+{\Large \textbf{Statement of Originalty}
+\begin{itemize}
+  \item this thesis and the work reported herein was composed by and originated entirely from me,
+  \item information derived and verbatim from the published and unpublished work of others has been properly acknowledged and cited in the bibliography,
+  \item  this thesis has not been submitted for a higher degree at any other University or Institution.
+\end{itemize}
+\underline{Date, Name, Matricle Number, Signature}
+\par}
 
-\bibitem{truncad} 
-{http://www.truncad.de/}
 
-\bibitem{emsback} 
-{https://raw.githubusercontent.com/kripken/emscripten/master/docs/paper.pdf}
-
-\bibitem{naclback} 
-{http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/34913.pdf}
-
-
-\bibitem{cocosBack} 
- Roger Engelbert
-\textit{"Cocos2d-x by examples beginner’s guide"}
- Packt Publishing Ltd, April 2013.
-{http://ftp.factor.lg.ua/books/Cocos2d-X\_by\_Example\_Beginner\_s\_Guide.pdf}
-
-\bibitem{cocosjsback}
-{http://www.cocos2d-x.org/wiki/Cocos2d-JS}
-
-
-\bibitem{cocoshtml} 
-{http://stackoverflow.com/tags/cocos2d-html5/info}
-
-
-\bibitem{jsb} 
-{http://www.cocos2d-x.org/wiki/How\_to\_bind\_C++\_to\_Javascript}
-
-\bibitem{flascback} 
-{http://blogs.adobe.com/flascc/2013/01/18/porting-a-c-opengl-game-to-run-in-the-browser}
-
-\bibitem{cocossharpback} 
-{https://developer.xamarin.com/guides/cross-platform/game\_development/cocossharp/}
-
-
-\bibitem{l2} 
-{http://adobe-flash.github.io/crossbridge/}
-
-\bibitem{cheerpback}
-{http://leaningtech.com/cheerp/}
-
-\bibitem{l3} 
-{http://searchservervirtualization.techtarget.com/definition/platform}
-
-
-\bibitem{crossplatform} 
-{https://en.wikipedia.org/wiki/Cross-platform}
-
-\bibitem{architecturejs} 
-{http://www.cocos.com/doc/tutorial/show?id=2678}
-
-\bibitem{architecture1} 
-{https://raw.githubusercontent.com/cocos2d/cocos2d-x/v3/docs/framework\_architecture.jpg}
-
-\bibitem{compilerback} 
-Torben/Egidius Mogensen
-\textit{"Basic of compiler design"}
- lulu.com, August 2010.
-{   (http://www.diku.dk/~torbenm/Basics/basics\_lulu2.pdf)}
-
-\bibitem{cvsjs1} 
-{http://vschart.com/compare/c-plus-plus/vs/javascript}
-
-
-\bibitem{cvsjs2} 
-{http://www.differencebetween.info/difference-between-javascript-and-cplusplus}
-
-
-\bibitem{cocossharp} 
-{https://forums.xamarin.com/discussion/30701/cocossharp-project-templates-for-visual-studio}
-
-\bibitem{cheerpsetup} 
-{https://github.com/leaningtech/cheerp-meta/wiki/Cheerp-Tutorial}
-
-\bibitem{naclsetup}
-{http://www.cocos2d-x.org/wiki/Native\_Client\_Environment\_Setup}
-
-
-\bibitem{nacldiagram}
-{https://developer.chrome.com/native-client/images/nacl-pnacl-component-diagram.png}
-
-\bibitem{cocoshtmlsetup}
-{http://www.gamefromscratch.com/post/2012/06/04/Cocos2D-HTML5-tutorial-1-Getting-set-up-and-running.aspx}
-
-\bibitem{emscriptionsetup} 
-{https://kripken.github.io/emscripten-site/docs/getting\_started/downloads.html}
-
-\bibitem{emscriptionsetup1} 
-{https://kripken.github.io/emscripten-site/docs/getting\_started\_with\_emscripten\_and\_vs2010.html}
-
-\bibitem{emscriptionsetup2} 
-{http://www.cocos2d-x.org/wiki/Emscripten\_usage}
-
-\bibitem{cocoshtml1} 
-{http://rengelbert.com/blog/cocos2d-html5-the-syntax/}
-
-\bibitem{comparison} 
-{https://developer.chrome.com/native-client/faq}
-
-\bibitem{compareemsport}
-{https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.html}
-
-\bibitem{l4} 
-{https://hpyblg.wordpress.com/2010/05/30/simulating-pointers-in-javascript}
-
-\bibitem{compareflasc3}
-{http://www.adobe.com/devnet-docs/flascc/docs/Reference.html} 
-
-\bibitem{feasibility}
-{http://rengelbert.com/blog/cocos2d-html5-the-syntax/}
-
-\bibitem{flascsecurity}
-{http://www.adobe.com/devnet/flashplayer/articles/secure\_swf\_apps.html}
-
-\bibitem{einstein} 
-Tobias widlund
-\textit{Application programming interface for native web applications }. 
-, Lulea university of Technology
- 
-\bibitem{knuthwebsite} 
-Alon Zakai 
-\textit{Emscripten: An LLVM-to-Javascript compiler}. 
- ,Mozilla
-
-\bibitem{pointer} 
-\  http://stackoverflow.com/questions/10231868/pointers-in-javascript
-
-\bibitem{pseudo}
-{https://github.com/alehander42/pseudo-python}
-
-\bibitem{latexcompanionb} 
-\ http://www.cocos2d-x.org/wiki/Cocos2d-JS
-
-\bibitem{latexcompanionb} 
-\  http://blogs.adobe.com/flascc/
-
-\bibitem{latexcompanionb} 
-{http://codereview.stackexchange.com/questions/113418/lexer-for-c-source-code}
-
-\bibitem{latexcompanionb} 
-\  http://www.cocos2d-x.org/wiki/
-
-\bibitem{l5} 
-\ https://www.draw.io/
-
-\bibitem{compareflascjs} 
-{http://logicpool.com/archives/30}
-
-\bibitem{comparejs} 
-{http://discuss.cocos2d-x.org/t/performance-tests-and-comparison-of-cocos2d-x-3-2-and-cocos2d-js-3-0/16087}
-
-\bibitem{compareasm} 
-{http://asmjs.org/faq.html}
-
-\bibitem{comparenacl1}
-{https://en.wikipedia.org/wiki/Google\_Native\_Client}
-
-\bibitem{compareflasc2} 
-{http://www.adobe.com/devnet/flashplayer/articles/secure\_swf\_apps.html}
-
-\bibitem{compareflasc1} 
-{http://bacsoftwareconsulting.com/blog/index.php/web-development/flash-website-advantages-and-disadvantages}
-
-\bibitem{compareflasc2}
-{http://mrale.ph/blog/2013/03/28/why-asmjs-bothers-me.html}
-
-\bibitem{compareems2}
-{https://gist.github.com/evanw/8258541}
-
-\bibitem{javascriptsecurity}
-{http://www.veracode.com/security/javascript-security}
-
-\bibitem{l6} 
-{https://kripken.github.io/emscripten-site/docs/porting/guidelines/portability\_guidelines.htm}
-
-\bibitem{l7} 
-{http://leaningtech.com/cheerp/blog/2015/06/17/Cheerp-1.1}
-
-\bibitem{l8} 
-{http://blog.commlabindia.com/elearning-development/flash-benefits-limitations}
-
-\bibitem{coffeescript} 
-{http://coffeescript.org}
-
-\bibitem{phrase}
-David chiang
-\textit{Hierarchical Phrase-Based Translation}
-Information Sciences Institute ,University of Southern California
-{http://www.mitpressjournals.org/doi/pdf/10.1162/coli.2007.33.2.201}
-
-\bibitem{pbmt}
-Yusuke Oda, Hiroyuki Fudaba, Graham Neubig, Hideaki Hata,
-Sakriani Sakti, Tomoki Toda, and Satoshi Nakamura
-\textit{Learning to Generate Pseudo-code from Source
-Code using Statistical Machine Translation}
-Nara Institute of Science and Technology , japan,  pp. 2-3
-{http://www.phontron.com/paper/oda15ase.pdf}
-
-\bibitem{l9} 
-{https://developer.chrome.com/native-client/faq}
-
-\bibitem{l10} 
-{https://kripken.github.io/mloc\_emscripten\_talk/cppcon.html/31}
-
-\end{thebibliography}
+\newpage
 
 \end{document}
