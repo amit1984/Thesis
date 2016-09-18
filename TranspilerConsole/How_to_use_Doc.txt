@@ -1,0 +1,18 @@
+For running the Helloworld App
+
+1) clone it from github
+
+2) Using CMD Go to the folder and then write - node server.js
+
+3) then go to http://localhost:4000/ 
+
+
+
+
+For Running the Transpiler 
+
+1) Run the console application 
+
+2) Enter the filename it will generate a folder called cocos2d-js.
+
+3) Once done replace your classes folder with the files in classes folder.

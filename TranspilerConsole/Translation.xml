@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<Translations>
+  <Translation>
+    <type>keyword</type>
+    <name>auto</name>
+    <tranName>var</tranName>
+    <weight>1</weight>
+  </Translation>
+  <Translation>
+    <type>operator</type>
+    <name>-</name>
+    <tranName></tranName>
+    <weight>1</weight>
+  </Translation>
+  <Translation>
+    <type>operator</type>
+    <name>></name>
+    <tranName>.</tranName>
+    <weight>1</weight>
+  </Translation>
+<Translation>
+    <type>1</type>
+    <name>operator</name>
+    <tranName>::</tranName>
+    <weight>.</weight>
+  </Translation>
+</Translations>
